@@ -14,8 +14,8 @@ const navItems: Array<ItemProps> = [
     href: `/`,
   },
   {
-    title: `Add charity`,
-    href: `/add-charity`,
+    title: `Donations`,
+    href: `/donations`,
   },
   {
     title: `About`,
@@ -31,7 +31,7 @@ const Navigation = () => {
       <Items>
         {navItems.map((item: ItemProps) => (
           <li key={item.title}>
-            <Link href={item.href}><a className={asPath === item.href ? `active` : ``}>{item.title}</a></Link>
+            <Link href={item.href}><a aria-label={item.title} className={asPath === item.href ? `active` : ``}>{item.title}</a></Link>
           </li>
         ))}
       </Items>

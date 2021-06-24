@@ -23,9 +23,9 @@ const Logo = () => {
   }, []);
   return (
     <Wrapper>
-      {width > 1024 && <Link href="/"><a><Desktop /></a></Link>}
-      {width <= 1024 && width >= 568 && <Link href="/"><a><Tablet /></a></Link>}
-      {width < 568 && <Link href="/"><a><Mobile /></a></Link>}
+      {width > 1024 && <Link href="/" aria-label="Gorgeous Charity Token"><a><Desktop /></a></Link>}
+      {width <= 1024 && width >= 568 && <Link href="/" aria-label="Gorgeous Charity Token"><a><Tablet /></a></Link>}
+      {width < 568 && <Link href="/" aria-label="Gorgeous Charity Token"><a><Mobile /></a></Link>}
     </Wrapper>
   );
 };
