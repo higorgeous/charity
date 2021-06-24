@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { usePopperTooltip } from 'react-popper-tooltip';
 import Modal from 'react-modal';
 
-import { Icon } from './styles';
+import ShareIcons from './ShareIcons';
+
+import { Icon, ShareHeading } from './styles';
 
 const customStyles = {
   overlay: {
@@ -66,8 +68,10 @@ const Share = () => {
         onRequestClose={closeModal}
         style={customStyles}
         closeTimeoutMS={300}
-      >
-        Share
+      > 
+        
+        <ShareHeading>Let others know about Gorgeous</ShareHeading>
+        <ShareIcons />
       </Modal>
     </>
   );

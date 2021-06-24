@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   grid-area: logo;
   padding-top: 2px;
   margin-left: 42px;
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
     margin-left: 22px;
   }
   @media (max-width: 568px) {

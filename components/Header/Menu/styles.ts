@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   margin-right: 42px;
   margin-left: 5px;
   display: flex;
-  @media (max-width: 1024px) {
+  @media (max-width: 1023px) {
     margin-right: 22px;
   }
 `;
@@ -70,6 +70,26 @@ export const Icon = styled.button`
   svg {
     stroke: var(--color-text-secondary);
     transition: stroke 0.25s ease-out;
+  }
+`;
+
+export const ShareHeading = styled.h3`
+  width: 180px;
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #002358;
+  letter-spacing: 0.025em;
+  text-align: center;
+`;
+
+export const ShareWrapper = styled.div`
+  display: flex;
+  width: 180px;
+  flex-wrap: wrap;
+  justify-content: center;
+  button {
+    margin: 5px 10px;
   }
 `;
 
