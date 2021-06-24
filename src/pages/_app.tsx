@@ -1,7 +1,8 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import withDarkMode, { MODE } from 'next-dark-mode'
 
-function CharityApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />
 }
-export default CharityApp
+export default withDarkMode(App, { defaultMode: MODE.DARK })

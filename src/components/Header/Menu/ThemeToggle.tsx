@@ -1,11 +1,16 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { usePopperTooltip } from 'react-popper-tooltip';
+import { useDarkMode } from 'next-dark-mode'
 
 import { ToggleButton, ToggleThumb } from './styles';
 
 const ThemeToggle = () => {
-  const [activeTheme, setActiveTheme] = useState("light");
-  const lightTheme = activeTheme === "light" ? "dark" : "light";
+  const { darkModeActive, switchToDarkMode, switchToLightMode } = useDarkMode()
+
+  const toggleMode = (text: string) => {
+    if (text === 'dark') switchToDarkMode()
+    if (text === 'light') switchToLightMode()
+  }
 
   const {
     getArrowProps,
@@ -16,17 +21,17 @@ const ThemeToggle = () => {
   } = usePopperTooltip();
 
   useEffect(() => {
-    document.body.dataset.theme = activeTheme;
-  }, [activeTheme]);
+    document.body.dataset.theme = darkModeActive ? 'dark' : 'light';
+  }, [darkModeActive]);
   return (
     <>
       <ToggleButton
         type="button"
         className="mobile-hide"
         ref={setTriggerRef}
-        onClick={() => setActiveTheme(lightTheme)}
+        onClick={() => darkModeActive ? toggleMode('light') : toggleMode('dark')}
       >
-        <ToggleThumb activeTheme={activeTheme} />
+        <ToggleThumb activeTheme={darkModeActive ? 'dark' : 'light'} />
         <span aria-hidden={true}>🌙</span>
         <span aria-hidden={true}>☀️</span>
       </ToggleButton>

@@ -24,7 +24,7 @@ const Menu = () => {
           name: "offset",
           enabled: true,
           options: {
-            offset: [0, 5]
+            offset: [-210, 5]
           }
         }
       ]
@@ -32,7 +32,6 @@ const Menu = () => {
   );
 
   const handleDocumentClick = (event: { target: any }) => {
-    console.log(event.target.id)
     if ((referenceRef.current! as any).contains(event.target)) {
       return;
     } else if (event.target.id === 'dropdown') {

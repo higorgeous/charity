@@ -121,6 +121,11 @@ export const DropdownItem = styled.li`
   &:last-of-type {
     padding-bottom: 18px;
   }
+  @media (min-width: 1023px) {
+    &:nth-of-type(6) {
+      border-top: none;
+    }
+  }
   a {
     display: flex;
     align-items: center;
