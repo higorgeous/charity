@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import "@fontsource/poppins";
 import 'react-popper-tooltip/dist/styles.css';
 
 import Header from '../components/Header'

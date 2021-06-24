@@ -1,3 +1,4 @@
+import '@fontsource/poppins';
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import withDarkMode, { MODE } from 'next-dark-mode'
