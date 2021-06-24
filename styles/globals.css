@@ -46,7 +46,7 @@ body {
 }
 
 
-@media (max-width: 568px) {
+@media (max-width: 567px) {
   *.mobile-hide {
     display: none !important;
   }
@@ -55,7 +55,7 @@ body {
   }
 }
 
-@media (min-width: 567px) {
+@media (min-width: 568px) {
   *.mobile-show {
     display: none !important;
   }
@@ -64,7 +64,7 @@ body {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
   *.tablet-hide {
     display: none !important;
   }
@@ -73,7 +73,7 @@ body {
   }
 }
 
-@media (min-width: 1023px) {
+@media (min-width: 1024px) {
   *.tablet-show {
     display: none !important;
   }

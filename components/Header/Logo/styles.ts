@@ -11,6 +11,24 @@ export const Wrapper = styled.div`
     padding-left: 20px;
     margin: 0;
   }
+  span {
+    display: none;
+    @media (max-width: 567px) {
+      &.mobile {
+        display: block;
+      }
+    }
+    @media (min-width: 568px) and (max-width: 1023px) {
+      &.tablet {
+        display: block;
+      }
+    }
+    @media (min-width: 1024px) {
+      &.desktop {
+        display: block;
+      }
+    }
+  }
   a {
     display: flex;
   }
