@@ -79,17 +79,18 @@ export const DropdownContainer = styled.div<{ visible: boolean }>`
   border-radius: 8px;
   background: #ffffff;
   padding: 0 20px 0;
+  margin-top: -5px;
   flex-direction: column;
   box-shadow: 0 5px 25px rgb(0 17 36 / 15%);
   &::before {
     content:"";
     border-style: solid;
-    border-width: 10px 15px 10px 0;
+    border-width: 15px 12px 15px 0;
     border-color: transparent #ffffff transparent transparent;
     position: absolute;
     transform: rotate(90deg);
-    top: -15px;
-    right: 13px;
+    top: -20px;
+    right: 14px;
   }
 `;
 

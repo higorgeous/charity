@@ -18,7 +18,9 @@ const ThemeToggle = () => {
     setTooltipRef,
     setTriggerRef,
     visible,
-  } = usePopperTooltip();
+  } = usePopperTooltip({
+    offset: [0, 15]
+  });
 
   useEffect(() => {
     document.body.dataset.theme = darkModeActive ? 'dark' : 'light';

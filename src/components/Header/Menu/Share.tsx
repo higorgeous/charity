@@ -9,7 +9,9 @@ const Share = () => {
     setTooltipRef,
     setTriggerRef,
     visible,
-  } = usePopperTooltip();
+  } = usePopperTooltip({
+    offset: [0, 15]
+  });
   return (
     <>
       <Icon aria-label="Share" type="button" className="mobile-hide" ref={setTriggerRef}>
