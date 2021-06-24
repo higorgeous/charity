@@ -5,12 +5,16 @@ import Modal from 'react-modal';
 import { Icon } from './styles';
 
 const customStyles = {
+  overlay: {
+    backgroundColor: 'rgba(0, 27, 68, 0.9)'
+  },
   content: {
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
+    border: 'none',
     transform: 'translate(-50%, -50%)',
   },
 };
@@ -61,6 +65,7 @@ const Share = () => {
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
+        closeTimeoutMS={300}
       >
         Share
       </Modal>

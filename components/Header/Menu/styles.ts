@@ -104,7 +104,7 @@ export const DropdownHeading = styled.li`
   text-transform: uppercase;
   padding: 15px 0;
   font-size: 12px;
-  font-weight: 900;
+  font-weight: 700;
   color: #214a88;
   border-top: 1px solid #e9f2ff;
   &:first-of-type {
