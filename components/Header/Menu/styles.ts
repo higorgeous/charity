@@ -83,6 +83,37 @@ export const ShareHeading = styled.h3`
   text-align: center;
 `;
 
+export const CloseIcon = styled.div<{modalIsOpen: boolean}>`
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  background: #032c6b;
+  border-radius: 3px;
+  padding: 5px;
+  z-index: 9999;
+  cursor: pointer;
+  opacity: ${({ modalIsOpen }) => modalIsOpen ? 1 : 0};
+  visibility: ${({ modalIsOpen }) => modalIsOpen ? `visible` : `hidden`};
+  transition: all 0.25s ease-out;
+  &::before,
+  &::after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 22px;
+    width: 2px;
+    background-color: #a2c3f5;
+  }
+  &:before {
+    transform: rotate(45deg);
+  }
+  &:after {
+    transform: rotate(-45deg);
+  }
+`;
+
 export const ShareWrapper = styled.div`
   display: flex;
   width: 180px;

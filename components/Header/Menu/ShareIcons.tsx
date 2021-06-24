@@ -22,7 +22,7 @@ import { ShareWrapper } from './styles';
 
 const ShareIcons = () => {
         const shareUrl = 'https://charity.higorgeous.io';
-        const title = 'Join the Gorgeous community and vote for the charity you think derserves their donation';
+        const title = 'Vote and let Gorgeous know who they should vote for.';
         return (
             <ShareWrapper>
                 <FacebookShareButton

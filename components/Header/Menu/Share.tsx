@@ -4,7 +4,7 @@ import Modal from 'react-modal';
 
 import ShareIcons from './ShareIcons';
 
-import { Icon, ShareHeading } from './styles';
+import { Icon, ShareHeading, CloseIcon } from './styles';
 
 const customStyles = {
   overlay: {
@@ -69,10 +69,10 @@ const Share = () => {
         style={customStyles}
         closeTimeoutMS={300}
       > 
-        
         <ShareHeading>Let others know about Gorgeous</ShareHeading>
         <ShareIcons />
       </Modal>
+      <CloseIcon modalIsOpen={modalIsOpen} onClick={closeModal} />
     </>
   );
 };
