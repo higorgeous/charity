@@ -15,6 +15,8 @@ const customStyles = {
   },
 };
 
+Modal.setAppElement('#__next');
+
 const Share = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
