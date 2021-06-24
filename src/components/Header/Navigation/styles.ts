@@ -4,9 +4,6 @@ export const Wrapper = styled.nav`
   position: relative;
   grid-area: navigation;
   justify-self: end;
-  @media (max-width: 1024px) {
-    display: none;
-  }
 `;
 
 export const Items = styled.ul`

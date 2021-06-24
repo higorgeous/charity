@@ -28,9 +28,6 @@ export const ToggleButton = styled.button`
   cursor: pointer;
   background: var(--color-bg-element);
   transition: background 0.25s ease-in-out;
-  @media (max-width: 568px) {
-    display: none;
-  }
 `;
 
 export const ToggleThumb = styled.span<{activeTheme: string}>`
@@ -48,7 +45,7 @@ export const ToggleThumb = styled.span<{activeTheme: string}>`
       : "none"};
 `;
 
-export const Button = styled.button`
+export const Trigger = styled.button`
   background-color: transparent;
   padding: 16px 10px 15px;
   position: relative;
@@ -57,6 +54,22 @@ export const Button = styled.button`
   cursor: pointer;
   svg {
     stroke: var(--color-text-secondary);
+    transition: stroke 0.25s ease-out;
+  }
+`;
+
+export const Icon = styled.button`
+  background-color: var(--color-bg-element);
+  margin: 15px 5px;
+  padding-top: 2px;
+  position: relative;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+  svg {
+    stroke: var(--color-text-secondary);
+    transition: stroke 0.25s ease-out;
   }
 `;
 
@@ -83,14 +96,26 @@ export const DropdownContainer = styled.div<{ visible: boolean }>`
 export const DropdownItems = styled.ul`
   list-style: none;
   padding: 0;
-  margin: 13px 0 0;
+  margin: 0;
+`;
+
+export const DropdownHeading = styled.li`
+  text-transform: uppercase;
+  padding: 15px 0;
+  font-size: 12px;
+  font-weight: 900;
+  color: #214a88;
+  border-top: 1px solid #e9f2ff;
+  &:first-of-type {
+    padding-top: 20px;
+    border: none;
+  }
 `;
 
 export const DropdownItem = styled.li`
   border-top: 1px solid #e9f2ff;
-  padding: 15px 0 15px;
+  padding: 15px 0;
   &:first-of-type {
-    border-top: 0;
     padding-top: 5px;
   }
   &:last-of-type {
@@ -106,6 +131,9 @@ export const DropdownItem = styled.li`
     cursor: pointer;
     transition: color 0.1s ease-out;
     &:hover {
+      color: #0060ff;
+    }
+    &.active {
       color: #0060ff;
     }
   }

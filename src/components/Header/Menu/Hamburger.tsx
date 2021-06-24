@@ -1,4 +1,4 @@
-import { Button } from './styles';
+import { Trigger } from './styles';
 
 type Props = {
   referenceRef: any;
@@ -6,7 +6,7 @@ type Props = {
 }
 
 const Hamburger = ({ referenceRef, handleClick }: Props) => (
-  <Button aria-label="Menu" type="button" ref={referenceRef} onClick={handleClick}>
+  <Trigger aria-label="Menu" type="button" ref={referenceRef} onClick={handleClick}>
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="18" viewBox="0 0 20 18">
       <g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2">
         <path d="M1,1H19" />
@@ -14,7 +14,7 @@ const Hamburger = ({ referenceRef, handleClick }: Props) => (
         <path d="M1,17H19" />
       </g>
     </svg>
-  </Button>
+  </Trigger>
 );
 
 export default Hamburger;

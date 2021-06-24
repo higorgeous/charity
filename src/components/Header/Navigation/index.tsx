@@ -27,7 +27,7 @@ const Navigation = () => {
   const { asPath } = useRouter();
 
   return (
-    <Wrapper>
+    <Wrapper className="tablet-hide">
       <Items>
         {navItems.map((item: ItemProps) => (
           <li key={item.title}>

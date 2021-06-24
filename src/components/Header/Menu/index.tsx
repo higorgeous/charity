@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import { usePopper } from "react-popper";
-import styled from "@emotion/styled";
 
+import Dropdown from "./Dropdown";
 import Hamburger from './Hamburger';
+import Share from "./Share";
 import ThemeToggle from './ThemeToggle'
 
 import { Wrapper } from './styles';
-import Dropdown from "./Dropdown";
 
 const Menu = () => {
   const [visible, setVisibility] = useState(false);
@@ -24,7 +24,7 @@ const Menu = () => {
           name: "offset",
           enabled: true,
           options: {
-            offset: [0, 10]
+            offset: [0, 5]
           }
         }
       ]
@@ -54,6 +54,7 @@ const Menu = () => {
   return (
     <Wrapper>
       <ThemeToggle />
+      <Share />
       <Hamburger referenceRef={referenceRef} handleClick={handleDropdownClick} />
       <Dropdown popperRef={popperRef} styles={styles} attributes={attributes} visible={visible} />
     </Wrapper>
