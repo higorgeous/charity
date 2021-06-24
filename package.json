@@ -4,7 +4,6 @@
   "description": "Nextjs website for voting on Gorgeous charity donations. Available at charity.higorgeous.io.",
   "repository": "https://github.com/higorgeous/charity.git",
   "author": "Gorgeous BSC token <gorgeous.token@gmail.com>",
-  "main": "index.tsx",
   "license": "MIT",
   "private": false,
   "scripts": {
