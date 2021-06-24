@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "@types/react": "17.0.11",
+    "@types/react-modal": "^3.12.0",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.1",
     "prettier": "2.2.1",

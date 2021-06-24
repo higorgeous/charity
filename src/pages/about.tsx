@@ -4,12 +4,12 @@ import 'react-popper-tooltip/dist/styles.css';
 
 import Header from '../components/Header'
 
-const Index = () => {
+const About = () => {
   return (
     <div>
       <Head>
-        <title>Charity voting platform for Gorgeous donations | Gorgeous BSC Token</title>
-        <meta name="description" content="Vote on the charities you want Gorgeous to donate to." />
+        <title>About Gorgeous | Gorgeous BSC Token</title>
+        <meta name="description" content="Learn more about Gorgeous and their wonderful community" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
@@ -17,4 +17,4 @@ const Index = () => {
   )
 }
 
-export default Index;
+export default About;
