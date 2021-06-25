@@ -1,11 +1,11 @@
 import Link from 'next/link';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 import { Wrapper, Items } from './styles';
 
 type ItemProps = {
   title: string;
-  href: string
+  href: string;
 };
 
 const navItems: Array<ItemProps> = [
@@ -20,8 +20,8 @@ const navItems: Array<ItemProps> = [
   {
     title: `About`,
     href: `/about`,
-  }
-]
+  },
+];
 
 const Navigation = () => {
   const { asPath } = useRouter();
@@ -31,7 +31,14 @@ const Navigation = () => {
       <Items>
         {navItems.map((item: ItemProps) => (
           <li key={item.title}>
-            <Link href={item.href}><a aria-label={item.title} className={asPath === item.href ? `active` : ``}>{item.title}</a></Link>
+            <Link href={item.href}>
+              <a
+                aria-label={item.title}
+                className={asPath === item.href ? `active` : ``}
+              >
+                {item.title}
+              </a>
+            </Link>
           </li>
         ))}
       </Items>

@@ -5,11 +5,11 @@ import Navigation from './Navigation';
 import { Wrapper } from './styles';
 
 const Header = () => (
-    <Wrapper>
-      <Logo />
-      <Navigation />
-      <Menu />
-    </Wrapper>
-  );
+  <Wrapper>
+    <Logo />
+    <Navigation />
+    <Menu />
+  </Wrapper>
+);
 
 export default Header;

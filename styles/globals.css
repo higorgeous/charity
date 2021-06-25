@@ -1,6 +1,6 @@
 /* Theme colors */
 body,
-body[data-theme="light"] {
+body[data-theme='light'] {
   --color-text-primary: #002358;
   --color-text-secondary: #214a88;
   --color-text-active: #0060ff;
@@ -8,7 +8,7 @@ body[data-theme="light"] {
   --color-bg-element: #e9f2ff;
 }
 
-body[data-theme="dark"] {
+body[data-theme='dark'] {
   --color-text-primary: #ffffff;
   --color-text-secondary: #a2c3f5;
   --color-text-active: #ffffff;
@@ -16,14 +16,18 @@ body[data-theme="dark"] {
   --color-bg-element: #032c6b;
 }
 
-.root, body, html {
+.root,
+body,
+html {
   min-height: 100%;
   width: 100%;
   min-width: 320px;
   -webkit-tap-highlight-color: transparent;
 }
 
-*, :after, :before {
+*,
+:after,
+:before {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -44,7 +48,6 @@ body {
   color: var(--color-text-primary);
   transition: background 0.25s ease-in-out;
 }
-
 
 @media (max-width: 567px) {
   *.mobile-hide {
@@ -69,7 +72,7 @@ body {
     display: none !important;
   }
   *.tablet-show {
-    display: inherit; 
+    display: inherit;
   }
 }
 
@@ -101,10 +104,10 @@ div.tooltip-arrow::before {
   transition: opacity 300ms ease-in-out;
 }
 
-.ReactModal__Overlay--after-open{
+.ReactModal__Overlay--after-open {
   opacity: 1;
 }
 
-.ReactModal__Overlay--before-close{
+.ReactModal__Overlay--before-close {
   opacity: 0;
 }

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
-import { usePopper } from "react-popper";
+import React, { useState, useEffect, useRef } from 'react';
+import { usePopper } from 'react-popper';
 
-import Dropdown from "./Dropdown";
+import Dropdown from './Dropdown';
 import Hamburger from './Hamburger';
-import Share from "./Share";
-import ThemeToggle from './ThemeToggle'
+import Share from './Share';
+import ThemeToggle from './ThemeToggle';
 
 import { Wrapper } from './styles';
 
@@ -18,17 +18,17 @@ const Menu = () => {
     referenceRef.current,
     popperRef.current,
     {
-      placement: "bottom-start",
+      placement: 'bottom-start',
       modifiers: [
         {
-          name: "offset",
+          name: 'offset',
           enabled: true,
           options: {
-            offset: [-210, 5]
-          }
-        }
-      ]
-    }
+            offset: [-210, 5],
+          },
+        },
+      ],
+    },
   );
 
   const handleDocumentClick = (event: { target: any }) => {
@@ -38,15 +38,15 @@ const Menu = () => {
       return;
     }
     setVisibility(false);
-  }
+  };
   const handleDropdownClick = () => {
     setVisibility(!visible);
-  }
+  };
 
   useEffect(() => {
-    document.addEventListener("mousedown", handleDocumentClick);
+    document.addEventListener('mousedown', handleDocumentClick);
     return () => {
-      document.removeEventListener("mousedown", handleDocumentClick);
+      document.removeEventListener('mousedown', handleDocumentClick);
     };
   }, []);
 
@@ -54,8 +54,16 @@ const Menu = () => {
     <Wrapper>
       <ThemeToggle />
       <Share />
-      <Hamburger referenceRef={referenceRef} handleClick={handleDropdownClick} />
-      <Dropdown popperRef={popperRef} styles={styles} attributes={attributes} visible={visible} />
+      <Hamburger
+        referenceRef={referenceRef}
+        handleClick={handleDropdownClick}
+      />
+      <Dropdown
+        popperRef={popperRef}
+        styles={styles}
+        attributes={attributes}
+        visible={visible}
+      />
     </Wrapper>
   );
 };

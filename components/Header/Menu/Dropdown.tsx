@@ -1,18 +1,23 @@
 import Link from 'next/link';
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
-import { DropdownContainer, DropdownItems, DropdownHeading, DropdownItem } from './styles';
+import {
+  DropdownContainer,
+  DropdownItems,
+  DropdownHeading,
+  DropdownItem,
+} from './styles';
 
 type Props = {
   popperRef: any;
   styles: any;
   attributes: any;
   visible: boolean;
-}
+};
 
 type ItemProps = {
   title: string;
-  href: string
+  href: string;
 };
 
 const navItems: Array<ItemProps> = [
@@ -27,8 +32,8 @@ const navItems: Array<ItemProps> = [
   {
     title: `About`,
     href: `/about`,
-  }
-]
+  },
+];
 
 const externalItems: Array<ItemProps> = [
   {
@@ -42,26 +47,46 @@ const externalItems: Array<ItemProps> = [
   {
     title: `Join our Telegram`,
     href: `https://t.me/gorgeoustoken`,
-  }
-]
+  },
+];
 
-const Dropdown = ({ popperRef, styles, attributes, visible }: Props) =>  {
+const Dropdown = ({ popperRef, styles, attributes, visible }: Props) => {
   const { asPath } = useRouter();
 
   return (
     <div ref={popperRef} style={styles.popper} {...attributes.popper}>
       <DropdownContainer id="dropdown" style={styles.offset} visible={visible}>
         <DropdownItems>
-          <DropdownHeading className="tablet-show">Menu</DropdownHeading>
+          <DropdownHeading id="dropdown" className="tablet-show">
+            Menu
+          </DropdownHeading>
           {navItems.map((item: ItemProps) => (
             <DropdownItem key={item.title} className="tablet-show">
-              <Link href={item.href}><a id="dropdown" aria-label={item.title} className={asPath === item.href ? `active` : ``}>{item.title}</a></Link>
+              <Link href={item.href}>
+                <a
+                  id="dropdown"
+                  aria-label={item.title}
+                  className={asPath === item.href ? `active` : ``}
+                >
+                  {item.title}
+                </a>
+              </Link>
             </DropdownItem>
           ))}
-          <DropdownHeading className="tablet-show">External links</DropdownHeading>
+          <DropdownHeading id="dropdown" className="tablet-show">
+            External links
+          </DropdownHeading>
           {externalItems.map((item: ItemProps) => (
             <DropdownItem key={item.title}>
-              <a id="dropdown" href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.title}>{item.title}</a>
+              <a
+                id="dropdown"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={item.title}
+              >
+                {item.title}
+              </a>
             </DropdownItem>
           ))}
         </DropdownItems>
@@ -69,7 +94,5 @@ const Dropdown = ({ popperRef, styles, attributes, visible }: Props) =>  {
     </div>
   );
 };
-
-
 
 export default Dropdown;
