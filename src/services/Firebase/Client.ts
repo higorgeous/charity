@@ -17,9 +17,7 @@ const firebaseConfig = {
 if (!firebaseClient.apps.length) {
   firebaseClient.initializeApp(firebaseConfig);
   firebaseClient.firestore();
-  firebaseClient
-    .auth()
-    .setPersistence(firebaseClient.auth.Auth?.Persistence?.LOCAL);
+  firebaseClient.auth();
   (window as any).firebase = firebaseClient;
 }
 
