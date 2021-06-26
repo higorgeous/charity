@@ -17,9 +17,8 @@ const firebaseConfig = {
   measurementId: 'G-EMKER1YVPP',
 };
 
-if (isClientSide && !firebaseClient.apps.length) {
+if (!firebaseClient.apps.length) {
   firebaseClient.initializeApp(firebaseConfig);
-  firebaseClient.analytics();
   firebaseClient.firestore();
   firebaseClient.performance();
   firebaseClient
