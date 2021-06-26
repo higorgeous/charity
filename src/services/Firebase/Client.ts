@@ -21,7 +21,7 @@ if (!firebaseClient.apps.length) {
   firebaseClient.initializeApp(firebaseConfig);
   firebaseClient.firestore();
   isClientSide && firebaseClient.analytics();
-  firebaseClient.performance();
+  isClientSide && firebaseClient.performance();
   firebaseClient
     .auth()
     .setPersistence(firebaseClient.auth.Auth?.Persistence?.LOCAL);
