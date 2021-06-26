@@ -3,9 +3,6 @@ import firebaseClient from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/auth';
 import 'firebase/firestore';
-import 'firebase/performance';
-
-import isClientSide from '@utils/isClientSide';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAK7rB52alTSXVvszSitgGd0-l2ya9QApo',
@@ -20,7 +17,6 @@ const firebaseConfig = {
 if (!firebaseClient.apps.length) {
   firebaseClient.initializeApp(firebaseConfig);
   firebaseClient.firestore();
-  firebaseClient.performance();
   firebaseClient
     .auth()
     .setPersistence(firebaseClient.auth.Auth?.Persistence?.LOCAL);
