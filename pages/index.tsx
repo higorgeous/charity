@@ -1,24 +1,15 @@
-import Head from 'next/head';
-import 'react-popper-tooltip/dist/styles.css';
+import Essentials from '@components/Essentials';
+import IndexScreen from '@screens/Index';
 
-import Header from '../components/Header';
-
-const Index = () => {
+const IndexPage = () => {
+  const title = 'Charity voting platform for Gorgeous donations';
+  const description =
+    'Vote on the charities you want the Gorgeous community to donate to.';
   return (
-    <div>
-      <Head>
-        <title>
-          Charity voting platform for Gorgeous donations | Gorgeous BSC Token
-        </title>
-        <meta
-          name="description"
-          content="Vote on the charities you want Gorgeous to donate to."
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-    </div>
+    <Essentials title={title} description={description}>
+      <IndexScreen />
+    </Essentials>
   );
 };
 
-export default Index;
+export default IndexPage;

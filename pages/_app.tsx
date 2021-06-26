@@ -1,10 +1,16 @@
 import '@fontsource/poppins';
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
+import '@styles/globals.css';
+
+import { AppProps } from 'next/app';
+import { FC } from 'react';
 import withDarkMode, { MODE } from 'next-dark-mode';
 
-const App = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
-};
+import { AuthProvider } from '@context/Session';
+
+const App: FC<AppProps> = ({ Component, pageProps }) => (
+  <AuthProvider>
+    <Component {...pageProps} />
+  </AuthProvider>
+);
 
 export default withDarkMode(App, { defaultMode: MODE.DARK });

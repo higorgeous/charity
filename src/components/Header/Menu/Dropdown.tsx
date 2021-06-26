@@ -54,7 +54,11 @@ const Dropdown = ({ popperRef, styles, attributes, visible }: Props) => {
   const { asPath } = useRouter();
 
   return (
-    <div ref={popperRef} style={styles.popper} {...attributes.popper}>
+    <div
+      ref={popperRef}
+      style={{ zIndex: 99, ...styles.popper }}
+      {...attributes.popper}
+    >
       <DropdownContainer id="dropdown" style={styles.offset} visible={visible}>
         <DropdownItems>
           <DropdownHeading id="dropdown" className="tablet-show">

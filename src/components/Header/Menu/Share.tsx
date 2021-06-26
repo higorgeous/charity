@@ -9,14 +9,16 @@ import { Icon, ShareHeading, CloseIcon } from './styles';
 const customStyles = {
   overlay: {
     backgroundColor: 'rgba(0, 27, 68, 0.9)',
+    zIndex: 99,
   },
   content: {
+    background: `transparent`,
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    border: 'none',
+    border: '1px solid #ffffff',
     transform: 'translate(-50%, -50%)',
   },
 };

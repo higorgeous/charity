@@ -1,21 +1,14 @@
-import Head from 'next/head';
-import 'react-popper-tooltip/dist/styles.css';
-
-import Header from '../components/Header';
+import Essentials from '@components/Essentials';
+import DonationsScreen from '@screens/Donations';
 
 const Donations = () => {
+  const title = 'Donations';
+  const description =
+    'Charities that the Gorgeous community has helped support.';
   return (
-    <div>
-      <Head>
-        <title>Donations | Gorgeous BSC Token</title>
-        <meta
-          name="description"
-          content="Charities that the Gorgeous community has helped support"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header />
-    </div>
+    <Essentials title={title} description={description}>
+      <DonationsScreen />
+    </Essentials>
   );
 };
 

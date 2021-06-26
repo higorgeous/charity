@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   grid-area: actions;
@@ -11,9 +11,9 @@ export const Wrapper = styled.div`
 `;
 
 export const ToggleButton = styled.button`
---toggle-width: 45px;
---toggle-height: 23px;
---toggle-padding: 2px;
+  --toggle-width: 45px;
+  --toggle-height: 23px;
+  --toggle-padding: 1px;
   position: relative;
   display: flex;
   align-items: center;
@@ -24,25 +24,25 @@ export const ToggleButton = styled.button`
   margin: 15px 10px;
   line-height: 1;
   border: 0;
-  border-radius: calc(var(--toggle-width) / 2);
+  border-radius: 4px;
   cursor: pointer;
   background: var(--color-bg-element);
   transition: background 0.25s ease-in-out;
 `;
 
-export const ToggleThumb = styled.span<{activeTheme: string}>`
+export const ToggleThumb = styled.span<{ activeTheme: string }>`
   position: absolute;
   top: var(--toggle-padding);
   left: var(--toggle-padding);
   width: calc(var(--toggle-height) - (var(--toggle-padding) * 2));
   height: calc(var(--toggle-height) - (var(--toggle-padding) * 2));
-  border-radius: 50%;
+  border-radius: 4px;
   background: white;
   transition: transform 0.25s ease-in-out;
   transform: ${({ activeTheme }) =>
-    activeTheme === "dark"
-      ? "translate3d(calc(var(--toggle-width) - var(--toggle-height)), 0, 0)"
-      : "none"};
+    activeTheme === 'dark'
+      ? 'translate3d(calc(var(--toggle-width) - var(--toggle-height)), 0, 0)'
+      : 'none'};
 `;
 
 export const Trigger = styled.button`
@@ -61,8 +61,10 @@ export const Trigger = styled.button`
 export const Icon = styled.button`
   background-color: var(--color-bg-element);
   margin: 15px 5px;
-  padding-top: 2px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: 0;
   border-radius: 4px;
   cursor: pointer;
@@ -70,20 +72,21 @@ export const Icon = styled.button`
   svg {
     stroke: var(--color-text-secondary);
     transition: stroke 0.25s ease-out;
+    height: 15px;
+    margin-top: -1px;
   }
 `;
 
 export const ShareHeading = styled.h3`
-  width: 180px;
   margin-top: 0;
   font-size: 18px;
   font-weight: 700;
-  color: #002358;
+  color: #ffffff;
   letter-spacing: 0.025em;
   text-align: center;
 `;
 
-export const CloseIcon = styled.div<{modalIsOpen: boolean}>`
+export const CloseIcon = styled.div<{ modalIsOpen: boolean }>`
   position: absolute;
   right: 32px;
   top: 32px;
@@ -94,8 +97,8 @@ export const CloseIcon = styled.div<{modalIsOpen: boolean}>`
   padding: 5px;
   z-index: 9999;
   cursor: pointer;
-  opacity: ${({ modalIsOpen }) => modalIsOpen ? 1 : 0};
-  visibility: ${({ modalIsOpen }) => modalIsOpen ? `visible` : `hidden`};
+  opacity: ${({ modalIsOpen }) => (modalIsOpen ? 1 : 0)};
+  visibility: ${({ modalIsOpen }) => (modalIsOpen ? `visible` : `hidden`)};
   transition: all 0.25s ease-out;
   &::before,
   &::after {
@@ -116,7 +119,6 @@ export const CloseIcon = styled.div<{modalIsOpen: boolean}>`
 
 export const ShareWrapper = styled.div`
   display: flex;
-  width: 180px;
   flex-wrap: wrap;
   justify-content: center;
   button {
@@ -125,7 +127,7 @@ export const ShareWrapper = styled.div`
 `;
 
 export const DropdownContainer = styled.div<{ visible: boolean }>`
-  display: ${({ visible }) => (visible ? "flex" : "none")};
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
   width: 250px;
   border-radius: 8px;
   background: #ffffff;
@@ -134,7 +136,7 @@ export const DropdownContainer = styled.div<{ visible: boolean }>`
   flex-direction: column;
   box-shadow: 0 5px 25px rgb(0 17 36 / 15%);
   &::before {
-    content:"";
+    content: '';
     border-style: solid;
     border-width: 15px 12px 15px 0;
     border-color: transparent #ffffff transparent transparent;
@@ -195,4 +197,3 @@ export const DropdownItem = styled.li`
     }
   }
 `;
-

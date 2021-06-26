@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.nav`
   position: relative;
@@ -24,7 +24,7 @@ export const Items = styled.ul`
       color: var(--color-text-secondary);
       letter-spacing: 0.025em;
       text-decoration: none;
-      transition: color 0.1s ease-out;
+      transition: color 0.25s ease-in-out;
       &.active {
         color: var(--color-text-active);
       }
