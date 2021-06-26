@@ -3,6 +3,9 @@ import firebaseClient from 'firebase/app';
 import 'firebase/analytics';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/performance';
+
+import isClientSide from '@utils/isClientSide';
 
 const firebaseConfig = {
   apiKey: process.env['FIREBASE_API_KEY'],
@@ -17,7 +20,7 @@ const firebaseConfig = {
 if (!firebaseClient.apps.length) {
   firebaseClient.initializeApp(firebaseConfig);
   firebaseClient.firestore();
-  firebaseClient.analytics();
+  isClientSide && firebaseClient.analytics();
   firebaseClient.performance();
   firebaseClient
     .auth()
