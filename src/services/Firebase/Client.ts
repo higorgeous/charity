@@ -22,9 +22,7 @@ if (!firebaseClient.apps.length) {
   firebaseClient.firestore();
   isClientSide && firebaseClient.analytics();
   isClientSide && firebaseClient.performance();
-  firebaseClient
-    .auth()
-    .setPersistence(firebaseClient.auth.Auth?.Persistence?.LOCAL);
+  firebaseClient.auth();
   (window as any).firebase = firebaseClient;
 }
 
