@@ -20,10 +20,12 @@ const firebaseConfig = {
 if (!firebaseClient.apps.length) {
   firebaseClient.initializeApp(firebaseConfig);
   firebaseClient.firestore();
-  isClientSide && firebaseClient.analytics();
-  isClientSide && firebaseClient.performance();
   firebaseClient.auth();
-  (window as any).firebase = firebaseClient;
+  if (isClientSide) {
+    firebaseClient.analytics();
+    firebaseClient.performance();
+    (window as any).firebase = firebaseClient;
+  }
 }
 
 export default firebaseClient;
