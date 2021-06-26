@@ -41,8 +41,6 @@ const Table: React.FC<any> = () => {
       data.push(charityData);
     });
 
-  console.log(data);
-
   const columns = useMemo(
     () => [
       {

@@ -142,7 +142,7 @@ export const LocationColumn = styled.div`
   justify-content: center;
   align-items: center;
   padding: 8px 20px;
-  border-radius: 20px;
+  border-radius: 4px;
   background-color: var(--color-bg-element);
   cursor: pointer;
   transition: all 0.25s ease-in-out;
