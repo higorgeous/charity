@@ -8,7 +8,7 @@ import { CharityColumn } from './styles';
 
 const Profile = (name: string, tag: string, id: string, index: number) => (
   <CharityColumn>
-    <Link href={`/${id}`}>
+    <Link href={`/charity/${id}`}>
       <a>
         <span className="rank">{index + 1}</span>
         <span className="logo">
