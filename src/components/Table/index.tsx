@@ -18,8 +18,6 @@ const Table: React.FC<any> = () => {
     },
   );
 
-  console.log(value && value.docs);
-
   let data: {
     id: string;
     charity: ReactNode;
