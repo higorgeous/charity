@@ -5,19 +5,23 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAK7rB52alTSXVvszSitgGd0-l2ya9QApo',
-  authDomain: 'charitygorgeoustoken.firebaseapp.com',
-  projectId: 'charitygorgeoustoken',
-  storageBucket: 'charitygorgeoustoken.appspot.com',
-  messagingSenderId: '476866223714',
-  appId: '1:476866223714:web:6a66b44e74ed0fde9b7b3b',
-  measurementId: 'G-EMKER1YVPP',
+  apiKey: process.env['FIREBASE_API_KEY'],
+  authDomain: process.env['FIREBASE_AUTH_DOMAIN'],
+  projectId: process.env['FIREBASE_PROJECT_ID'],
+  storageBucket: process.env['FIREBASE_STORAGE_BUCKET'],
+  messagingSenderId: process.env['FIREBASE_MESSAGING_SENDER_ID'],
+  appId: process.env['FIREBASE_APP_ID'],
+  measurementId: process.env['FIREBASE_MEASUREMENT_ID'],
 };
 
 if (!firebaseClient.apps.length) {
   firebaseClient.initializeApp(firebaseConfig);
   firebaseClient.firestore();
-  firebaseClient.auth();
+  firebaseClient.analytics();
+  firebaseClient.performance();
+  firebaseClient
+    .auth()
+    .setPersistence(firebaseClient.auth.Auth?.Persistence?.LOCAL);
   (window as any).firebase = firebaseClient;
 }
 
