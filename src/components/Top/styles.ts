@@ -11,12 +11,18 @@ export const Wrapper = styled.div`
   @media (max-width: 1023px) {
     padding: 7px 22px 9px;
   }
+  @media (max-width: 767px) {
+    justify-content: flex-end;
+  }
 `;
 
 export const Left = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 767px) {
+    display: none;
+  }
   a {
     color: var(--color-text-secondary);
     text-decoration: none;
@@ -30,7 +36,7 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   a {
     margin: 0 10px;
@@ -40,6 +46,9 @@ export const Right = styled.div`
     transition: all 0.25s ease-in-out;
     &:hover {
       color: var(--color-text-primary);
+    }
+    @media (max-width: 567px) {
+      font-size: 13px;
     }
   }
 `;
@@ -59,5 +68,8 @@ export const Web3Button = styled.div`
   transition: all 0.25s ease-in-out;
   &:hover {
     background-color: var(--color-text-primary);
+  }
+  @media (max-width: 567px) {
+    font-size: 13px;
   }
 `;
