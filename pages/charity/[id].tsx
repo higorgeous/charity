@@ -1,5 +1,5 @@
 import Essentials from '@components/Essentials';
-import firebaseClient from '@services/Firebase/Admin';
+import firebaseClient from '@services/Firebase/Client';
 
 const CharityPage = (props: any) => {
   const { name, tag } = props.content;
