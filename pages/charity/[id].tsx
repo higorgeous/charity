@@ -11,7 +11,7 @@ const CharityPage = (props: any) => {
   );
 };
 
-export const getServerSideProps = async ({ query }: any) => {
+export const getStaticPaths = async ({ query }: any) => {
   let content: any = {};
   await firebaseClient
     .firestore()
