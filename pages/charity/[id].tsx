@@ -1,4 +1,5 @@
 import Essentials from '@components/Essentials';
+import CharityScreen from '@screens/Charity';
 import firebaseClient from '@services/Firebase/Client';
 
 const CharityPage = (props: any) => {
@@ -7,7 +8,7 @@ const CharityPage = (props: any) => {
 
   return (
     <Essentials title={name} description={tag}>
-      {name}
+      <CharityScreen name={name} />
     </Essentials>
   );
 };

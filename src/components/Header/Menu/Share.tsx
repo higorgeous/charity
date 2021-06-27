@@ -7,10 +7,6 @@ import ShareIcons from './ShareIcons';
 import { Icon, ShareHeading, CloseIcon } from './styles';
 
 const customStyles = {
-  overlay: {
-    backgroundColor: 'rgba(0, 27, 68, 1)',
-    zIndex: 99,
-  },
   content: {
     background: `transparent`,
     top: '50%',
@@ -18,7 +14,6 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    border: '1px solid #ffffff',
     transform: 'translate(-50%, -50%)',
   },
 };

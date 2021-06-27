@@ -4,6 +4,7 @@ import { FlagsProvider } from '@atlaskit/flag';
 
 import 'react-popper-tooltip/dist/styles.css';
 
+import Top from '../Top';
 import Header from '../Header';
 import Main from '../Main';
 
@@ -17,6 +18,7 @@ const Essentials: FC<Props> = ({ title, description, children }) => {
   return (
     <FlagsProvider>
       <div>
+        <Top />
         <Head>
           <title>{title} | Gorgeous BSC Token</title>
           <meta name="description" content={description} />

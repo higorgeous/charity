@@ -15,10 +15,6 @@ dayjs.extend(relativeTime);
 Modal.setAppElement('#__next');
 
 const customStyles = {
-  overlay: {
-    backgroundColor: 'rgba(0, 27, 68, 1)',
-    zIndex: 99,
-  },
   content: {
     background: `transparent`,
     top: '50%',
@@ -26,7 +22,6 @@ const customStyles = {
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    border: '1px solid #ffffff',
     transform: 'translate(-50%, -50%)',
   },
 };
@@ -81,7 +76,7 @@ const Votes = (
     userVoteHistory.length !== 0 &&
     dayjs(dayjs(userVoteHistory[0].votedAt))
       .add(12, 'hour')
-      .from(dayjs(userVoteHistory[0].votedAt));
+      .from(dayjs(currentTimeStamp));
 
   const cannotVote =
     userVoteHistory.length !== 0 &&

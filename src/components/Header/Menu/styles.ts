@@ -81,7 +81,6 @@ export const ShareHeading = styled.h3`
   margin-top: 0;
   font-size: 18px;
   font-weight: 700;
-  color: #ffffff;
   letter-spacing: 0.025em;
   text-align: center;
 `;
@@ -92,7 +91,7 @@ export const CloseIcon = styled.div<{ modalIsOpen: boolean }>`
   top: 32px;
   width: 32px;
   height: 32px;
-  background: #032c6b;
+  background: var(--color-bg-element);
   border-radius: 3px;
   padding: 5px;
   z-index: 9999;
@@ -107,7 +106,7 @@ export const CloseIcon = styled.div<{ modalIsOpen: boolean }>`
     content: ' ';
     height: 22px;
     width: 2px;
-    background-color: #a2c3f5;
+    background-color: var(--color-text-secondary);
   }
   &:before {
     transform: rotate(45deg);

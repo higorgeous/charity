@@ -100,7 +100,15 @@ div.tooltip-arrow::before {
 
 .ReactModal__Overlay {
   opacity: 0;
-  transition: opacity 300ms ease-in-out;
+  background: var(--color-bg-primary) !important;
+  transition: opacity 0.25s ease-in-out;
+  z-index: 99;
+}
+
+.ReactModal__Content {
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-text-primary) !important;
+  transition: all 0.25s ease-in-out;
 }
 
 .ReactModal__Overlay--after-open {
