@@ -8,7 +8,7 @@ import { Icon, ShareHeading, CloseIcon } from './styles';
 
 const customStyles = {
   overlay: {
-    backgroundColor: 'rgba(0, 27, 68, 0.9)',
+    backgroundColor: 'rgba(0, 27, 68, 1)',
     zIndex: 99,
   },
   content: {
@@ -35,6 +35,9 @@ const Share = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  const shareTitle = 'Vote and let Gorgeous know who they should vote for.';
+  const shareUrl = 'https://charity.higorgeous.io';
 
   const {
     getArrowProps,
@@ -88,7 +91,7 @@ const Share = () => {
         closeTimeoutMS={300}
       >
         <ShareHeading>Let others know about Gorgeous</ShareHeading>
-        <ShareIcons />
+        <ShareIcons shareTitle={shareTitle} shareUrl={shareUrl} />
       </Modal>
       <CloseIcon modalIsOpen={modalIsOpen} onClick={closeModal} />
     </>

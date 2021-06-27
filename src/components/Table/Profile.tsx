@@ -17,7 +17,7 @@ const Profile = (name: string, tag: string, id: string, index: number) => (
           />
         </span>
         <span className="profile">
-          <span className="name">{name}</span>
+          <span className="name">{name} ⓘ</span>
           <span className="tag">{tag}</span>
         </span>
       </a>

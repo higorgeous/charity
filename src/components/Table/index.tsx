@@ -1,4 +1,4 @@
-import { useMemo, ReactNode } from 'react';
+import { useMemo, ReactNode, useState } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
 import useAuth from '@hooks/useAuth';
@@ -12,6 +12,8 @@ import TableData from './TableData';
 import { Wrapper } from './styles';
 
 const Table: React.FC<any> = () => {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
   const { user } = useAuth();
   const [charityData, loading] = useCollection(
     firebaseClient.firestore().collection('charities').orderBy('votes', 'desc'),
@@ -63,8 +65,11 @@ const Table: React.FC<any> = () => {
         location: Location(charity.data().location),
         votes: Votes(
           charity.id,
+          charity.data().name,
           charity.data().votes,
           userVoteHistory,
+          modalIsOpen,
+          setModalIsOpen,
           user?.uid,
         ),
       };
@@ -90,9 +95,9 @@ const Table: React.FC<any> = () => {
   );
 
   return (
-    <Wrapper>
-      <TableData columns={columns} data={data} loading={loading} />
-    </Wrapper>
+      <Wrapper>
+        <TableData columns={columns} data={data} loading={loading} />
+      </Wrapper>
   );
 };
 
