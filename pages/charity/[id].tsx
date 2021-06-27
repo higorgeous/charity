@@ -1,9 +1,9 @@
 import Essentials from '@components/Essentials';
 import firebaseClient from '@services/Firebase/Client';
-import { GetStaticProps } from 'next';
 
 const CharityPage = (props: any) => {
   const { name, tag } = props.content;
+  console.log(props);
 
   return (
     <Essentials title={name} description={tag}>
@@ -12,7 +12,9 @@ const CharityPage = (props: any) => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ query }: any) => {
+export const getServerSideProps = async ({ query }: any) => {
+  console.log(query);
+
   let content: any = {};
   await firebaseClient
     .firestore()
