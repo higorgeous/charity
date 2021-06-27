@@ -20,13 +20,9 @@ const spinReverse = keyframes({
 });
 
 export const Wrapper = styled.div`
-  position: fixed;
-  top: 76px;
-  bottom: 76px;
-  left: 0;
-  width: 100%;
-  height: calc(100% - 152px);
-  overflow: hidden;
+  position: relative;
+  display: block;
+  margin: 100px 0 0 0;
 `;
 
 export const Loader = styled.div`
@@ -34,9 +30,9 @@ export const Loader = styled.div`
   position: relative;
   left: 50%;
   top: 50%;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
+  width: 80px;
+  height: 80px;
+  margin: -40px 0 0 -40px;
   border-radius: 50%;
   border: 3px solid transparent;
   border-top-color: var(--color-text-primary);
