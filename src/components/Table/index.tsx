@@ -1,6 +1,7 @@
 import { useMemo, ReactNode } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
 
+import useAuth from '@hooks/useAuth';
 import firebaseClient from '@services/Firebase/Client';
 
 import Profile from './Profile';
@@ -11,12 +12,35 @@ import TableData from './TableData';
 import { Wrapper } from './styles';
 
 const Table: React.FC<any> = () => {
-  const [value, loading, error] = useCollection(
+  const { user } = useAuth();
+  const [charityData, loading] = useCollection(
     firebaseClient.firestore().collection('charities').orderBy('votes', 'desc'),
     {
       snapshotListenOptions: { includeMetadataChanges: true },
     },
   );
+
+  const [userVotes] = useCollection(
+    firebaseClient
+      .firestore()
+      .collection('users')
+      .doc(user?.uid)
+      .collection('votes'),
+  );
+
+  let userVoteHistory: {
+    charityId: string;
+    votedAt: any;
+  }[] = [];
+
+  userVotes &&
+    userVotes.docs.forEach((votes: any) => {
+      const voteHistory = {
+        charityId: votes.data().charityId,
+        votedAt: votes.data().votedAt,
+      };
+      userVoteHistory.push(voteHistory);
+    });
 
   let data: {
     id: string;
@@ -25,8 +49,8 @@ const Table: React.FC<any> = () => {
     votes: ReactNode;
   }[] = [];
 
-  value &&
-    value.docs.forEach((charity: any, index: number) => {
+  charityData &&
+    charityData.docs.forEach((charity: any, index: number) => {
       const charityData = {
         id: charity.id,
         charity: Profile(
@@ -36,7 +60,12 @@ const Table: React.FC<any> = () => {
           index,
         ),
         location: Location(charity.data().location),
-        votes: Votes(charity.id, charity.data().votes),
+        votes: Votes(
+          charity.id,
+          charity.data().votes,
+          user?.uid,
+          userVoteHistory,
+        ),
       };
       data.push(charityData);
     });
@@ -61,7 +90,7 @@ const Table: React.FC<any> = () => {
 
   return (
     <Wrapper>
-      <TableData columns={columns} data={data} />
+      <TableData columns={columns} data={data} loading={loading} />
     </Wrapper>
   );
 };

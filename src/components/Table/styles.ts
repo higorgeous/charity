@@ -141,6 +141,7 @@ export const LocationColumn = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 45px;
   padding: 8px 20px;
   border-radius: 4px;
   background-color: var(--color-bg-element);
@@ -157,26 +158,32 @@ export const LocationColumn = styled.div`
   }
 `;
 
-export const VotesColumn = styled.div`
+export const VotesColumn = styled.div<{ clicked: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 140px;
   padding: 8px 20px;
   border-radius: 3px;
-  background-color: var(--color-bg-primary);
-  border: 2px solid var(--color-bg-element);
+  pointer-events: ${({ clicked }) =>
+    clicked ? `none` : `inherit`};
+  background-color: ${({ clicked }) =>
+    clicked ? `#58880d` : `var(--color-bg-primary)`};
+  border: 2px solid
+    ${({ clicked }) => (clicked ? `#58880d` : `var(--color-bg-element)`)};
   cursor: pointer;
   transition: all 0.25s ease-in-out;
   &:hover {
-    background-color: var(--color-bg-element);
+    background-color: ${({ clicked }) =>
+      clicked ? `#58880d` : `var(--color-bg-element)`};
   }
   @media (max-width: 567px) {
     padding: 8px 10px;
   }
   svg {
     height: 20px;
-    fill: var(--color-text-secondary);
+    fill: ${({ clicked }) =>
+      clicked ? `#ffffff` : `var(--color-text-secondary)`};
     margin: -3px 20px 0 0;
     transition: fill 0.25s ease-in-out;
     @media (max-width: 567px) {
@@ -185,7 +192,8 @@ export const VotesColumn = styled.div`
     }
   }
   span {
-    color: var(--color-text-primary);
+    color: ${({ clicked }) =>
+      clicked ? `#ffffff` : `var(--color-text-primary)`};
     font-size: 18px;
     transition: color 0.25s ease-in-out;
     @media (max-width: 567px) {

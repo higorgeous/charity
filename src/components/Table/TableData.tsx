@@ -2,12 +2,15 @@
 import React from 'react';
 import { useTable } from 'react-table';
 
+import Spinner from '@components/Spinner';
+
 type Props = {
   columns: any;
   data: any;
+  loading: boolean;
 };
 
-const TableData = ({ columns, data }: Props) => {
+const TableData = ({ columns, data, loading }: Props) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -41,6 +44,7 @@ const TableData = ({ columns, data }: Props) => {
             </tr>
           );
         })}
+        {loading && <Spinner />}
       </tbody>
     </table>
   );

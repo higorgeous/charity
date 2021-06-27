@@ -1,9 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { shimmer } from '@components/Icons/Shimmer';
-import { toBase64 } from '@utils/toBase64';
-
 import { CharityColumn } from './styles';
 
 const Profile = (name: string, tag: string, id: string, index: number) => (
@@ -17,10 +14,6 @@ const Profile = (name: string, tag: string, id: string, index: number) => (
             alt={name}
             width="50"
             height="50"
-            placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(
-              shimmer(60, 60),
-            )}`}
           />
         </span>
         <span className="profile">
