@@ -1,5 +1,5 @@
 import Essentials from '@components/Essentials';
-import firebaseClient from '@services/Firebase/Client';
+import firebaseAdmin from '@services/Firebase/Admin';
 
 const CharityPage = (props: any) => {
   const { name, tag } = props.content;
@@ -13,7 +13,7 @@ const CharityPage = (props: any) => {
 
 export const getServerSideProps = async ({ query }: any) => {
   let content: any = {};
-  await firebaseClient
+  await firebaseAdmin
     .firestore()
     .collection('charities')
     .doc(query.id)
