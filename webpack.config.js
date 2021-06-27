@@ -1,3 +1,3 @@
 module.exports = {
-  externals: ['commonjs2 firebase-admin'],
+  externals: ['aws-sdk', 'commonjs2 firebase-admin'],
 };
