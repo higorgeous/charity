@@ -49,7 +49,7 @@ const Votes = (
 
   const nextVote =
     userVoteHistory.length !== 0 &&
-    dayjs(currentTimeStamp)
+    dayjs(dayjs(userVoteHistory[0].votedAt))
       .add(12, 'hour')
       .from(dayjs(userVoteHistory[0].votedAt));
 
