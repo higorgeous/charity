@@ -13,6 +13,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@atlaskit/flag": "^14.3.3",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@fontsource/poppins": "^4.4.5",
@@ -30,7 +31,8 @@
     "react-popper": "^2.2.5",
     "react-popper-tooltip": "^4.3.0",
     "react-share": "^4.4.0",
-    "react-table": "^7.7.0"
+    "react-table": "^7.7.0",
+    "styled-components": "^5.3.0"
   },
   "devDependencies": {
     "@types/js-cookie": "^2.2.6",
