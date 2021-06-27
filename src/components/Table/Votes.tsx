@@ -28,8 +28,8 @@ const addVote = (id: string, userId?: string) => {
 const Votes = (
   id: string,
   votes: number,
-  userId?: string,
   userVoteHistory: Array<any>,
+  userId?: string,
 ) => {
   const hasVoted = userVoteHistory.some((vendor) => vendor['charityId'] === id);
 

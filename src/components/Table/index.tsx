@@ -63,8 +63,8 @@ const Table: React.FC<any> = () => {
         votes: Votes(
           charity.id,
           charity.data().votes,
-          user?.uid,
           userVoteHistory,
+          user?.uid,
         ),
       };
       data.push(charityData);
