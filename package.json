@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.3.0",
     "@fontsource/poppins": "^4.4.5",
     "@popperjs/core": "^2.9.2",
+    "dayjs": "^1.10.5",
     "firebase": "^8.6.8",
     "firebase-admin": "^9.10.0",
     "js-cookie": "^2.2.1",

@@ -145,7 +145,6 @@ export const LocationColumn = styled.div`
   padding: 8px 20px;
   border-radius: 4px;
   background-color: var(--color-bg-element);
-  cursor: pointer;
   transition: all 0.25s ease-in-out;
   span {
     color: var(--color-text-primary);
@@ -165,8 +164,7 @@ export const VotesColumn = styled.div<{ clicked: boolean }>`
   width: 140px;
   padding: 8px 20px;
   border-radius: 3px;
-  pointer-events: ${({ clicked }) =>
-    clicked ? `none` : `inherit`};
+  pointer-events: ${({ clicked }) => (clicked ? `none` : `inherit`)};
   background-color: ${({ clicked }) =>
     clicked ? `#58880d` : `var(--color-bg-primary)`};
   border: 2px solid

@@ -25,7 +25,8 @@ const Table: React.FC<any> = () => {
       .firestore()
       .collection('users')
       .doc(user?.uid)
-      .collection('votes'),
+      .collection('votes')
+      .orderBy('votedAt', 'desc'),
   );
 
   let userVoteHistory: {
