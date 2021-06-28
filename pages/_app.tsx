@@ -10,13 +10,13 @@ import { AuthProvider } from '@context/Session';
 import { Web3Provider } from '@context/Web3Connect';
 
 const App: FC<AppProps> = ({ Component, pageProps }) => (
-  <Web3Provider>
-    <AuthProvider>
-      <FlagsProvider>
+  <FlagsProvider>
+    <Web3Provider>
+      <AuthProvider>
         <Component {...pageProps} />
-      </FlagsProvider>
-    </AuthProvider>
-  </Web3Provider>
+      </AuthProvider>
+    </Web3Provider>
+  </FlagsProvider>
 );
 
 export default withDarkMode(App, { defaultMode: MODE.DARK });

@@ -4,6 +4,7 @@ import Web3 from 'web3';
 import isClientSide from '@utils/isClientSide';
 
 import { tokenABI, gorgeousAddress } from './constants';
+import { useFlags } from '@atlaskit/flag';
 
 export const Web3Context = createContext<{
   isHolder: boolean;
@@ -22,6 +23,8 @@ export const Web3Provider = ({ children }: any) => {
   const [account, setAccount] = useState('');
   const [web3Enabled, setWeb3Enabled] = useState(false);
 
+  const { showFlag } = useFlags();
+
   let web3: Web3 = new Web3('https://bsc-dataseed1.binance.org:443');
 
   const onWeb3Click = async () => {
@@ -31,12 +34,21 @@ export const Web3Provider = ({ children }: any) => {
         await (window as any).ethereum.request({
           method: 'eth_requestAccounts',
         });
-        console.log(`true`, (window as any).ethereum);
         setWeb3Enabled(true);
-        isClientSide && checkAccount();
+        checkAccount();
       } catch (e) {
-        console.log('user did not add account...', e);
+        showFlag({
+          icon: null,
+          appearance: 'error',
+          title: `For more votes, connect to Gorgeous`,
+        });
       }
+    } else {
+      showFlag({
+        icon: null,
+        appearance: 'error',
+        title: `You need a web3 wallet extension to connect`,
+      });
     }
     return false;
   };
@@ -49,10 +61,22 @@ export const Web3Provider = ({ children }: any) => {
       const balance = await tokenInst.methods.balanceOf(address).call();
       setIsHolder(balance > 0);
       setAccount(accounts[0]);
-      return;
+      if (balance > 0) {
+        showFlag({
+          icon: null,
+          appearance: 'success',
+          title: `Your wallet is looking Gorgeous`,
+        });
+      } else {
+        showFlag({
+          icon: null,
+          appearance: 'error',
+          title: `You have no Gorgeous in your wallet`,
+        });
+      }
     });
-    console.log(account, isHolder);
-  }, [account, isHolder, web3.eth]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [web3.eth, showFlag]);
 
   useEffect(() => {
     checkAccount();
