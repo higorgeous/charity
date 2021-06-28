@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-  margin-bottom: 150px;
+  margin-bottom: 100px;
   table {
     display: block;
     width: 100%;
