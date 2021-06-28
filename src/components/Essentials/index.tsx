@@ -6,14 +6,18 @@ import 'react-popper-tooltip/dist/styles.css';
 import Top from '../Top';
 import Header from '../Header';
 import Main from '../Main';
+import Footer from '../Footer';
+import Breadcrumbs from '@components/Breadcrumbs';
+import CTA from '@components/CTA';
 
 type Props = {
   title: string;
   description: string;
   children: ReactNode;
+  isCharity?: boolean;
 };
 
-const Essentials: FC<Props> = ({ title, description, children }) => {
+const Essentials: FC<Props> = ({ title, description, children, isCharity }) => {
   return (
     <div>
       <Top />
@@ -24,6 +28,9 @@ const Essentials: FC<Props> = ({ title, description, children }) => {
       </Head>
       <Header />
       <Main>{children}</Main>
+      <CTA />
+      <Breadcrumbs title={title} isCharity={isCharity} />
+      <Footer />
     </div>
   );
 };

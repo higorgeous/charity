@@ -22,7 +22,7 @@ const spinReverse = keyframes({
 export const Wrapper = styled.div`
   position: relative;
   display: block;
-  margin: 100px 0 0 0;
+  margin: 100px 0 70px;
 `;
 
 export const Loader = styled.div`

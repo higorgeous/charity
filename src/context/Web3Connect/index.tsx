@@ -41,6 +41,7 @@ export const Web3Provider = ({ children }: any) => {
           icon: null,
           appearance: 'error',
           title: `For more votes, connect to Gorgeous`,
+          isAutoDismiss: true,
         });
       }
     } else {
@@ -48,6 +49,7 @@ export const Web3Provider = ({ children }: any) => {
         icon: null,
         appearance: 'error',
         title: `You need a web3 wallet extension to connect`,
+        isAutoDismiss: true,
       });
     }
     return false;
@@ -66,12 +68,14 @@ export const Web3Provider = ({ children }: any) => {
           icon: null,
           appearance: 'success',
           title: `Your wallet is looking Gorgeous`,
+          isAutoDismiss: true,
         });
       } else {
         showFlag({
           icon: null,
           appearance: 'error',
           title: `You have no Gorgeous in your wallet`,
+          isAutoDismiss: true,
         });
       }
     });

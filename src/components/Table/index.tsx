@@ -27,6 +27,8 @@ const Table: React.FC<any> = () => {
     },
   );
 
+  console.log(charityData);
+
   const [userVotes] = useCollection(
     firebaseClient
       .firestore()

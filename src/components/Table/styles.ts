@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
+  margin-bottom: 150px;
   table {
     display: block;
     width: 100%;
@@ -166,14 +167,14 @@ export const VotesColumn = styled.div<{ clicked: boolean }>`
   border-radius: 3px;
   pointer-events: ${({ clicked }) => (clicked ? `none` : `inherit`)};
   background-color: ${({ clicked }) =>
-    clicked ? `#58880d` : `var(--color-bg-primary)`};
+    clicked ? `#5bffa8` : `var(--color-bg-primary)`};
   border: 2px solid
-    ${({ clicked }) => (clicked ? `#58880d` : `var(--color-bg-element)`)};
+    ${({ clicked }) => (clicked ? `#5bffa8` : `var(--color-bg-element)`)};
   cursor: pointer;
   transition: all 0.25s ease-in-out;
   &:hover {
     background-color: ${({ clicked }) =>
-      clicked ? `#58880d` : `var(--color-bg-element)`};
+      clicked ? `#5bffa8` : `var(--color-bg-element)`};
   }
   @media (max-width: 567px) {
     padding: 8px 10px;
@@ -181,7 +182,7 @@ export const VotesColumn = styled.div<{ clicked: boolean }>`
   svg {
     height: 20px;
     fill: ${({ clicked }) =>
-      clicked ? `#ffffff` : `var(--color-text-secondary)`};
+      clicked ? `#002358` : `var(--color-text-secondary)`};
     margin: -3px 20px 0 0;
     transition: fill 0.25s ease-in-out;
     @media (max-width: 567px) {
@@ -191,7 +192,7 @@ export const VotesColumn = styled.div<{ clicked: boolean }>`
   }
   span {
     color: ${({ clicked }) =>
-      clicked ? `#ffffff` : `var(--color-text-primary)`};
+      clicked ? `#002358` : `var(--color-text-primary)`};
     font-size: 18px;
     transition: color 0.25s ease-in-out;
     @media (max-width: 567px) {

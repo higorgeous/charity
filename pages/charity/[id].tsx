@@ -1,21 +1,19 @@
 import Essentials from '@components/Essentials';
+import useDocumentDataSSR from '@hooks/useDocumentDataSSR';
 import CharityScreen from '@screens/Charity';
 import firebaseClient from '@services/Firebase/Client';
 
-const CharityPage = (props: any) => {
-  const { name, tag } = props.content;
-  console.log(props);
-
+const CharityPage = ({ content, id }: any) => {
+  const ref = firebaseClient.firestore().collection('charities').doc(id);
+  const [item] = useDocumentDataSSR(ref, { startWith: content });
   return (
-    <Essentials title={name} description={tag}>
-      <CharityScreen name={name} />
+    <Essentials title={item.name} description={item.tag} isCharity>
+      <CharityScreen name={item.name} />
     </Essentials>
   );
 };
 
 export const getServerSideProps = async ({ query }: any) => {
-  console.log(query);
-
   let content: any = {};
   await firebaseClient
     .firestore()
@@ -28,6 +26,7 @@ export const getServerSideProps = async ({ query }: any) => {
 
   return {
     props: {
+      id: query.id,
       content,
     },
   };
