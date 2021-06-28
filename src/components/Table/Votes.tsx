@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import { useFlags } from '@atlaskit/flag';
 import Modal from 'react-modal';
 
 import ShareIcons from '@components/Header/Menu/ShareIcons';
@@ -26,9 +25,15 @@ const customStyles = {
   },
 };
 
-const addVote = (id: string, setModalIsOpen: any, userId?: string) => {
+const addVote = (
+  id: string,
+  setModalIsOpen: any,
+  isHolder: boolean,
+  userId?: string,
+) => {
+  const voteWeight = isHolder ? 5 : 1;
   const batch = firebaseClient.firestore().batch();
-  const increment = firebaseClient.firestore.FieldValue.increment(1);
+  const increment = firebaseClient.firestore.FieldValue.increment(voteWeight);
   const voteRef = firebaseClient.firestore().collection('charities').doc(id);
   const userRef = firebaseClient
     .firestore()
@@ -54,33 +59,36 @@ const Votes = (
   name: string,
   votes: number,
   userVoteHistory: Array<any>,
-  modalIsOpen: boolean,
+  modalIsOpen: string | null,
   setModalIsOpen: any,
+  showFlag: any,
+  isHolder: boolean,
   userId?: string,
 ) => {
-  const { showFlag } = useFlags();
-
   const closeModal = () => {
     setModalIsOpen(false);
   };
+
+  const timePeriod = isHolder ? 5 : 12;
 
   const currentTimeStamp = dayjs(new Date());
 
   const hasVoted = userVoteHistory.some(
     (vendor) =>
       vendor['charityId'] === id &&
-      currentTimeStamp.diff(dayjs(vendor['votedAt']), 'hour') <= 12,
+      currentTimeStamp.diff(dayjs(vendor['votedAt']), 'hour') <= timePeriod,
   );
 
   const nextVote =
     userVoteHistory.length !== 0 &&
     dayjs(dayjs(userVoteHistory[0].votedAt))
-      .add(12, 'hour')
-      .from(dayjs(currentTimeStamp));
+      .add(timePeriod, 'hour')
+      .from(currentTimeStamp, true);
 
   const cannotVote =
     userVoteHistory.length !== 0 &&
-    currentTimeStamp.diff(dayjs(userVoteHistory[0].votedAt), 'hour') <= 12;
+    currentTimeStamp.diff(dayjs(userVoteHistory[0].votedAt), 'hour') <=
+      timePeriod;
 
   const addNoVoteFlag = () => {
     showFlag({
@@ -98,7 +106,9 @@ const Votes = (
     <>
       <VotesColumn
         onClick={() =>
-          cannotVote ? addNoVoteFlag() : addVote(id, setModalIsOpen, userId)
+          cannotVote
+            ? addNoVoteFlag()
+            : addVote(id, setModalIsOpen, isHolder, userId)
         }
         clicked={hasVoted}
       >
@@ -106,7 +116,7 @@ const Votes = (
         <span>{votes}</span>
       </VotesColumn>
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={modalIsOpen === id}
         onRequestClose={closeModal}
         style={customStyles}
         closeTimeoutMS={300}
@@ -114,7 +124,7 @@ const Votes = (
         <ShareHeading>Share your vote with friends</ShareHeading>
         <ShareIcons shareTitle={shareTitle} shareUrl={shareUrl} />
       </Modal>
-      <CloseIcon modalIsOpen={modalIsOpen} onClick={closeModal} />
+      <CloseIcon modalIsOpen={modalIsOpen === id} onClick={closeModal} />
     </>
   );
 };

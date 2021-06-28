@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from 'react';
+import { FC, useState } from 'react';
 import Web3 from 'web3';
 
 import isClientSide from '@utils/isClientSide';

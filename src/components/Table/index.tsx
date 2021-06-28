@@ -10,11 +10,16 @@ import Votes from './Votes';
 import TableData from './TableData';
 
 import { Wrapper } from './styles';
+import { useFlags } from '@atlaskit/flag';
+import useWeb3 from '@hooks/useWeb3';
 
 const Table: React.FC<any> = () => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(null);
 
   const { user } = useAuth();
+  const { showFlag } = useFlags();
+  const { isHolder } = useWeb3();
+
   const [charityData, loading] = useCollection(
     firebaseClient.firestore().collection('charities').orderBy('votes', 'desc'),
     {
@@ -70,6 +75,8 @@ const Table: React.FC<any> = () => {
           userVoteHistory,
           modalIsOpen,
           setModalIsOpen,
+          showFlag,
+          isHolder,
           user?.uid,
         ),
       };
@@ -95,9 +102,9 @@ const Table: React.FC<any> = () => {
   );
 
   return (
-      <Wrapper>
-        <TableData columns={columns} data={data} loading={loading} />
-      </Wrapper>
+    <Wrapper>
+      <TableData columns={columns} data={data} loading={loading} />
+    </Wrapper>
   );
 };
 

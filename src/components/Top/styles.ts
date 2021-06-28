@@ -54,10 +54,12 @@ export const Right = styled.div`
 `;
 
 export const Web3Button = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 3px 20px;
+  display: block;
+  width: 85px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 3px 10px;
   margin: 0 10px;
   border-radius: 3px;
   font-weight: 700;

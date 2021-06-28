@@ -111,6 +111,12 @@ div.tooltip-arrow::before {
   transition: all 0.25s ease-in-out;
 }
 
+@media (max-width: 567px) {
+  .ReactModal__Content {
+    border: none !important;
+  }
+}
+
 .ReactModal__Overlay--after-open {
   opacity: 1;
 }
