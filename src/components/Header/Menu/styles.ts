@@ -86,7 +86,7 @@ export const ShareHeading = styled.h3`
 `;
 
 export const CloseIcon = styled.div<{ modalIsOpen: boolean }>`
-  position: absolute;
+  position: fixed;
   right: 32px;
   top: 32px;
   width: 32px;
