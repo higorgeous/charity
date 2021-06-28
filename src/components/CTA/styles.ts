@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const Wrapper = styled.div`
   display: flex;
   background-color: var(--color-bg-element);
-  border-radius: 16px;
+  border-radius: 4px;
   margin: 50px;
   padding: 0;
   justify-content: space-between;
@@ -83,10 +83,10 @@ export const Button = styled.a`
   margin: 10px;
   span {
     display: inline-block;
-    border-radius: 50px;
+    border-radius: 4px;
     padding: 20px 45px;
-    color: var(--color-text-primary);
-    background-color: var(--color-bg-primary);
+    color: #ffffff;
+    background-color: #001b44;
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -94,20 +94,30 @@ export const Button = styled.a`
     svg {
       margin-left: 5px;
       margin-bottom: -1px;
-      stroke: var(--color-text-primary);
+      stroke: #ffffff;
       transition: all 0.25s ease-in-out;
       @media (max-width: 567px) {
         margin-bottom: -2px;
       }
     }
   }
+  &:hover {
+    span {
+      background-color: #214a88;
+    }
+  }
   &:first-of-type {
     span {
-      background-color: #5bffa8;
+      background-color: #6bffb0;
       color: #002358;
       svg {
         stroke: #002358;
         transition: all 0.25s ease-in-out;
+      }
+    }
+    &:hover {
+      span {
+        background-color: #40f193;
       }
     }
   }

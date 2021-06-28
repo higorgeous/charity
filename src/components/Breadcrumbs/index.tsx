@@ -23,11 +23,17 @@ const Breadcrumbs: FC<Props> = ({ title, isCharity = false }) => {
       <Scrollable>
         <Container isHome={router.pathname === '/'}>
           <ul>
-            <li>
-              <Link href="/">
-                <a>Charities</a>
-              </Link>
-            </li>
+            {router.pathname === '/' ? (
+              <li>
+                <span>Charities</span>
+              </li>
+            ) : (
+              <li>
+                <Link href="/">
+                  <a>Charities</a>
+                </Link>
+              </li>
+            )}
             {isCharity ? (
               <>
                 <li>

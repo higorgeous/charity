@@ -51,7 +51,7 @@ const addVote = (
   );
   batch.update(voteRef, { votes: increment });
   batch.commit();
-  setModalIsOpen(true);
+  setModalIsOpen(id);
 };
 
 const Votes = (
