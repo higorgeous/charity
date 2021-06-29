@@ -9,7 +9,8 @@ const DonationsScreen = () => (
     <Hero>Donations made by the Gorgeous community</Hero>
     <p className="text">
       Our first donation will be made to the charity, organisation or cause with
-      the most votes on Friday 2nd July 2021.
+      the most votes on Friday 2nd July 2021. Details and proof will be shown on
+      this page
     </p>
     <EmptyState />
   </Wrapper>
