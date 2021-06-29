@@ -2,7 +2,7 @@ import Hero from '@components/Hero';
 
 import EmptyState from './EmptyState';
 
-import { Wrapper, Text } from './styles';
+import { Wrapper } from './styles';
 
 const DonationsScreen = () => (
   <Wrapper>

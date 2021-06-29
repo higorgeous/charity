@@ -2,7 +2,7 @@ import Hero from '@components/Hero';
 
 const AboutScreen = () => (
   <>
-    <Hero>What is Gorgeous</Hero>
+    <Hero>About Gorgeous</Hero>
     <p className="text">
       Driven by a desire to make a difference together, Gorgeous is the
       philanthropic and charitable vehicle that will take us to the moon,
