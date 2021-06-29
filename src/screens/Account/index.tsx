@@ -4,7 +4,7 @@ import { Wrapper } from './styles';
 
 const AccountScreen = () => (
   <Wrapper>
-    <Hero>Account</Hero>
+    <Hero>Your account</Hero>
     <p className="text">View your voting history and charity submissions.</p>
   </Wrapper>
 );
