@@ -105,7 +105,6 @@ p.text {
 @media (max-width: 568px) {
   p.text {
     font-size: 14px;
-    line-height: 1.8;
     margin: 10px 20px 30px;
   }
 }

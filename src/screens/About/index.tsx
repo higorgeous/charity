@@ -1,7 +1,9 @@
 import Hero from '@components/Hero';
 
+import { Wrapper } from './styles';
+
 const AboutScreen = () => (
-  <>
+  <Wrapper>
     <Hero>About Gorgeous</Hero>
     <p className="text">
       Driven by a desire to make a difference together, Gorgeous is the
@@ -23,7 +25,7 @@ const AboutScreen = () => (
       coffee shops, restaurants, and accommodation providers. The second,
       Cloudlabs is set to be the Kubernetes for medical research.
     </p>
-  </>
+  </Wrapper>
 );
 
 export default AboutScreen;
