@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
 
 export const SVG = styled.svg`
   width: 100%;
-  margin: 30px 0 0;
   max-width: 600px;
   path {
     &#background {
