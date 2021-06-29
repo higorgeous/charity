@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { FC, ReactNode } from 'react';
 
 import 'react-popper-tooltip/dist/styles.css';
+import 'react-tabs/style/react-tabs.css';
 
 import Top from '../Top';
 import Header from '../Header';

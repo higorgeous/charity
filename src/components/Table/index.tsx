@@ -1,8 +1,10 @@
-import { useMemo, ReactNode, useState } from 'react';
+import { useMemo, ReactNode, useState, FC } from 'react';
 import { useCollection } from 'react-firebase-hooks/firestore';
+import { useFlags } from '@atlaskit/flag';
 
 import useAuth from '@hooks/useAuth';
 import firebaseClient from '@services/Firebase/Client';
+import useWeb3 from '@hooks/useWeb3';
 
 import Profile from './Profile';
 import Location from './Location';
@@ -10,24 +12,13 @@ import Votes from './Votes';
 import TableData from './TableData';
 
 import { Wrapper } from './styles';
-import { useFlags } from '@atlaskit/flag';
-import useWeb3 from '@hooks/useWeb3';
 
-const Table: React.FC<any> = () => {
+const Table: FC<any> = ({ charitiesData, charitiesLoading }) => {
   const [modalIsOpen, setModalIsOpen] = useState(null);
 
   const { user } = useAuth();
   const { showFlag } = useFlags();
   const { isHolder } = useWeb3();
-
-  const [charityData, loading] = useCollection(
-    firebaseClient.firestore().collection('charities').orderBy('votes', 'desc'),
-    {
-      snapshotListenOptions: { includeMetadataChanges: true },
-    },
-  );
-
-  console.log(charityData);
 
   const [userVotes] = useCollection(
     firebaseClient
@@ -52,38 +43,24 @@ const Table: React.FC<any> = () => {
       userVoteHistory.push(voteHistory);
     });
 
-  let data: {
-    id: string;
-    charity: ReactNode;
-    location: ReactNode;
-    votes: ReactNode;
-  }[] = [];
-
-  charityData &&
-    charityData.docs.forEach((charity: any, index: number) => {
-      const charityData = {
-        id: charity.id,
-        charity: Profile(
-          charity.data().name,
-          charity.data().tag,
-          charity.id,
-          index,
-        ),
-        location: Location(charity.data().location),
-        votes: Votes(
-          charity.id,
-          charity.data().name,
-          charity.data().votes,
-          userVoteHistory,
-          modalIsOpen,
-          setModalIsOpen,
-          showFlag,
-          isHolder,
-          user?.uid,
-        ),
-      };
-      data.push(charityData);
-    });
+  const data = charitiesData.map((charity: any, index: number) => {
+    return {
+      id: charity.id,
+      charity: Profile(charity.name, charity.tag, charity.id, index),
+      location: Location(charity.location),
+      votes: Votes(
+        charity.id,
+        charity.name,
+        charity.votes,
+        userVoteHistory,
+        modalIsOpen,
+        setModalIsOpen,
+        showFlag,
+        isHolder,
+        user?.uid,
+      ),
+    };
+  });
 
   const columns = useMemo(
     () => [
@@ -105,7 +82,7 @@ const Table: React.FC<any> = () => {
 
   return (
     <Wrapper>
-      <TableData columns={columns} data={data} loading={loading} />
+      <TableData columns={columns} data={data} loading={charitiesLoading} />
     </Wrapper>
   );
 };

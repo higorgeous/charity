@@ -1,10 +1,10 @@
 import Essentials from '@components/Essentials';
 import AccountScreen from '@screens/Account';
 
+const title = 'Account';
+const description = 'View your voting history and charity submissions.';
+
 const AccountPage = () => {
-  const title = 'Voting history and charity listings';
-  const description =
-    'Account providing a history to keep track of your votes and charity listings.';
   return (
     <Essentials title={title} description={description}>
       <AccountScreen />
