@@ -13,7 +13,7 @@ import TableData from './TableData';
 
 import { Wrapper } from './styles';
 
-const Table: FC<any> = ({ charitiesData, charitiesLoading }) => {
+const VoteTable: FC<any> = ({ charitiesData, charitiesLoading }) => {
   const [modalIsOpen, setModalIsOpen] = useState(null);
 
   const { user } = useAuth();
@@ -87,4 +87,4 @@ const Table: FC<any> = ({ charitiesData, charitiesLoading }) => {
   );
 };
 
-export default Table;
+export default VoteTable;

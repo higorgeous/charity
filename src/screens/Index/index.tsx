@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Hero from '@components/Hero';
-import Table from '@components/Table';
+import VoteTable from '@components/VoteTable';
 
 const IndexScreen: FC<any> = ({ charitiesData, charitiesLoading }) => (
   <>
@@ -12,7 +12,10 @@ const IndexScreen: FC<any> = ({ charitiesData, charitiesLoading }) => (
       of Gorgeous, connect your wallet, and voting is available every 5 hours
       with votes worth 5 times more.
     </p>
-    <Table charitiesData={charitiesData} charitiesLoading={charitiesLoading} />
+    <VoteTable
+      charitiesData={charitiesData}
+      charitiesLoading={charitiesLoading}
+    />
   </>
 );
 
