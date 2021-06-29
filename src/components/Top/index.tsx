@@ -22,8 +22,8 @@ const Top: FC = () => {
         <Link href="/charity">
           <a>Add a charity</a>
         </Link>
-        <Link href="/login">
-          <a>Login</a>
+        <Link href="/account">
+          <a>Account</a>
         </Link>
         <Web3Button onClick={onWeb3Click}>
           {account ? account : 'Connect'}
