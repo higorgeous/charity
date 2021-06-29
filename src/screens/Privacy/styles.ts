@@ -68,7 +68,7 @@ export const Wrapper = styled.div`
         'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
         'Liberation Mono', 'Nimbus Mono L', Monaco, 'Courier New', Courier,
         monospace;
-      color: var(--color-text-primary);
+      color: var(--color-text-secondary);
       font-size: 15px;
       font-weight: 400;
       letter-spacing: 0.025em;
