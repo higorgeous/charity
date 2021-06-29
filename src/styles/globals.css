@@ -84,6 +84,32 @@ body {
   }
 }
 
+p.text {
+  color: var(--color-text-secondary);
+  font-size: 18px;
+  font-weight: 400;
+  max-width: 800px;
+  letter-spacing: 0.025em;
+  text-align: center;
+  margin: 20px auto 30px;
+  line-height: 1.8;
+  transition: color 0.25s ease-in-out;
+}
+
+@media (max-width: 1024px) {
+  p.text {
+    font-size: 16px;
+    margin: 10px 52px 30px;
+  }
+}
+@media (max-width: 568px) {
+  p.text {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 10px 20px 30px;
+  }
+}
+
 div.tooltip-container {
   text-transform: uppercase;
   font-size: 12px;
