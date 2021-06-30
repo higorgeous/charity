@@ -12,7 +12,7 @@ const Account: FC = () => {
         <TabList>
           <Tab>
             <span>
-              <span>Voting history</span>
+              <span>Vote history</span>
             </span>
           </Tab>
           <Tab>

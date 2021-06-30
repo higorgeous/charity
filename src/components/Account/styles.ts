@@ -55,6 +55,9 @@ export const Wrapper = styled.div`
             font-weight: 700;
             letter-spacing: 0.05em;
             margin-bottom: 17px;
+            @media (max-width: 567px) {
+              font-size: 14px;
+            }
           }
         }
         &.react-tabs__tab--selected {
