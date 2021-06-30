@@ -72,7 +72,7 @@ const Votes = (
     setModalIsOpen(null);
   };
 
-  const timePeriod = isHolder ? 5 : 1;
+  const timePeriod = isHolder ? 5 : 12;
 
   const currentTimeStamp = dayjs(new Date());
 
