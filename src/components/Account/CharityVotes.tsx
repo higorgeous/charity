@@ -2,26 +2,57 @@ import Link from 'next/link';
 import { FC } from 'react';
 
 import ChevronRight from '@components/CTA/ChevronRight';
+import useAuth from '@hooks/useAuth';
 
 import EmptyStateVotes from './EmptyStateVotes';
 
 import { TabWrapper, Button } from './styles';
+import Spinner from '@components/Spinner';
+import HistoryTable from '@components/HistoryTable';
 
 const CharityVotes: FC = () => {
+  const { userVotes } = useAuth();
+
+  let userVoteHistory: {
+    id: string;
+    name: string;
+    tag: string;
+    votedAt: any;
+  }[] = [];
+
+  userVotes &&
+    userVotes.docs.forEach((votes: any) => {
+      const voteHistory = {
+        id: votes.data().id,
+        name: votes.data().name,
+        tag: votes.data().tag,
+        votedAt: votes.data().votedAt,
+      };
+      userVoteHistory.push(voteHistory);
+    });
+
   return (
     <TabWrapper>
-      <EmptyStateVotes />
-      <p className="text">You haven&apos;t voted on a charity, yet.</p>
-      <Link href="/">
-        <a>
-          <Button>
-            <span>
-              Vote on a charity
-              <ChevronRight />
-            </span>
-          </Button>
-        </a>
-      </Link>
+      {!userVotes && <Spinner />}
+      {userVotes && userVoteHistory.length === 0 && (
+        <>
+          <EmptyStateVotes />
+          <p className="text">You haven&apos;t voted on a charity, yet.</p>
+          <Link href="/">
+            <a>
+              <Button>
+                <span>
+                  Vote on a charity
+                  <ChevronRight />
+                </span>
+              </Button>
+            </a>
+          </Link>
+        </>
+      )}
+      {userVotes && userVoteHistory.length !== 0 && (
+        <HistoryTable voteData={userVoteHistory} />
+      )}
     </TabWrapper>
   );
 };

@@ -10,11 +10,11 @@ const description =
   'Vote on the charities you want the Gorgeous community to donate to.';
 
 const IndexPage: FC = ({ content }: any) => {
-  const ref = firebaseClient
+  const charitiesRef = firebaseClient
     .firestore()
     .collection('charities')
     .orderBy('votes', 'desc');
-  const [charitiesData, charitiesLoading] = useCollectionDataSSR(ref, {
+  const [charitiesData, charitiesLoading] = useCollectionDataSSR(charitiesRef, {
     startWith: content,
   });
 

@@ -1,15 +1,24 @@
-import { useState, useEffect, useContext, createContext } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import nookies from 'nookies';
 
 import firebaseClient from '@services/Firebase/Client';
 import isClientSide from '@utils/isClientSide';
+import { useCollection } from 'react-firebase-hooks/firestore';
 
-export const AuthContext = createContext<{ user: firebaseClient.User | null }>({
+export const AuthContext = createContext<{
+  user: firebaseClient.User | null;
+  userVotes: any;
+  userSubmissions: any;
+}>({
   user: null,
+  userVotes: null,
+  userSubmissions: null,
 });
 
 export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<firebaseClient.User | null>(null);
+  const [userVotes, setUserVotes] = useState<any>(null);
+  const [userSubmissions, setUserSubmissions] = useState<any>(null);
 
   useEffect(() => {
     if (isClientSide) {
@@ -37,9 +46,33 @@ export const AuthProvider = ({ children }: any) => {
     });
   }, []);
 
+  const [votes] = useCollection(
+    firebaseClient
+      .firestore()
+      .collection('users')
+      .doc(user?.uid)
+      .collection('votes')
+      .orderBy('votedAt', 'desc'),
+  );
+
+  const [submissions] = useCollection(
+    firebaseClient
+      .firestore()
+      .collection('users')
+      .doc(user?.uid)
+      .collection('submissions')
+      .orderBy('submittedAt', 'desc'),
+  );
+
+  useEffect(() => {
+    if (user) {
+      setUserVotes(votes);
+      setUserSubmissions(submissions);
+    }
+  }, [submissions, user, votes]);
+
   useEffect(() => {
     const handle = setInterval(async () => {
-      console.log(`refreshing token...`);
       const user = firebaseClient.auth().currentUser;
       if (user) await user.getIdToken(true);
     }, 10 * 60 * 1000);
@@ -47,6 +80,8 @@ export const AuthProvider = ({ children }: any) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, userVotes, userSubmissions }}>
+      {children}
+    </AuthContext.Provider>
   );
 };

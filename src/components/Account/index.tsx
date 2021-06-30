@@ -10,7 +10,7 @@ const Account: FC = () => {
     <Wrapper>
       <Tabs>
         <TabList>
-          <Tab>
+          <Tab >
             <span>
               <span>Vote history</span>
             </span>

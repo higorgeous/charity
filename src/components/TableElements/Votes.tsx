@@ -26,7 +26,7 @@ const customStyles = {
 };
 
 const addVote = (
-  id: string,
+  charity: any,
   setModalIsOpen: any,
   isHolder: boolean,
   userId?: string,
@@ -34,7 +34,10 @@ const addVote = (
   const voteWeight = isHolder ? 5 : 1;
   const batch = firebaseClient.firestore().batch();
   const increment = firebaseClient.firestore.FieldValue.increment(voteWeight);
-  const voteRef = firebaseClient.firestore().collection('charities').doc(id);
+  const voteRef = firebaseClient
+    .firestore()
+    .collection('charities')
+    .doc(charity.id);
   const userRef = firebaseClient
     .firestore()
     .collection('users')
@@ -44,20 +47,20 @@ const addVote = (
   batch.set(
     userRef,
     {
-      charityId: id,
+      id: charity.id,
+      name: charity.name,
+      tag: charity.tag,
       votedAt: new Date().toISOString(),
     },
     { merge: true },
   );
   batch.update(voteRef, { votes: increment });
   batch.commit();
-  setModalIsOpen(id);
+  setModalIsOpen(charity.id);
 };
 
 const Votes = (
-  id: string,
-  name: string,
-  votes: number,
+  charity: any,
   userVoteHistory: Array<any>,
   modalIsOpen: string | null,
   setModalIsOpen: any,
@@ -66,16 +69,16 @@ const Votes = (
   userId?: string,
 ) => {
   const closeModal = () => {
-    setModalIsOpen(false);
+    setModalIsOpen(null);
   };
 
-  const timePeriod = isHolder ? 5 : 12;
+  const timePeriod = isHolder ? 5 : 1;
 
   const currentTimeStamp = dayjs(new Date());
 
   const hasVoted = userVoteHistory.some(
     (vendor) =>
-      vendor['charityId'] === id &&
+      vendor['id'] === charity.id &&
       currentTimeStamp.diff(dayjs(vendor['votedAt']), 'hour') <= timePeriod,
   );
 
@@ -99,8 +102,8 @@ const Votes = (
     });
   };
 
-  const shareTitle = `I just voted for ${name} to recieve the next Gorgeous donation. Please vote too.`;
-  const shareUrl = `https://charity.higorgeous.io/charity/${id}`;
+  const shareTitle = `I just voted for ${charity.name} to recieve the next Gorgeous donation. Please vote too.`;
+  const shareUrl = `https://charity.higorgeous.io/charity/${charity.id}`;
 
   return (
     <>
@@ -108,15 +111,15 @@ const Votes = (
         onClick={() =>
           cannotVote
             ? addNoVoteFlag()
-            : addVote(id, setModalIsOpen, isHolder, userId)
+            : addVote(charity, setModalIsOpen, isHolder, userId)
         }
         clicked={hasVoted}
       >
         <ArrowUp />
-        <span>{votes}</span>
+        <span>{charity.votes}</span>
       </VotesColumn>
       <Modal
-        isOpen={modalIsOpen === id}
+        isOpen={modalIsOpen === charity.id}
         onRequestClose={closeModal}
         style={customStyles}
         closeTimeoutMS={300}
@@ -124,7 +127,10 @@ const Votes = (
         <ShareHeading>Share your vote with friends</ShareHeading>
         <ShareIcons shareTitle={shareTitle} shareUrl={shareUrl} />
       </Modal>
-      <CloseIcon modalIsOpen={modalIsOpen === id} onClick={closeModal} />
+      <CloseIcon
+        modalIsOpen={modalIsOpen === charity.id}
+        onClick={closeModal}
+      />
     </>
   );
 };

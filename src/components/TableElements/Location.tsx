@@ -1,8 +1,8 @@
 import { LocationColumn } from './styles';
 
-const Location = (location: string) => (
+const Location = (charity: any) => (
   <LocationColumn>
-    <span>{location}</span>
+    <span>{charity.location}</span>
   </LocationColumn>
 );
 

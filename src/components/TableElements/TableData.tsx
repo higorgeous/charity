@@ -7,7 +7,7 @@ import Spinner from '@components/Spinner';
 type Props = {
   columns: any;
   data: any;
-  loading: boolean;
+  loading?: boolean;
 };
 
 const TableData = ({ columns, data, loading }: Props) => {

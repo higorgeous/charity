@@ -55,7 +55,7 @@ export const Right = styled.div`
 
 export const Web3Button = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   width: 85px;
   text-overflow: ellipsis;

@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ twoColumn?: boolean }>`
   margin-bottom: 100px;
   table {
     display: block;
     width: 100%;
     border-spacing: 0;
   }
-
   tr {
     display: flex;
     justify-content: stretch;
@@ -40,12 +39,14 @@ export const Wrapper = styled.div`
     padding: 12px 4px 13px;
     min-height: 76px;
     align-items: center;
-    width: 20%;
+    text-align: left;
+    width: ${({ twoColumn }) => (twoColumn ? '40%' : '20%')};
     &:first-of-type {
       width: 60%;
     }
     &:last-of-type {
       justify-content: flex-end;
+      text-align: right;
     }
     @media (max-width: 767px) {
       width: 30%;
@@ -53,7 +54,7 @@ export const Wrapper = styled.div`
         width: 70%;
       }
       &:nth-of-type(2) {
-        display: none;
+        display: ${({ twoColumn }) => (twoColumn ? 'flex' : 'none')};
       }
     }
   }
@@ -110,17 +111,21 @@ export const CharityColumn = styled.div`
   }
   .profile {
     color: var(--color-text-primary);
-    font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.05em;
     margin: 0 5px 0 0;
     line-height: 1.2;
     transition: color 0.25s ease-in-out;
+
     .name {
       overflow: hidden;
+      font-size: 15px;
       text-overflow: ellipsis;
       color: var(--color-text-primary);
       transition: color 0.25s ease-in-out;
+      @media (max-width: 567px) {
+        font-size: 14px;
+      }
     }
     .tag {
       display: block;
@@ -143,7 +148,7 @@ export const LocationColumn = styled.div`
   justify-content: center;
   align-items: center;
   height: 45px;
-  padding: 8px 20px;
+  padding: 8px 10px;
   border-radius: 4px;
   background-color: var(--color-bg-element);
   transition: all 0.25s ease-in-out;
@@ -152,9 +157,11 @@ export const LocationColumn = styled.div`
     font-size: 15px;
     font-weight: 700;
     letter-spacing: 0.05em;
-    margin: 0 5px 0 0;
     line-height: 1.2;
     transition: color 0.25s ease-in-out;
+    @media (max-width: 567px) {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -197,6 +204,29 @@ export const VotesColumn = styled.div<{ clicked: boolean }>`
     transition: color 0.25s ease-in-out;
     @media (max-width: 567px) {
       font-size: 15px;
+    }
+  }
+`;
+
+export const VotedAtColumn = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background-color: var(--color-bg-element);
+  transition: all 0.25s ease-in-out;
+  span {
+    color: var(--color-text-primary);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    transition: color 0.25s ease-in-out;
+    @media (max-width: 567px) {
+      font-size: 13px;
+      text-align: center;
     }
   }
 `;

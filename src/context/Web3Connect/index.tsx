@@ -82,10 +82,6 @@ export const Web3Provider = ({ children }: any) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [web3.eth, showFlag]);
 
-  useEffect(() => {
-    checkAccount();
-  }, [checkAccount]);
-
   return (
     <Web3Context.Provider
       value={{ isHolder, account, web3Enabled, onWeb3Click }}
