@@ -48,7 +48,6 @@ const Share = () => {
       <Icon
         aria-label="Share"
         type="button"
-        className="mobile-hide"
         ref={setTriggerRef}
         onClick={openModal}
       >

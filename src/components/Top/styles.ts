@@ -75,5 +75,6 @@ export const Web3Button = styled.div`
   }
   @media (max-width: 567px) {
     font-size: 13px;
+    width: 75px;
   }
 `;

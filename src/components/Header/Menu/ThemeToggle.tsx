@@ -29,7 +29,6 @@ const ThemeToggle = () => {
     <>
       <ToggleButton
         type="button"
-        className="mobile-hide"
         ref={setTriggerRef}
         onClick={() =>
           darkModeActive ? toggleMode('light') : toggleMode('dark')
