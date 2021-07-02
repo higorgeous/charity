@@ -3,17 +3,20 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
-  useState,
   useRef,
+  useState,
 } from 'react';
+
 import {
   createForm,
-  Unsubscribe,
   FieldConfig,
-  FieldState,
+  FieldSubscriber,
   FieldSubscription,
+  FormState,
+  Unsubscribe,
 } from 'final-form';
 import createDecorator from 'final-form-focus';
+import set from 'lodash/set';
 
 import { OnSubmitHandler } from './types';
 
@@ -22,7 +25,7 @@ type DefaultValue<FieldValue> = (value?: FieldValue) => FieldValue;
 type RegisterField = <FieldValue>(
   name: string,
   defaultValue: FieldValue | DefaultValue<FieldValue>,
-  subscriber: (state: FieldState<FieldValue>) => void,
+  subscriber: FieldSubscriber<FieldValue>,
   subscription: FieldSubscription,
   config: FieldConfig<FieldValue>,
 ) => Unsubscribe;
@@ -34,36 +37,48 @@ export const IsDisabledContext = createContext(false);
 
 interface FormChildrenProps {
   ref: React.RefObject<HTMLFormElement>;
-  onSubmit: (event: React.SyntheticEvent<HTMLElement>) => void;
+  onSubmit: (
+    event?:
+      | React.FormEvent<HTMLFormElement>
+      | React.SyntheticEvent<HTMLElement>,
+  ) => void;
   onKeyDown: (event: React.KeyboardEvent<HTMLElement>) => void;
 }
 
-export interface FormProps<FormData> {
+export interface FormProps<FormValues> {
+  /* Children rendered inside the Form component. Function will be passed props from the form. */
   children: (args: {
     formProps: FormChildrenProps;
     disabled: boolean;
     dirty: boolean;
     submitting: boolean;
-    getValues: () => FormData;
+    getState: () => FormState<FormValues>;
+
+    /** @deprecated */
+    getValues: () => FormValues;
+
+    setFieldValue: (name: string, value: any) => void;
+    reset: (initialValues?: FormValues) => void;
   }) => ReactNode;
-  // Called when the form is submitted without field validation errors
-  onSubmit: OnSubmitHandler<FormData>;
-  // When set the form and all fields will be disabled
+  /* Called when the form is submitted without field validation errors */
+  onSubmit: OnSubmitHandler<FormValues>;
+  /* When set the form and all fields will be disabled */
   isDisabled?: boolean;
 }
 
-function Form<FormData extends Record<string, any> = {}>(
-  props: FormProps<FormData>,
+export default function Form<FormValues extends Record<string, any> = {}>(
+  props: FormProps<FormValues>,
 ) {
   const formRef = useRef<HTMLFormElement | null>(null);
   const onSubmitRef = useRef(props.onSubmit);
   onSubmitRef.current = props.onSubmit;
 
-  const form = useState(() => {
-    const finalForm = createForm<FormData>({
+  const [form] = useState(() => {
+    // Types here would break the existing API
+    const finalForm = createForm<any>({
       onSubmit: (...args) => onSubmitRef.current(...args),
       destroyOnUnregister: true,
-      initialValues: {} as FormData,
+      initialValues: {},
       mutators: {
         setDefaultValue: (
           [name, defaultValue]: [string, {} | DefaultValue<any>],
@@ -76,21 +91,24 @@ function Form<FormData extends Record<string, any> = {}>(
               name && typeof defaultValue === 'function'
                 ? defaultValue(initialValues[name])
                 : defaultValue;
-            initialValues[name] = value;
-            values[name] = value;
+
+            /* eslint-disable no-param-reassign */
+            set(initialValues, name, value);
+            set(values, name, value);
+            /* eslint-enable */
           }
         },
       },
     });
 
-    createDecorator<FormData>(() =>
+    createDecorator<FormValues>(() =>
       formRef.current
         ? Array.from(formRef.current.querySelectorAll('input'))
         : [],
     )(finalForm);
 
     return finalForm;
-  })[0];
+  });
 
   const [state, setState] = useState({
     dirty: false,
@@ -114,7 +132,6 @@ function Form<FormData extends Record<string, any> = {}>(
   const registerField = useCallback<RegisterField>(
     (name, defaultValue, subscriber, subscription, config) => {
       form.pauseValidation();
-
       const unsubscribe = form.registerField(
         name,
         subscriber,
@@ -130,9 +147,18 @@ function Form<FormData extends Record<string, any> = {}>(
     [form],
   );
 
-  const handleSubmit = (e: React.SyntheticEvent<HTMLElement>) => {
-    e.preventDefault();
+  const handleSubmit = (
+    e?: React.FormEvent<HTMLFormElement> | React.SyntheticEvent<HTMLElement>,
+  ) => {
+    if (e) {
+      e.preventDefault();
+    }
+
     form.submit();
+  };
+
+  const handleReset = (initialValues?: FormValues) => {
+    form.reset(initialValues);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -140,13 +166,16 @@ function Form<FormData extends Record<string, any> = {}>(
       const submitButton: HTMLElement | null = formRef.current.querySelector(
         'button:not([type]), button[type="submit"], input[type="submit"]',
       );
-      if (submitButton) submitButton.click();
+      if (submitButton) {
+        submitButton.click();
+      }
       e.preventDefault();
     }
   };
 
   const { isDisabled = false, children } = props;
   const { dirty, submitting } = state;
+
   return (
     <FormContext.Provider value={registerField}>
       <IsDisabledContext.Provider value={isDisabled}>
@@ -157,13 +186,14 @@ function Form<FormData extends Record<string, any> = {}>(
             onKeyDown: handleKeyDown,
           },
           dirty,
+          reset: handleReset,
           submitting,
           disabled: isDisabled,
-          getValues: () => form.getState().values,
+          getState: () => form.getState(),
+          getValues: () => form.getState().values, // TODO: deprecate
+          setFieldValue: form.change,
         })}
       </IsDisabledContext.Provider>
     </FormContext.Provider>
   );
 }
-
-export default Form;

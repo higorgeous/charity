@@ -197,7 +197,7 @@ function Field<
     if (process.env.NODE_ENV !== 'production' && !process.env.CI) {
       invariant(
         latestPropsRef.current.name,
-        '@discovr/core.form: Field components have a required name prop',
+        '@atlaskit/form: Field components have a required name prop',
       );
     }
 
