@@ -86,7 +86,7 @@ export const Button = styled.a`
     border-radius: 4px;
     padding: 20px 45px;
     color: #ffffff;
-    background-color: #001b44;
+    background-color: var(--color-button-secondary);
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -103,12 +103,12 @@ export const Button = styled.a`
   }
   &:hover {
     span {
-      background-color: #214a88;
+      background-color: var(--color-button-secondaryHover);
     }
   }
   &:first-of-type {
     span {
-      background-color: #6bffb0;
+      background-color: var(--color-button-primary);
       color: #002358;
       svg {
         stroke: #002358;
@@ -117,7 +117,7 @@ export const Button = styled.a`
     }
     &:hover {
       span {
-        background-color: #40f193;
+        background-color: var(--color-button-primaryHover);
       }
     }
   }

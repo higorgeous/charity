@@ -16,6 +16,7 @@ const labelCSS = () => ({
   alignItems: 'center',
   display: 'flex',
   lineHeight: 1.2,
+  color: `var(--color-text-primary)`,
 });
 
 const flagCSS = () => ({
@@ -31,21 +32,18 @@ const Opt = ({ children, icon }: any) => (
 );
 
 // return the country name; used for searching
-const getOptionLabel = ({ abbr, code, name }: OptionType) =>
-  `${name} (${abbr.toUpperCase()}) +${code}`;
+const getOptionLabel = ({ name }: OptionType) => name;
 
 // set the country's abbreviation for the option value, (also searchable)
 const getOptionValue = (opt: OptionType) => opt.abbr;
 
 // the text node of the control
-const controlLabel = (opt: OptionType) => (
-  <Opt icon={opt.icon}>{opt.abbr.toUpperCase()}</Opt>
+const controlLabel = ({ icon, name }: OptionType) => (
+  <Opt icon={icon}>{name}</Opt>
 );
 // the text node for an option
-const optionLabel = ({ abbr, code, icon, name }: OptionType) => (
-  <Opt icon={icon}>
-    {name} ({abbr.toUpperCase()}) +{code}
-  </Opt>
+const optionLabel = ({ icon, name }: OptionType) => (
+  <Opt icon={icon}>{name}</Opt>
 );
 
 // switch formatters based on render context (menu | value)
@@ -64,7 +62,7 @@ const CountrySelect = (props: any) => (
     isMulti={false}
     options={groupedCountries}
     styles={{
-      container: (css) => ({ ...css, width: 105 }),
+      container: (css) => ({ ...css }),
       dropdownIndicator: (css) => ({ ...css, paddingLeft: 0 }),
       menu: (css) => ({ ...css, width: 300 }),
     }}

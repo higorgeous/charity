@@ -320,6 +320,6 @@ export const groupedCountries: Array<{
 }> = [
   {
     label: 'All Locations',
-    options: allCountries.filter((c) => !c.suggested),
+    options: allCountries,
   },
 ];

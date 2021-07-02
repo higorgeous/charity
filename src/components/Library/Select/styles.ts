@@ -1,5 +1,3 @@
-import * as colors from '@atlaskit/theme/colors';
-
 import { StylesConfig, ValidationState } from './types';
 
 const BORDER_WIDTH = 2;
@@ -19,18 +17,22 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       cursor: isDisabled ? 'not-allowed' : undefined,
     }),
     control: (css, { isFocused, isDisabled }) => {
-      let borderColor = isFocused ? colors.B100 : colors.N20;
-      let backgroundColor = isFocused ? colors.N0 : colors.N20;
+      let borderColor = isFocused
+        ? 'var(--color-input-disabled)'
+        : 'var(--color-input-border)';
+      let backgroundColor = isFocused
+        ? 'var(--color-input-backgroundFocus)'
+        : 'var(--color-input-background)';
 
       if (isDisabled) {
-        backgroundColor = colors.N20;
+        backgroundColor = 'var(--color-input-disabled)';
       }
 
       if (validationState === 'error') {
-        borderColor = colors.R400;
+        borderColor = 'var(--color-text-error)';
       }
       if (validationState === 'success') {
-        borderColor = colors.G400;
+        borderColor = 'var(--color-button-primary)';
       }
 
       let borderColorHover = isFocused
@@ -38,10 +40,10 @@ export default function baseStyles<Option, IsMulti extends boolean>(
         : 'var(--color-input-border)';
 
       if (validationState === 'error') {
-        borderColorHover = colors.R400;
+        borderColorHover = 'var(--color-text-error)';
       }
       if (validationState === 'success') {
-        borderColorHover = colors.G400;
+        borderColorHover = 'var(--color-button-primary)';
       }
 
       const transitionDuration = '200ms';
@@ -72,7 +74,9 @@ export default function baseStyles<Option, IsMulti extends boolean>(
             backgroundColor: 'rgba(0,0,0,0.2)',
           },
           cursor: 'pointer',
-          backgroundColor: isFocused ? colors.N0 : colors.N30,
+          backgroundColor: isFocused
+            ? 'var(--color-input-backgroundHover)'
+            : 'var(--color-input-backgroundHover)',
           borderColor: borderColorHover,
         },
         '::-webkit-scrollbar-thumb:hover': {
@@ -80,6 +84,15 @@ export default function baseStyles<Option, IsMulti extends boolean>(
         },
       };
     },
+    menu: (css) => ({
+      ...css,
+      backgroundColor: 'var(--color-select-background)',
+      borderRadius: 4,
+      boxShadow: `0 0 0 1px var(--color-select-background), 0 4px 11px var(--color-select-background)`,
+      maxWidth: `440px`,
+      minWidth: `220px`,
+      zIndex: 98,
+    }),
     valueContainer: (css) => ({
       ...css,
       paddingLeft: paddingExcludingBorder,
@@ -89,7 +102,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
     }),
     clearIndicator: (css) => ({
       ...css,
-      color: colors.N70,
+      color: 'var(--color-text-secondary)',
       paddingLeft: ICON_PADDING,
 
       paddingRight: ICON_PADDING,
@@ -99,7 +112,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       paddingTop: isCompact ? 0 : 6,
 
       ':hover': {
-        color: colors.N500,
+        color: 'var(--color-text-primary)',
       },
     }),
     loadingIndicator: (css) => ({
@@ -108,10 +121,10 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       paddingTop: isCompact ? 0 : 6,
     }),
     dropdownIndicator: (css, { isDisabled }) => {
-      let color = colors.N500;
+      let color = 'var(--color-text-secondary)';
 
       if (isDisabled) {
-        color = colors.N70;
+        color = 'var(--color-text-secondary)';
       }
 
       return {
@@ -122,7 +135,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
         paddingBottom: isCompact ? 0 : 6,
         paddingTop: isCompact ? 0 : 6,
         ':hover': {
-          color: colors.N200,
+          color: 'var(--color-text-secondary)',
         },
       };
     },
@@ -133,18 +146,18 @@ export default function baseStyles<Option, IsMulti extends boolean>(
     option: (css, { isFocused, isSelected, isDisabled }) => {
       let color;
       if (isDisabled) {
-        color = colors.N70;
+        color = 'var(--color-text-secondary)';
       } else if (isSelected) {
-        color = colors.N0;
+        color = 'var(--color-text-active)';
       }
 
       let backgroundColor;
       if (isDisabled) {
         backgroundColor = undefined;
       } else if (isSelected) {
-        backgroundColor = colors.N500;
+        backgroundColor = 'var(--color-bg-element)';
       } else if (isFocused) {
-        backgroundColor = colors.N30;
+        backgroundColor = 'var(--color-bg-element)';
       }
 
       const cursor = isDisabled ? 'not-allowed' : undefined;
@@ -158,10 +171,12 @@ export default function baseStyles<Option, IsMulti extends boolean>(
         cursor,
       };
     },
-    placeholder: (css) => ({ ...css, color: colors.N100 }),
+    placeholder: (css) => ({ ...css, color: 'var(--color-text-secondary)' }),
     singleValue: (css, { isDisabled }) => ({
       ...css,
-      color: isDisabled ? colors.N70 : colors.N800,
+      color: isDisabled
+        ? 'var(--color-text-secondary)'
+        : 'var(--color-text-primary)',
       lineHeight: `${8 * 2}px`, // 16px
     }),
     menuList: (css) => ({
@@ -172,8 +187,8 @@ export default function baseStyles<Option, IsMulti extends boolean>(
     multiValue: (css) => ({
       ...css,
       borderRadius: '2px',
-      backgroundColor: colors.N40,
-      color: colors.N500,
+      backgroundColor: 'var(--color-bg-element)',
+      color: 'var(--color-text-primary)',
       maxWidth: '100%',
     }),
     multiValueLabel: (css) => ({
@@ -189,14 +204,14 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       },
     ) => ({
       ...css,
-      backgroundColor: isFocused && colors.R75,
-      color: isFocused && colors.R400,
+      backgroundColor: isFocused && 'var(--color-text-error)',
+      color: isFocused && 'var(--color-texy-primary)',
       paddingLeft: '2px',
       paddingRight: '2px',
       borderRadius: '0px 2px 2px 0px',
       ':hover': {
-        color: colors.R400,
-        backgroundColor: colors.R75,
+        color: 'var(--color-text-error)',
+        backgroundColor: 'var(--color-text-primary)',
       },
     }),
   };

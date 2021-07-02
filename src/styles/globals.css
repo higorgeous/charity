@@ -7,16 +7,17 @@ body[data-theme='light'] {
   --color-text-error: #ff5630;
   --color-bg-primary: #ffffff;
   --color-bg-element: #d4e1f3;
+  --color-select-background: #d4e1f3;
   --color-input-background: #ffffff;
   --color-input-backgroundFocus: #d4e1f3;
   --color-input-backgroundHover: #d4e1f3;
   --color-input-backgroundDisabled: #ffffff;
   --color-input-border: #214a88;
   --color-input-borderFocus: #0060ff;
-  --color-button-primary: #0060ff;
-  --color-button-primaryHover: #0060ff;
-  --color-button-secondary: #0060ff;
-  --color-button-secondaryHover: #0060ff;
+  --color-button-primary: #6bffb0;
+  --color-button-primaryHover: #40f193;
+  --color-button-secondary: #001b44;
+  --color-button-secondaryHover: #214a88;
 }
 
 body[data-theme='dark'] {
@@ -26,12 +27,17 @@ body[data-theme='dark'] {
   --color-text-error: #ff5630;
   --color-bg-primary: #001b44;
   --color-bg-element: #032c6b;
+  --color-select-background: #00132f;
   --color-input-background: #001b44;
   --color-input-backgroundFocus: #032c6b;
   --color-input-backgroundHover: #032c6b;
   --color-input-backgroundDisabled: #001b44;
   --color-input-border: #a2c3f5;
   --color-input-borderFocus: #0060ff;
+  --color-button-primary: #6bffb0;
+  --color-button-primaryHover: #40f193;
+  --color-button-secondary: #001b44;
+  --color-button-secondaryHover: #214a88;
 }
 
 .root,

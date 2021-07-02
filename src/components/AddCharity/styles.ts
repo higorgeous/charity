@@ -28,7 +28,7 @@ export const Button = styled.button`
     width: 100%;
     border-radius: 4px;
     padding: 20px 45px;
-    background-color: #6bffb0;
+    background-color: var(--color-button-primary);
     color: #002358;
     font-size: 16px;
     font-weight: 700;
@@ -46,7 +46,7 @@ export const Button = styled.button`
   }
   &:hover {
     span {
-      background-color: #40f193;
+      background-color: var(--color-button-primaryHover);
     }
   }
 `;
