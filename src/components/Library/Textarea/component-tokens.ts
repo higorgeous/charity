@@ -1,0 +1,11 @@
+export const disabledBackgroundColor = 'var(--color-input-disabled)';
+export const invalidBorderColor = 'var(--color-text-error)';
+export const defaultBackgroundColor = 'var(--color-input-background)';
+export const defaultBackgroundColorFocus = 'var(--color-input-backgroundFocus)';
+export const defaultBackgroundColorHover = 'var(--color-input-backgroundHover)';
+export const defaultBorderColor = 'var(--color-input-border)';
+export const defaultBorderColorFocus = 'var(--color-input-borderFocus)';
+export const transparent = 'transparent';
+export const textColor = 'var(--color-text-primary)';
+export const disabledTextColor = 'var(--color-text-secondary)';
+export const placeholderTextColor = 'var(--color-text-secondary)';

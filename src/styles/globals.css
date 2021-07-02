@@ -4,16 +4,30 @@ body[data-theme='light'] {
   --color-text-primary: #002358;
   --color-text-secondary: #214a88;
   --color-text-active: #0060ff;
+  --color-text-error: #ff5630;
   --color-bg-primary: #ffffff;
-  --color-bg-element: #e9f2ff;
+  --color-bg-element: #d4e1f3;
+  --color-input-background: #ffffff;
+  --color-input-backgroundFocus: #d4e1f3;
+  --color-input-backgroundHover: #d4e1f3;
+  --color-input-backgroundDisabled: #ffffff;
+  --color-input-border: #214a88;
+  --color-input-borderFocus: #0060ff;
 }
 
 body[data-theme='dark'] {
   --color-text-primary: #ffffff;
   --color-text-secondary: #a2c3f5;
   --color-text-active: #ffffff;
+  --color-text-error: #ff5630;
   --color-bg-primary: #001b44;
   --color-bg-element: #032c6b;
+  --color-input-background: #001b44;
+  --color-input-backgroundFocus: #032c6b;
+  --color-input-backgroundHover: #032c6b;
+  --color-input-backgroundDisabled: #001b44;
+  --color-input-border: #a2c3f5;
+  --color-input-borderFocus: #0060ff;
 }
 
 .root,
