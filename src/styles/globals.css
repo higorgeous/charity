@@ -13,6 +13,10 @@ body[data-theme='light'] {
   --color-input-backgroundDisabled: #ffffff;
   --color-input-border: #214a88;
   --color-input-borderFocus: #0060ff;
+  --color-button-primary: #0060ff;
+  --color-button-primaryHover: #0060ff;
+  --color-button-secondary: #0060ff;
+  --color-button-secondaryHover: #0060ff;
 }
 
 body[data-theme='dark'] {

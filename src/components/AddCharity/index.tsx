@@ -2,10 +2,16 @@ import { FC } from 'react';
 
 import Textfield from '../Library/Textfield';
 import Form, { Field, FormFooter } from '../Library/Form';
+import { CountrySelect, ValueType } from '../Library/Select';
 
 import { Wrapper, Container, Button } from './styles';
 import ChevronRight from '@components/CTA/ChevronRight';
 import TextArea from '@components/Library/Textarea';
+
+interface OptionType {
+  label: string;
+  value: string;
+}
 
 const AddCharity: FC = () => {
   return (
@@ -35,6 +41,19 @@ const AddCharity: FC = () => {
                   <Textfield
                     maxLength={40}
                     placeholder="Up to 40 characters introducing the charity"
+                    {...fieldProps}
+                  />
+                )}
+              </Field>
+
+              <Field<ValueType<OptionType>>
+                name="charity-location"
+                label="Location"
+                defaultValue={null}
+              >
+                {({ fieldProps }) => (
+                  <CountrySelect
+                    placeholder="Location of Charity"
                     {...fieldProps}
                   />
                 )}
