@@ -1,12 +1,15 @@
 import { FC, useState } from 'react';
+import { ModalTransition } from '@atlaskit/modal-dialog';
+
+import ChevronRight from '@components/CTA/ChevronRight';
+import TextArea from '@components/Library/Textarea';
 
 import Textfield from '../Library/Textfield';
 import Form, { Field, FormFooter } from '../Library/Form';
 import Select, { CountrySelect, ValueType } from '../Library/Select';
 
+import LogoPicker from './LogoPicker';
 import { Wrapper, Container, Button } from './styles';
-import ChevronRight from '@components/CTA/ChevronRight';
-import TextArea from '@components/Library/Textarea';
 
 interface OptionType {
   label: string;
@@ -21,6 +24,7 @@ const charityTypes: Array<OptionType> = [
 const AddCharity: FC = () => {
   const [logoOpen, setLogoOpen] = useState(false);
   return (
+    <ModalTransition>
       <Wrapper>
         <Container>
           <Form onSubmit={console.log}>
@@ -176,7 +180,14 @@ const AddCharity: FC = () => {
           </Form>
         </Container>
       </Wrapper>
-      
+      <LogoPicker
+        logoOpen={logoOpen}
+        setLogoOpen={setLogoOpen}
+        setImagePreviewSourceViaFileAPI={setImagePreviewSourceViaFileAPI}
+        setImagePreviewSourceViaDataURIAPI={setImagePreviewSourceViaDataURIAPI}
+        imagePreviewSourceViaDataURIAPI={imagePreviewSourceViaDataURIAPI}
+      />
+    </ModalTransition>
   );
 };
 
