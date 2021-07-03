@@ -319,7 +319,7 @@ export const groupedCountries: Array<{
   options: Array<Country>;
 }> = [
   {
-    label: 'All Locations',
+    label: '',
     options: allCountries,
   },
 ];

@@ -54,9 +54,8 @@ export const Right = styled.div`
 `;
 
 export const Web3Button = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  display: block;
+  text-align: center;
   width: 85px;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -75,6 +74,5 @@ export const Web3Button = styled.div`
   }
   @media (max-width: 567px) {
     font-size: 13px;
-    width: 75px;
   }
 `;

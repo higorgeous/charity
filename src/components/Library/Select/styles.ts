@@ -88,7 +88,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       ...css,
       backgroundColor: 'var(--color-select-background)',
       borderRadius: 4,
-      boxShadow: `0 0 0 1px var(--color-select-background), 0 4px 11px var(--color-select-background)`,
+      boxShadow: `0 5px 25px rgb(0 17 36 / 15%)`,
       maxWidth: `440px`,
       minWidth: `220px`,
       zIndex: 98,

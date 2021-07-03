@@ -49,6 +49,7 @@ const AddCharity: FC = () => {
               <Field<ValueType<OptionType>>
                 name="charity-location"
                 label="Location"
+                isRequired
                 defaultValue={null}
               >
                 {({ fieldProps }) => (

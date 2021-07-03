@@ -7,7 +7,7 @@ body[data-theme='light'] {
   --color-text-error: #ff5630;
   --color-bg-primary: #ffffff;
   --color-bg-element: #d4e1f3;
-  --color-select-background: #d4e1f3;
+  --color-select-background: #ffffff;
   --color-input-background: #ffffff;
   --color-input-backgroundFocus: #d4e1f3;
   --color-input-backgroundHover: #d4e1f3;
