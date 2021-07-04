@@ -5,3 +5,4 @@ export { default as Field } from './Field';
 export type { FieldProps } from './Field';
 export { default as Fieldset } from './Fieldset';
 export type { OnSubmitHandler, FormApi } from './types';
+export { HelperMessage, ErrorMessage, ValidMessage } from './Messages';

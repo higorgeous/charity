@@ -1,11 +1,11 @@
 import { FC, useState } from 'react';
-import { ModalTransition } from '@atlaskit/modal-dialog';
 import ExportIcon from '@atlaskit/icon/glyph/export';
+import AtlasButton from '@atlaskit/button';
 
 import ChevronRight from '@components/CTA/ChevronRight';
 
 import Textfield from '../Library/Textfield';
-import { Field, FormFooter } from '../Library/Form';
+import { Field, HelperMessage, FormFooter } from '../Library/Form';
 
 import LogoPicker from './LogoPicker';
 import ImagePicker from './ImagePicker';
@@ -50,25 +50,46 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
             isRequired
             defaultValue={logoPreviewSourceViaDataURIAPI}
           >
-            {({ fieldProps }) => (
-              <Textfield
-                isReadOnly
-                onClick={() => setLogoOpen(true)}
-                placeholder="Upload your logo"
-                {...fieldProps}
-                elemAfterInput={
-                  <div
-                    onClick={() => setLogoOpen(true)}
-                    style={{
-                      paddingRight: '6px',
-                      lineHeight: '100%',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <ExportIcon label="Upload logo" />
-                  </div>
-                }
-              />
+            {({ fieldProps, error }) => (
+              <>
+                <Textfield
+                  onKeyDown={() => event!.preventDefault()}
+                  onClick={() => setLogoOpen(true)}
+                  placeholder="Upload your logo"
+                  {...fieldProps}
+                  elemBeforeInput={
+                    <div
+                      onClick={() => setLogoOpen(true)}
+                      style={{
+                        paddingLeft: '6px',
+                        lineHeight: '100%',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <AtlasButton spacing="compact" appearance="warning">
+                        Upload
+                      </AtlasButton>
+                    </div>
+                  }
+                  elemAfterInput={
+                    <div
+                      onClick={() => setLogoOpen(true)}
+                      style={{
+                        paddingRight: '6px',
+                        lineHeight: '100%',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <ExportIcon size="medium" label="Upload logo" />
+                    </div>
+                  }
+                />
+                {!error && (
+                  <HelperMessage>
+                    Logo should be square and 512px by 512px.
+                  </HelperMessage>
+                )}
+              </>
             )}
           </Field>
 
@@ -79,25 +100,46 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
             isRequired
             defaultValue={imagePreviewSourceViaDataURIAPI}
           >
-            {({ fieldProps }) => (
-              <Textfield
-                isReadOnly
-                placeholder="Upload a preview image"
-                onClick={() => setImageOpen(true)}
-                {...fieldProps}
-                elemAfterInput={
-                  <div
-                    onClick={() => setImageOpen(true)}
-                    style={{
-                      paddingRight: '6px',
-                      lineHeight: '100%',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    <ExportIcon label="Upload logo" />
-                  </div>
-                }
-              />
+            {({ fieldProps, error }) => (
+              <>
+                <Textfield
+                  onKeyDown={() => event!.preventDefault()}
+                  placeholder="Upload a preview image"
+                  onClick={() => setImageOpen(true)}
+                  {...fieldProps}
+                  elemBeforeInput={
+                    <div
+                      onClick={() => setImageOpen(true)}
+                      style={{
+                        paddingLeft: '6px',
+                        lineHeight: '100%',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <AtlasButton spacing="compact" appearance="warning">
+                        Upload
+                      </AtlasButton>
+                    </div>
+                  }
+                  elemAfterInput={
+                    <div
+                      onClick={() => setImageOpen(true)}
+                      style={{
+                        paddingRight: '6px',
+                        lineHeight: '100%',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <ExportIcon size="medium" label="Upload logo" />
+                    </div>
+                  }
+                />
+                {!error && (
+                  <HelperMessage>
+                    Image should be landscape and 900px by 500px.
+                  </HelperMessage>
+                )}
+              </>
             )}
           </Field>
 
@@ -107,10 +149,15 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
             defaultValue={formFields ? formFields['charity-video'] : ''}
           >
             {({ fieldProps }) => (
-              <Textfield
-                placeholder="Link to a YouTube video"
-                {...fieldProps}
-              />
+              <>
+                <Textfield
+                  placeholder="Link to a YouTube video"
+                  {...fieldProps}
+                />
+                <HelperMessage>
+                  E.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ.
+                </HelperMessage>
+              </>
             )}
           </Field>
           <FormFooter>

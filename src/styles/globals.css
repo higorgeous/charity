@@ -6,6 +6,7 @@ body[data-theme='light'] {
   --color-text-active: #0060ff;
   --color-text-error: #ff5630;
   --color-text-warning: #ffbd30;
+  --color-text-valid: #40f193;
   --color-bg-primary: #ffffff;
   --color-bg-element: #d4e1f3;
   --color-select-background: #ffffff;
@@ -29,6 +30,7 @@ body[data-theme='dark'] {
   --color-text-active: #ffffff;
   --color-text-error: #ff5630;
   --color-text-warning: #ffbd30;
+  --color-text-valid: #40f193;
   --color-bg-primary: #001b44;
   --color-bg-element: #032c6b;
   --color-select-background: #00132f;

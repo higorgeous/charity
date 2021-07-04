@@ -28,22 +28,22 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
         </Field>
 
         <Field
-          name="charity-facebook"
-          label="Facebook"
-          defaultValue={formFields ? formFields['charity-facebook'] : ''}
-        >
-          {({ fieldProps }) => (
-            <Textfield placeholder="Facebook profile link" {...fieldProps} />
-          )}
-        </Field>
-
-        <Field
           name="charity-twitter"
           label="Twitter"
           defaultValue={formFields ? formFields['charity-twitter'] : ''}
         >
           {({ fieldProps }) => (
             <Textfield placeholder="Twitter profile link" {...fieldProps} />
+          )}
+        </Field>
+
+        <Field
+          name="charity-facebook"
+          label="Facebook"
+          defaultValue={formFields ? formFields['charity-facebook'] : ''}
+        >
+          {({ fieldProps }) => (
+            <Textfield placeholder="Facebook profile link" {...fieldProps} />
           )}
         </Field>
 
