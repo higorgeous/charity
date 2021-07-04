@@ -1,5 +1,10 @@
 import { FC, useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import dynamic from 'next/dynamic';
+import { Tab, TabList, TabPanel, TabsProps } from 'react-tabs';
+const Tabs = dynamic<TabsProps>(
+  import('react-tabs').then((mod) => mod.Tabs),
+  { ssr: false },
+);
 
 import Form from '../Library/Form';
 
@@ -55,10 +60,16 @@ const AddCharity: FC = () => {
                 <StepOne formFields={formFields} />
               </TabPanel>
               <TabPanel>
-                <StepTwo formFields={formFields} setSelectedTab={setSelectedTab} />
+                <StepTwo
+                  formFields={formFields}
+                  setSelectedTab={setSelectedTab}
+                />
               </TabPanel>
               <TabPanel>
-                <StepThree formFields={formFields} setSelectedTab={setSelectedTab} />
+                <StepThree
+                  formFields={formFields}
+                  setSelectedTab={setSelectedTab}
+                />
               </TabPanel>
             </Tabs>
           </form>
