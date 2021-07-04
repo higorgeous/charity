@@ -161,8 +161,7 @@ export class AvatarPickerDialog extends PureComponent<
   }
 
   headerContent = () => {
-    const { title } = this.props;
-    return <ModalHeader>{title}</ModalHeader>;
+    return <ModalHeader>Upload a logo</ModalHeader>;
   };
 
   footerContent = () => {

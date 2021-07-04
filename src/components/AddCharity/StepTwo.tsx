@@ -33,6 +33,7 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
           <Field
             name="charity-logo"
             label="Logo"
+            id="image"
             isRequired
             defaultValue={imagePreviewSourceViaDataURIAPI}
           >
@@ -41,6 +42,34 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
                 isReadOnly
                 onClick={() => setLogoOpen(true)}
                 placeholder="Upload your logo"
+                {...fieldProps}
+                elemAfterInput={
+                  <div
+                    onClick={() => setLogoOpen(true)}
+                    style={{
+                      paddingRight: '6px',
+                      lineHeight: '100%',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <ExportIcon label="Upload logo" />
+                  </div>
+                }
+              />
+            )}
+          </Field>
+
+          <Field
+            name="charity-image"
+            label="Image"
+            id="image"
+            isRequired
+            defaultValue={imagePreviewSourceViaDataURIAPI}
+          >
+            {({ fieldProps }) => (
+              <Textfield
+                isReadOnly
+                placeholder="Upload a preview image"
                 {...fieldProps}
                 elemAfterInput={
                   <div

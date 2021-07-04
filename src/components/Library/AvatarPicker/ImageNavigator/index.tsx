@@ -336,7 +336,7 @@ export class ImageNavigator extends Component<Props, State> {
           <div>
             <PaddedBreak>{errorMessage ? 'Try again' : 'or'}</PaddedBreak>
             <Button onClick={this.onUploadButtonClick} isDisabled={isLoading}>
-              Upload a photo
+              Upload a logo
               <FileInput
                 type="file"
                 name="image-input"

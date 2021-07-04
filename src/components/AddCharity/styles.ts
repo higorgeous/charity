@@ -87,6 +87,9 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   margin: 50px 20px 30px;
+  #image {
+    cursor: pointer;
+  }
   footer {
     @media (max-width: 567px) {
       flex-direction: column;
