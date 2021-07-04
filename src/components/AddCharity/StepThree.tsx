@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 
 import ChevronRight from '@components/CTA/ChevronRight';
 
@@ -17,30 +17,26 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
     <Container>
       <div>
         <Field
-          name="charity-website"
+          name="website"
           label="Website"
           isRequired
-          defaultValue={formFields ? formFields['charity-website'] : ''}
+          defaultValue={formFields.website}
         >
           {({ fieldProps }) => (
             <Textfield placeholder="Website address" {...fieldProps} />
           )}
         </Field>
 
-        <Field
-          name="charity-twitter"
-          label="Twitter"
-          defaultValue={formFields ? formFields['charity-twitter'] : ''}
-        >
+        <Field name="twitter" label="Twitter" defaultValue={formFields.twitter}>
           {({ fieldProps }) => (
             <Textfield placeholder="Twitter profile link" {...fieldProps} />
           )}
         </Field>
 
         <Field
-          name="charity-facebook"
+          name="facebook"
           label="Facebook"
-          defaultValue={formFields ? formFields['charity-facebook'] : ''}
+          defaultValue={formFields.facebook}
         >
           {({ fieldProps }) => (
             <Textfield placeholder="Facebook profile link" {...fieldProps} />
@@ -48,9 +44,9 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
         </Field>
 
         <Field
-          name="charity-instagram"
+          name="instagram"
           label="Instagram"
-          defaultValue={formFields ? formFields['charity-instagram'] : ''}
+          defaultValue={formFields.instagram}
         >
           {({ fieldProps }) => (
             <Textfield placeholder="Instagram profile link" {...fieldProps} />
@@ -58,10 +54,17 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
         </Field>
 
         <Field
-          name="charity-youtube"
-          label="YouTube"
-          defaultValue={formFields ? formFields['charity-youtube'] : ''}
+          name="linkedin"
+          label="LinkedIn"
+          isRequired
+          defaultValue={formFields.linkedin}
         >
+          {({ fieldProps }) => (
+            <Textfield placeholder="LinkedIn profile link" {...fieldProps} />
+          )}
+        </Field>
+
+        <Field name="youtube" label="YouTube" defaultValue={formFields.youtube}>
           {({ fieldProps }) => (
             <Textfield placeholder="YouTube channel link" {...fieldProps} />
           )}

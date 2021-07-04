@@ -80,7 +80,7 @@ export const Web3Provider = ({ children }: any) => {
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [web3.eth, showFlag]);
+  }, [web3.eth]);
 
   return (
     <Web3Context.Provider

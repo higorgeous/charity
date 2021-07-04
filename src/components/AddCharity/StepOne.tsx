@@ -28,10 +28,10 @@ const StepOne: FC<Props> = ({ formFields }) => {
     <Container>
       <div>
         <Field
-          name="charity-name"
+          name="name"
           label="Charity name"
           isRequired
-          defaultValue={formFields ? formFields['charity-name'] : ''}
+          defaultValue={formFields.name}
         >
           {({ fieldProps }) => (
             <Textfield placeholder="Name of charity" {...fieldProps} />
@@ -39,10 +39,10 @@ const StepOne: FC<Props> = ({ formFields }) => {
         </Field>
 
         <Field
-          name="charity-tag"
+          name="tag"
           label="Tag line"
           isRequired
-          defaultValue={formFields ? formFields['charity-tag'] : ''}
+          defaultValue={formFields.tag}
         >
           {({ fieldProps }) => (
             <Textfield
@@ -54,10 +54,10 @@ const StepOne: FC<Props> = ({ formFields }) => {
         </Field>
 
         <Field<ValueType<OptionType>>
-          name="charity-type"
+          name="type"
           label="Charity type"
           isRequired
-          defaultValue={formFields ? formFields['charity-type'] : ''}
+          defaultValue={formFields.type}
         >
           {({ fieldProps }) => (
             <Select
@@ -69,10 +69,10 @@ const StepOne: FC<Props> = ({ formFields }) => {
         </Field>
 
         <Field<ValueType<OptionType>>
-          name="charity-location"
+          name="location"
           label="Location"
           isRequired
-          defaultValue={formFields ? formFields['charity-location'] : ''}
+          defaultValue={formFields.location}
         >
           {({ fieldProps }) => (
             <CountrySelect placeholder="Location of Charity" {...fieldProps} />
@@ -80,10 +80,10 @@ const StepOne: FC<Props> = ({ formFields }) => {
         </Field>
 
         <Field<string, HTMLTextAreaElement>
-          name="charity-description"
+          name="description"
           label="Description"
           isRequired
-          defaultValue={formFields ? formFields['charity-description'] : ''}
+          defaultValue={formFields.description}
         >
           {({ fieldProps }) => (
             <TextArea

@@ -29,7 +29,7 @@ import {
   Mode,
 } from './types';
 
-export const MAX_SIZE_MB = 10;
+export const MAX_SIZE_MB = 1;
 
 export const ACCEPT = ['image/gif', 'image/jpeg', 'image/png'];
 

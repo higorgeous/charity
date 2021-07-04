@@ -17,7 +17,7 @@ export default class AsyncAvatarPickerDialog extends React.PureComponent<
   AsyncAvatarPickerDialogProps,
   AsyncAvatarPickerDialogState
 > {
-  static displayName = 'AsyncAvatarPickerDialog';
+  static displayName = 'AsyncImagePickerDialog';
   static AvatarPickerDialog?: typeof AvatarPickerDialog;
 
   state = {
@@ -25,11 +25,11 @@ export default class AsyncAvatarPickerDialog extends React.PureComponent<
     AvatarPickerDialog: AsyncAvatarPickerDialog.AvatarPickerDialog,
   };
 
-  async UNSAFE_componentWillMount() {
+  componentDidMount = async () => {
     if (!this.state.AvatarPickerDialog) {
       try {
         const module = await import(
-          /* webpackChunkName:"@gorgeous-internal_media-avatar-picker" */
+          /* webpackChunkName:"@gorgeous-internal_media-image-picker" */
           '.'
         );
         AsyncAvatarPickerDialog.AvatarPickerDialog = module.AvatarPickerDialog;
@@ -39,7 +39,7 @@ export default class AsyncAvatarPickerDialog extends React.PureComponent<
         // TODO [MS-2272]: Add operational error to catch async import error
       }
     }
-  }
+  };
 
   render() {
     if (!this.state.AvatarPickerDialog) {
@@ -48,12 +48,7 @@ export default class AsyncAvatarPickerDialog extends React.PureComponent<
         return placeholder;
       }
 
-      return (
-        <ModalSpinner
-          blankedColor="#002358c7"
-          invertSpinnerColor
-        />
-      );
+      return <ModalSpinner blankedColor="#002358c7" invertSpinnerColor />;
     }
 
     return <this.state.AvatarPickerDialog {...this.props} />;

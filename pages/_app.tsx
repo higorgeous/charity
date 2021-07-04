@@ -1,5 +1,7 @@
 import '@fontsource/poppins';
 import '@styles/globals.css';
+import 'react-popper-tooltip/dist/styles.css';
+import 'react-tabs/style/react-tabs.css';
 
 import { AppProps } from 'next/app';
 import { FC } from 'react';

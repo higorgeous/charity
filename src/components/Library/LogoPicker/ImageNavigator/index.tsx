@@ -92,13 +92,13 @@ export class ImageNavigator extends Component<Props, State> {
   state: State = defaultState;
   imageElement?: HTMLImageElement;
 
-  UNSAFE_componentWillMount() {
+  componentDidMount = () => {
     if (!exenv.canUseDOM) {
       return;
     }
     document.addEventListener('mousemove', this.onMouseMove);
     document.addEventListener('mouseup', this.onMouseUp);
-  }
+  };
 
   componentWillUnmount() {
     document.removeEventListener('mousemove', this.onMouseMove);
@@ -210,7 +210,7 @@ export class ImageNavigator extends Component<Props, State> {
     if (ACCEPT.indexOf(imageFile.type) === -1) {
       return 'Could not load image, the format is invalid.';
     } else if (fileSizeMb(imageFile) > MAX_SIZE_MB) {
-      return 'Image is too large, must be no larger than 10 Mb';
+      return 'Image is too large, must be no larger than 1 Mb';
     }
     return null;
   }

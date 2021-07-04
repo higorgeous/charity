@@ -8,7 +8,6 @@ import Textfield from '../Library/Textfield';
 import { Field, HelperMessage, FormFooter } from '../Library/Form';
 
 import LogoPicker from './LogoPicker';
-import ImagePicker from './ImagePicker';
 
 import { Container, Button } from './styles';
 
@@ -28,34 +27,29 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
   const [
     logoPreviewSourceViaDataURIAPI,
     setLogoPreviewSourceViaDataURIAPI,
-  ] = useState(formFields ? formFields['charity-logo'] : '');
-
-  const [
-    imagePreviewSourceViaFileAPI,
-    setImagePreviewSourceViaFileAPI,
   ] = useState('');
-  const [
-    imagePreviewSourceViaDataURIAPI,
-    setImagePreviewSourceViaDataURIAPI,
-  ] = useState(formFields ? formFields['charity-image'] : '');
 
   return (
     <>
       <Container>
         <div>
           <Field
-            name="charity-logo"
+            name="logo"
             label="Logo"
             id="image"
             isRequired
-            defaultValue={logoPreviewSourceViaDataURIAPI}
+            defaultValue={
+              logoPreviewSourceViaDataURIAPI
+                ? logoPreviewSourceViaDataURIAPI
+                : formFields.logo
+            }
           >
             {({ fieldProps, error }) => (
               <>
                 <Textfield
                   onKeyDown={() => event!.preventDefault()}
                   onClick={() => setLogoOpen(true)}
-                  placeholder="Upload your logo"
+                  placeholder="No logo chosen"
                   {...fieldProps}
                   elemBeforeInput={
                     <div
@@ -94,59 +88,26 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
           </Field>
 
           <Field
-            name="charity-image"
+            name="image"
             label="Image"
-            id="image"
             isRequired
-            defaultValue={imagePreviewSourceViaDataURIAPI}
+            defaultValue={formFields.image}
           >
-            {({ fieldProps, error }) => (
+            {({ fieldProps }) => (
               <>
-                <Textfield
-                  onKeyDown={() => event!.preventDefault()}
-                  placeholder="Upload a preview image"
-                  onClick={() => setImageOpen(true)}
-                  {...fieldProps}
-                  elemBeforeInput={
-                    <div
-                      onClick={() => setImageOpen(true)}
-                      style={{
-                        paddingLeft: '6px',
-                        lineHeight: '100%',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <AtlasButton spacing="compact" appearance="warning">
-                        Upload
-                      </AtlasButton>
-                    </div>
-                  }
-                  elemAfterInput={
-                    <div
-                      onClick={() => setImageOpen(true)}
-                      style={{
-                        paddingRight: '6px',
-                        lineHeight: '100%',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      <ExportIcon size="medium" label="Upload logo" />
-                    </div>
-                  }
-                />
-                {!error && (
-                  <HelperMessage>
-                    Image should be landscape and 900px by 500px.
-                  </HelperMessage>
-                )}
+                <Textfield placeholder="Link to image URL" {...fieldProps} />
+                <HelperMessage>
+                  E.g.
+                  https://images.unsplash.com/photo-1494832944834-a08818c634b0.
+                </HelperMessage>
               </>
             )}
           </Field>
 
           <Field
-            name="charity-video"
+            name="video"
             label="YouTube video"
-            defaultValue={formFields ? formFields['charity-video'] : ''}
+            defaultValue={formFields.video}
           >
             {({ fieldProps }) => (
               <>
@@ -187,13 +148,6 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
         setImagePreviewSourceViaFileAPI={setLogoPreviewSourceViaFileAPI}
         setImagePreviewSourceViaDataURIAPI={setLogoPreviewSourceViaDataURIAPI}
         imagePreviewSourceViaDataURIAPI={logoPreviewSourceViaDataURIAPI}
-      />
-      <ImagePicker
-        imageOpen={imageOpen}
-        setImageOpen={setImageOpen}
-        setImagePreviewSourceViaFileAPI={setImagePreviewSourceViaFileAPI}
-        setImagePreviewSourceViaDataURIAPI={setImagePreviewSourceViaDataURIAPI}
-        imagePreviewSourceViaDataURIAPI={imagePreviewSourceViaDataURIAPI}
       />
     </>
   );

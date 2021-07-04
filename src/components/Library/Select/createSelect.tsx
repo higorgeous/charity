@@ -19,10 +19,10 @@ export default function createSelect(WrappedComponent: ComponentType<any>) {
 
     constructor(props: SelectProps<Option, IsMulti>) {
       super(props);
-      this.cacheComponents = memoizeOne(this.cacheComponents, isEqual).bind(
-        this,
-      );
-      this.cacheComponents(props.components || {}, props.enableAnimation);
+      // this.cacheComponents = memoizeOne(this.cacheComponents, isEqual).bind(
+      //   this,
+      // );
+      // this.cacheComponents(props.components || {}, props.enableAnimation);
     }
 
     static defaultProps = {
@@ -35,24 +35,24 @@ export default function createSelect(WrappedComponent: ComponentType<any>) {
       styles: {},
     };
 
-    UNSAFE_componentWillReceiveProps(nextProps: SelectProps<Option, IsMulti>) {
-      this.cacheComponents(nextProps.components!, nextProps.enableAnimation);
-    }
+    // UNSAFE_componentWillReceiveProps(nextProps: SelectProps<Option, IsMulti>) {
+    //   this.cacheComponents(nextProps.components!, nextProps.enableAnimation);
+    // }
 
-    cacheComponents = (
-      components: SelectComponentsConfig<Option, IsMulti>,
-      enableAnimation: boolean,
-    ) => {
-      this.components = enableAnimation
-        ? makeAnimated<Option, IsMulti>({
-            ...defaultComponents,
-            ...components,
-          })
-        : {
-            ...defaultComponents,
-            ...components,
-          };
-    };
+    // cacheComponents = (
+    //   components: SelectComponentsConfig<Option, IsMulti>,
+    //   enableAnimation: boolean,
+    // ) => {
+    //   this.components = enableAnimation
+    //     ? makeAnimated<Option, IsMulti>({
+    //         ...defaultComponents,
+    //         ...components,
+    //       })
+    //     : {
+    //         ...defaultComponents,
+    //         ...components,
+    //       };
+    // };
 
     focus() {
       if (this.select) {

@@ -104,6 +104,9 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       paddingBottom: isCompact ? 0 : 2,
       paddingTop: isCompact ? 0 : 2,
     }),
+    indicatorSeparator: () => ({
+      display: 'none',
+    }),
     clearIndicator: (css) => ({
       ...css,
       color: 'var(--color-text-primary)',

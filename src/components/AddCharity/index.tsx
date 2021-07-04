@@ -1,5 +1,7 @@
 import { FC, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+
 import EditorSuccessIcon from '@atlaskit/icon/glyph/editor/success';
 import EditorErrorIcon from '@atlaskit/icon/glyph/editor/error';
 import { Tab, TabList, TabPanel, TabsProps } from 'react-tabs';
@@ -17,55 +19,130 @@ import StepThree from './StepThree';
 import { Wrapper } from './styles';
 import firebaseClient from '@services/Firebase/Client';
 import { useFlags } from '@atlaskit/flag';
+import useAuth from '@hooks/useAuth';
 
 const AddCharity: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [formFields, setFormFields] = useState({});
+  const [formFields, setFormFields] = useState({
+    name: '',
+    tag: '',
+    type: {
+      label: '',
+      value: '',
+    },
+    location: {
+      abbr: '',
+      code: '',
+      icon: '',
+      name: '',
+    },
+    description: '',
+    logo: '',
+    image: '',
+    video: '',
+    website: '',
+    twitter: '',
+    facebook: '',
+    instagram: '',
+    linkedin: '',
+    youtube: '',
+  });
 
   const { showFlag } = useFlags();
+  const { user } = useAuth();
+  const router = useRouter();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     if (selectedTab === 0) {
       setFormFields({ ...formFields, ...data });
       setSelectedTab(1);
     } else if (selectedTab === 1) {
       setFormFields({ ...formFields, ...data });
       setSelectedTab(2);
-    } else {
-      firebaseClient
+    } else if (selectedTab === 2) {
+      setFormFields({ ...formFields, ...data });
+      await firebaseClient
         .firestore()
         .collection('charities')
         .add({
-          name: data['charity-name'],
-          tag: data['charity-tag'],
-          type: data['charity-type'],
-          location: data['charity-location'],
-          description: data['charity-description'],
-          logo: data['charity-logo'],
-          image: data['charity-image'],
-          video: data['charity-video'] ? data['charity-video'] : null,
-          website: data['charity-website'],
-          twitter: data['charity-twitter'] ? data['charity-twitter'] : null,
-          facebook: data['charity-facebook'] ? data['charity-facebook'] : null,
-          instagram: data['charity-instagram']
-            ? data['charity-instagram']
-            : null,
-          youtube: data['charity-youtube'] ? data['charity-youtube'] : null,
+          name: formFields.name,
+          tag: formFields.tag,
+          type: formFields.type.value,
+          location: `${formFields.location.icon} ${formFields.location.name}`,
+          description: formFields.description,
+          logo: formFields.logo,
+          image: formFields.image,
+          video: formFields.video,
+          website: data.website,
+          twitter: data.twitter,
+          facebook: data.facebook,
+          instagram: data.instagram,
+          linkedin: data.linkedin,
+          youtube: data.youtube,
           verified: false,
+          votes: 0,
         })
-        .then(() => {
-          showFlag({
-            icon: <EditorSuccessIcon label="success" />,
-            appearance: 'success',
-            title: `Congratulations, you've added a new charity.`,
-            isAutoDismiss: true,
-          });
+        .then((docRef) => {
+          firebaseClient
+            .firestore()
+            .collection('users')
+            .doc(user!.uid)
+            .collection('charities')
+            .doc(new Date().toISOString())
+            .set({
+              id: docRef.id,
+              name: formFields.name,
+              tag: formFields.tag,
+              created: new Date().toISOString(),
+              verified: false,
+            })
+            .then(() => {
+              firebaseClient
+                .firestore()
+                .collection('charities')
+                .doc(docRef.id)
+                .set(
+                  {
+                    id: docRef.id,
+                  },
+                  { merge: true },
+                )
+                .then(() => {
+                  showFlag({
+                    icon: <EditorSuccessIcon label="success" />,
+                    appearance: 'success',
+                    title: `Congratulations`,
+                    description: `You've submitted ${formFields.name} to Gorgeous. Find the progress of your submission in your account.`,
+                    isAutoDismiss: true,
+                  });
+                  router.push('/account');
+                })
+                .catch((error) => {
+                  showFlag({
+                    icon: <EditorErrorIcon label="error" />,
+                    appearance: 'error',
+                    title: error.code,
+                    description: error.message,
+                    isAutoDismiss: true,
+                  });
+                });
+            })
+            .catch((error) => {
+              showFlag({
+                icon: <EditorErrorIcon label="error" />,
+                appearance: 'error',
+                title: error.code,
+                description: error.message,
+                isAutoDismiss: true,
+              });
+            });
         })
         .catch((error) => {
           showFlag({
             icon: <EditorErrorIcon label="error" />,
             appearance: 'error',
-            title: error.message,
+            title: error.code,
+            description: error.message,
             isAutoDismiss: true,
           });
         });
