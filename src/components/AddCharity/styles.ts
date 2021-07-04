@@ -94,6 +94,9 @@ export const Container = styled.div`
     max-width: 500px;
     width: 100%;
   }
+  label {
+    color: var(--color-text-primary);
+  }
   footer {
     @media (max-width: 567px) {
       flex-direction: column;
