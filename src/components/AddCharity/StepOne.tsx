@@ -15,11 +15,15 @@ interface OptionType {
 }
 
 const charityTypes: Array<OptionType> = [
-  { label: 'blue', value: 'blue' },
-  { label: 'red', value: 'red' },
+  { label: 'charity', value: 'Charity' },
+  { label: 'crowdfund', value: 'Crownfund' },
 ];
 
-const StepOne: FC = () => {
+type Props = {
+  formFields: any;
+};
+
+const StepOne: FC<Props> = ({ formFields }) => {
   return (
     <Container>
       <div>
@@ -27,14 +31,19 @@ const StepOne: FC = () => {
           name="charity-name"
           label="Charity name"
           isRequired
-          defaultValue=""
+          defaultValue={formFields ? formFields['charity-name'] : undefined}
         >
           {({ fieldProps }) => (
             <Textfield placeholder="Name of charity" {...fieldProps} />
           )}
         </Field>
 
-        <Field name="charity-tag" label="Tag line" isRequired defaultValue="">
+        <Field
+          name="charity-tag"
+          label="Tag line"
+          isRequired
+          defaultValue={formFields ? formFields['charity-tag'] : undefined}
+        >
           {({ fieldProps }) => (
             <Textfield
               maxLength={40}
@@ -48,7 +57,7 @@ const StepOne: FC = () => {
           name="charity-type"
           label="Charity type"
           isRequired
-          defaultValue={null}
+          defaultValue={formFields ? formFields['charity-type'] : undefined}
         >
           {({ fieldProps }) => (
             <Select
@@ -63,7 +72,7 @@ const StepOne: FC = () => {
           name="charity-location"
           label="Location"
           isRequired
-          defaultValue={null}
+          defaultValue={formFields ? formFields['charity-location'] : undefined}
         >
           {({ fieldProps }) => (
             <CountrySelect placeholder="Location of Charity" {...fieldProps} />
@@ -74,7 +83,9 @@ const StepOne: FC = () => {
           name="charity-description"
           label="Description"
           isRequired
-          defaultValue=""
+          defaultValue={
+            formFields ? formFields['charity-description'] : undefined
+          }
         >
           {({ fieldProps }) => (
             <TextArea

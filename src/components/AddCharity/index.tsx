@@ -11,18 +11,23 @@ import { Wrapper } from './styles';
 
 const AddCharity: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [formFields, setFormFields] = useState({});
 
-  const onSubmit = () => {
+  const onSubmit = (data: any) => {
     if (selectedTab === 0) {
+      setFormFields({ ...formFields, ...data });
       setSelectedTab(1);
     } else if (selectedTab === 1) {
+      setFormFields({ ...formFields, ...data });
       setSelectedTab(2);
     }
   };
 
+  console.log(formFields);
+
   return (
     <Wrapper>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={(data) => onSubmit(data)}>
         {({ formProps }) => (
           <form {...formProps} name="add-charity">
             <Tabs
@@ -47,13 +52,13 @@ const AddCharity: FC = () => {
                 </Tab>
               </TabList>
               <TabPanel>
-                <StepOne />
+                <StepOne formFields={formFields} />
               </TabPanel>
               <TabPanel>
-                <StepTwo setSelectedTab={setSelectedTab}/>
+                <StepTwo formFields={formFields} setSelectedTab={setSelectedTab} />
               </TabPanel>
               <TabPanel>
-                <StepThree setSelectedTab={setSelectedTab}/>
+                <StepThree formFields={formFields} setSelectedTab={setSelectedTab} />
               </TabPanel>
             </Tabs>
           </form>

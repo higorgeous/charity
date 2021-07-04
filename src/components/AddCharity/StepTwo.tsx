@@ -11,19 +11,19 @@ import LogoPicker from './LogoPicker';
 import { Container, Button } from './styles';
 
 type Props = {
+  formFields: any;
   setSelectedTab: any;
 };
 
-const StepTwo: FC<Props> = ({ setSelectedTab }) => {
+const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
   const [logoOpen, setLogoOpen] = useState(false);
   const [
-    imagePreviewSourceViaFileAPI,
     setImagePreviewSourceViaFileAPI,
   ] = useState('');
   const [
     imagePreviewSourceViaDataURIAPI,
     setImagePreviewSourceViaDataURIAPI,
-  ] = useState('');
+  ] = useState(formFields ? formFields['charity-logo'] : undefined);
 
   return (
     <ModalTransition>

@@ -8,6 +8,7 @@ import { Field, FormFooter } from '../Library/Form';
 import { Container, Button } from './styles';
 
 type Props = {
+  formFields: any;
   setSelectedTab: any;
 };
 
