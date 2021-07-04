@@ -47,7 +47,7 @@ const StepOne: FC<Props> = ({ formFields }) => {
           {({ fieldProps }) => (
             <Textfield
               maxLength={40}
-              placeholder="Introduce the charity"
+              placeholder="Introduce the charity (max. 40 characters)"
               {...fieldProps}
             />
           )}

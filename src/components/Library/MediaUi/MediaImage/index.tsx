@@ -5,6 +5,7 @@ import { ImageComponent } from './styled';
 import { getCssFromImageOrientation, isRotated } from '../ImageMetaData';
 
 export interface MediaImageProps {
+  noImage: boolean;
   dataURI: string;
   alt?: string;
   crop?: boolean;
@@ -25,6 +26,7 @@ export interface MediaImageState {
 
 export class MediaImage extends Component<MediaImageProps, MediaImageState> {
   static defaultProps: Partial<MediaImageProps> = {
+    noImage: false,
     crop: true,
     stretch: false,
   };

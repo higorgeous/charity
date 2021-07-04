@@ -2,55 +2,55 @@ import React, { useState } from 'react';
 
 import { ModalTransition } from '@atlaskit/modal-dialog';
 
-import { AvatarPickerDialog } from '../Library/LogoPicker';
+import { AvatarPickerDialog } from '../Library/ImagePicker';
 
 type Props = {
-  logoOpen: boolean;
-  setLogoOpen: any;
+  imageOpen: boolean;
+  setImageOpen: any;
   setImagePreviewSourceViaFileAPI: any;
   imagePreviewSourceViaDataURIAPI: string;
   setImagePreviewSourceViaDataURIAPI: any;
 };
 
-const LogoPicker = ({
-  logoOpen,
-  setLogoOpen,
+const ImagePicker = ({
+  imageOpen,
+  setImageOpen,
   setImagePreviewSourceViaFileAPI,
   imagePreviewSourceViaDataURIAPI,
   setImagePreviewSourceViaDataURIAPI,
 }: Props) => {
-  const [logoLoading, setLogoLoading] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
   const saveDataURI = (dataURI: any) => {
     setImagePreviewSourceViaDataURIAPI(dataURI);
-    setLogoOpen(false);
-    setLogoLoading(false);
+    setImageOpen(false);
+    setImageLoading(false);
   };
 
   const saveFileAndCrop = (file: File) => {
     const fileURL = URL.createObjectURL(file);
     setImagePreviewSourceViaFileAPI(fileURL);
-    setLogoOpen(false);
-    setLogoLoading(false);
+    setImageOpen(false);
+    setImageLoading(false);
   };
 
   return (
     <ModalTransition>
-      {logoOpen && (
+      {imageOpen && (
         <AvatarPickerDialog
           onAvatarPicked={(selectedAvatar) => {
             saveDataURI(selectedAvatar.dataURI);
           }}
           onImagePicked={(selectedImage) => {
-            setLogoLoading(true);
+            setImageOpen(true);
             saveFileAndCrop(selectedImage);
           }}
           onImagePickedDataURI={(exportedImg) => {
-            setLogoLoading(true);
+            setImageOpen(true);
             saveDataURI(exportedImg);
           }}
           imageSource={imagePreviewSourceViaDataURIAPI}
-          onCancel={() => setLogoOpen(false)}
-          isLoading={logoLoading}
+          onCancel={() => setImageOpen(false)}
+          isLoading={imageLoading}
           avatars={[]}
         />
       )}
@@ -58,4 +58,4 @@ const LogoPicker = ({
   );
 };
 
-export default LogoPicker;
+export default ImagePicker;

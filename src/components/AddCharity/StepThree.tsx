@@ -12,7 +12,7 @@ type Props = {
   setSelectedTab: any;
 };
 
-const StepThree: FC<Props> = ({ setSelectedTab }) => {
+const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
   return (
     <Container>
       <div>
@@ -20,32 +20,48 @@ const StepThree: FC<Props> = ({ setSelectedTab }) => {
           name="charity-website"
           label="Website"
           isRequired
-          defaultValue=""
+          defaultValue={formFields ? formFields['charity-website'] : ''}
         >
           {({ fieldProps }) => (
             <Textfield placeholder="Website address" {...fieldProps} />
           )}
         </Field>
 
-        <Field name="charity-facebook" label="Facebook" defaultValue="">
+        <Field
+          name="charity-facebook"
+          label="Facebook"
+          defaultValue={formFields ? formFields['charity-facebook'] : ''}
+        >
           {({ fieldProps }) => (
             <Textfield placeholder="Facebook profile link" {...fieldProps} />
           )}
         </Field>
 
-        <Field name="charity-twitter" label="Twitter" defaultValue="">
+        <Field
+          name="charity-twitter"
+          label="Twitter"
+          defaultValue={formFields ? formFields['charity-twitter'] : ''}
+        >
           {({ fieldProps }) => (
             <Textfield placeholder="Twitter profile link" {...fieldProps} />
           )}
         </Field>
 
-        <Field name="charity-instagram" label="Instagram" defaultValue="">
+        <Field
+          name="charity-instagram"
+          label="Instagram"
+          defaultValue={formFields ? formFields['charity-instagram'] : ''}
+        >
           {({ fieldProps }) => (
             <Textfield placeholder="Instagram profile link" {...fieldProps} />
           )}
         </Field>
 
-        <Field name="charity-youtube" label="YouTube" defaultValue="">
+        <Field
+          name="charity-youtube"
+          label="YouTube"
+          defaultValue={formFields ? formFields['charity-youtube'] : ''}
+        >
           {({ fieldProps }) => (
             <Textfield placeholder="YouTube channel link" {...fieldProps} />
           )}

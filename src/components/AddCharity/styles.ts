@@ -90,6 +90,10 @@ export const Container = styled.div`
   #image {
     cursor: pointer;
   }
+  & > div {
+    max-width: 500px;
+    width: 100%;
+  }
   footer {
     @media (max-width: 567px) {
       flex-direction: column;

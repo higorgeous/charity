@@ -16,6 +16,10 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       pointerEvents: 'all',
       cursor: isDisabled ? 'not-allowed' : undefined,
     }),
+    input: (css) => ({
+      ...css,
+      color: 'var(--color-color-primary)',
+    }),
     control: (css, { isFocused, isDisabled }) => {
       let borderColor = isFocused
         ? 'var(--color-input-disabled)'

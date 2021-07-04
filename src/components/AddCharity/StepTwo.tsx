@@ -8,6 +8,8 @@ import Textfield from '../Library/Textfield';
 import { Field, FormFooter } from '../Library/Form';
 
 import LogoPicker from './LogoPicker';
+import ImagePicker from './ImagePicker';
+
 import { Container, Button } from './styles';
 
 type Props = {
@@ -17,6 +19,17 @@ type Props = {
 
 const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
   const [logoOpen, setLogoOpen] = useState(false);
+  const [imageOpen, setImageOpen] = useState(false);
+
+  const [
+    logoPreviewSourceViaFileAPI,
+    setLogoPreviewSourceViaFileAPI,
+  ] = useState('');
+  const [
+    logoPreviewSourceViaDataURIAPI,
+    setLogoPreviewSourceViaDataURIAPI,
+  ] = useState(formFields ? formFields['charity-logo'] : '');
+
   const [
     imagePreviewSourceViaFileAPI,
     setImagePreviewSourceViaFileAPI,
@@ -24,10 +37,10 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
   const [
     imagePreviewSourceViaDataURIAPI,
     setImagePreviewSourceViaDataURIAPI,
-  ] = useState(formFields ? formFields['charity-logo'] : '');
+  ] = useState(formFields ? formFields['charity-image'] : '');
 
   return (
-    <ModalTransition>
+    <>
       <Container>
         <div>
           <Field
@@ -35,7 +48,7 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
             label="Logo"
             id="image"
             isRequired
-            defaultValue={imagePreviewSourceViaDataURIAPI}
+            defaultValue={logoPreviewSourceViaDataURIAPI}
           >
             {({ fieldProps }) => (
               <Textfield
@@ -70,9 +83,11 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
               <Textfield
                 isReadOnly
                 placeholder="Upload a preview image"
+                onClick={() => setImageOpen(true)}
                 {...fieldProps}
                 elemAfterInput={
                   <div
+                    onClick={() => setImageOpen(true)}
                     style={{
                       paddingRight: '6px',
                       lineHeight: '100%',
@@ -86,6 +101,18 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
             )}
           </Field>
 
+          <Field
+            name="charity-video"
+            label="YouTube video"
+            defaultValue={formFields ? formFields['charity-video'] : ''}
+          >
+            {({ fieldProps }) => (
+              <Textfield
+                placeholder="Link to a YouTube video"
+                {...fieldProps}
+              />
+            )}
+          </Field>
           <FormFooter>
             <Button
               id="back"
@@ -110,11 +137,18 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
       <LogoPicker
         logoOpen={logoOpen}
         setLogoOpen={setLogoOpen}
+        setImagePreviewSourceViaFileAPI={setLogoPreviewSourceViaFileAPI}
+        setImagePreviewSourceViaDataURIAPI={setLogoPreviewSourceViaDataURIAPI}
+        imagePreviewSourceViaDataURIAPI={logoPreviewSourceViaDataURIAPI}
+      />
+      <ImagePicker
+        imageOpen={imageOpen}
+        setImageOpen={setImageOpen}
         setImagePreviewSourceViaFileAPI={setImagePreviewSourceViaFileAPI}
         setImagePreviewSourceViaDataURIAPI={setImagePreviewSourceViaDataURIAPI}
         imagePreviewSourceViaDataURIAPI={imagePreviewSourceViaDataURIAPI}
       />
-    </ModalTransition>
+    </>
   );
 };
 

@@ -16,23 +16,21 @@ import ImageCropper from '../ImageCropper';
 
 import {
   Container,
-  SliderContainer,
   FileInput,
   ImageUploader,
   DragZone,
   DragZoneImage,
   DragZoneText,
-  SelectionBlocker,
   PaddedBreak,
-  ImageBg,
 } from './styles';
 import { uploadPlaceholder, errorIcon } from './images';
 import { fileSizeMb } from '../util';
 import { MAX_SIZE_MB, ACCEPT } from '../AvatarPickerDialog';
 import { Viewport, renderViewport } from '../Viewport';
-import { Slider } from './slider';
 import {
   CONTAINER_SIZE,
+  CONTAINER_HEIGHT,
+  CONTAINER_WIDTH,
   CONTAINER_PADDING,
 } from '../AvatarPickerDialog/layout-const';
 
@@ -42,8 +40,8 @@ export interface LoadParameters {
 export type OnLoadHandler = (params: LoadParameters) => void;
 
 export const viewport = new Viewport(
-  CONTAINER_SIZE,
-  CONTAINER_SIZE,
+  CONTAINER_WIDTH,
+  CONTAINER_HEIGHT,
   CONTAINER_PADDING,
 );
 
@@ -207,9 +205,9 @@ export class ImageNavigator extends Component<Props, State> {
   }
 
   validateFile(imageFile: File): string | null {
-    if (ACCEPT.indexOf(imageFile.type) === -1) {
+    if (ACCEPT.indexOf(imageFile!.type) === -1) {
       return 'Could not load image, the format is invalid.';
-    } else if (fileSizeMb(imageFile) > MAX_SIZE_MB) {
+    } else if (fileSizeMb(imageFile!) > MAX_SIZE_MB) {
       return 'Image is too large, must be no larger than 10 Mb';
     }
     return null;
@@ -300,7 +298,7 @@ export class ImageNavigator extends Component<Props, State> {
     const { errorMessage, isLoading } = this.props;
     const showBorder = !isLoading && !errorMessage;
     const dropZoneImageSrc = errorMessage ? errorIcon : uploadPlaceholder;
-    const dragZoneText = errorMessage || 'Drag and drop your logo here';
+    const dragZoneText = errorMessage || 'Drag and drop your image here';
     const dragZoneAlt = errorMessage || 'Upload image';
 
     return (
@@ -336,7 +334,7 @@ export class ImageNavigator extends Component<Props, State> {
           <div>
             <PaddedBreak>{errorMessage ? 'Try again' : 'or'}</PaddedBreak>
             <Button onClick={this.onUploadButtonClick} isDisabled={isLoading}>
-              Upload a logo
+              Upload an image
               <FileInput
                 type="file"
                 name="image-input"
@@ -358,14 +356,12 @@ export class ImageNavigator extends Component<Props, State> {
   };
 
   renderImageCropper(dataURI: string) {
-    const { scale, isDragging, imageOrientation, viewport } = this.state;
+    const { imageOrientation, viewport } = this.state;
     const { onImageError } = this.props;
     const { onDragStarted, onImageLoaded, onRemoveImage } = this;
     const { itemBounds } = viewport;
-
     return (
-      <div>
-        <ImageBg />
+      <div style={{ width: '100%', height: '350px', overflow: 'hidden' }}>
         <ImageCropper
           imageSource={dataURI}
           imageOrientation={imageOrientation}
@@ -380,10 +376,6 @@ export class ImageNavigator extends Component<Props, State> {
           onRemoveImage={onRemoveImage}
           onImageError={onImageError}
         />
-        <SliderContainer>
-          <Slider value={scale} onChange={this.onScaleChange} />
-        </SliderContainer>
-        {isDragging ? <SelectionBlocker /> : null}
       </div>
     );
   }
