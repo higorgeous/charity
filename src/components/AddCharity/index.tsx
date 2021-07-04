@@ -149,8 +149,6 @@ const AddCharity: FC = () => {
     }
   };
 
-  console.log(formFields);
-
   return (
     <Wrapper>
       <Form onSubmit={(data) => onSubmit(data)}>

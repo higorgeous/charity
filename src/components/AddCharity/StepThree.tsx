@@ -56,7 +56,6 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
         <Field
           name="linkedin"
           label="LinkedIn"
-          isRequired
           defaultValue={formFields.linkedin}
         >
           {({ fieldProps }) => (
