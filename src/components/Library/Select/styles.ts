@@ -86,7 +86,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
     },
     menu: (css) => ({
       ...css,
-      backgroundColor: 'var(--color-select-background)',
+      backgroundColor: '#ffffff',
       borderRadius: 4,
       boxShadow: `0 5px 25px rgb(0 17 36 / 15%)`,
       maxWidth: `440px`,
@@ -102,7 +102,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
     }),
     clearIndicator: (css) => ({
       ...css,
-      color: 'var(--color-text-secondary)',
+      color: 'var(--color-text-primary)',
       paddingLeft: ICON_PADDING,
 
       paddingRight: ICON_PADDING,
@@ -112,7 +112,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       paddingTop: isCompact ? 0 : 6,
 
       ':hover': {
-        color: 'var(--color-text-primary)',
+        color: 'var(--color-text-secondary)',
       },
     }),
     loadingIndicator: (css) => ({
@@ -135,7 +135,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
         paddingBottom: isCompact ? 0 : 6,
         paddingTop: isCompact ? 0 : 6,
         ':hover': {
-          color: 'var(--color-text-secondary)',
+          color: 'var(--color-text-primary)',
         },
       };
     },
@@ -144,20 +144,20 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       paddingRight: paddingExcludingBorder - ICON_PADDING,
     }),
     option: (css, { isFocused, isSelected, isDisabled }) => {
-      let color;
+      let color = '#002358';
       if (isDisabled) {
-        color = 'var(--color-text-secondary)';
+        color = '#002358';
       } else if (isSelected) {
-        color = 'var(--color-text-active)';
+        color = '#002358';
       }
 
       let backgroundColor;
       if (isDisabled) {
         backgroundColor = undefined;
       } else if (isSelected) {
-        backgroundColor = 'var(--color-bg-element)';
+        backgroundColor = '#d4e1f3';
       } else if (isFocused) {
-        backgroundColor = 'var(--color-bg-element)';
+        backgroundColor = '#d4e1f3';
       }
 
       const cursor = isDisabled ? 'not-allowed' : undefined;
@@ -188,7 +188,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
       ...css,
       borderRadius: '2px',
       backgroundColor: 'var(--color-bg-element)',
-      color: 'var(--color-text-primary)',
+      color: '#002358',
       maxWidth: '100%',
     }),
     multiValueLabel: (css) => ({
@@ -205,7 +205,7 @@ export default function baseStyles<Option, IsMulti extends boolean>(
     ) => ({
       ...css,
       backgroundColor: isFocused && 'var(--color-text-error)',
-      color: isFocused && 'var(--color-texy-primary)',
+      color: isFocused && 'var(--color-text-primary)',
       paddingLeft: '2px',
       paddingRight: '2px',
       borderRadius: '0px 2px 2px 0px',

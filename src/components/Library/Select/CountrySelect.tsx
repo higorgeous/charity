@@ -16,7 +16,6 @@ const labelCSS = () => ({
   alignItems: 'center',
   display: 'flex',
   lineHeight: 1.2,
-  color: `var(--color-text-primary)`,
 });
 
 const flagCSS = () => ({
@@ -65,6 +64,8 @@ const CountrySelect = (props: any) => (
       container: (css) => ({ ...css }),
       dropdownIndicator: (css) => ({ ...css, paddingLeft: 0 }),
       menu: (css) => ({ ...css, width: 300 }),
+      group: (css) => ({ ...css, paddingTop: 0, paddingBottom: 0 }),
+      groupHeading: (css) => ({ ...css, display: 'none' }),
     }}
     {...props}
   />

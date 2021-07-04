@@ -16,6 +16,7 @@ const LogoPicker = ({
   logoOpen,
   setLogoOpen,
   setImagePreviewSourceViaFileAPI,
+  imagePreviewSourceViaDataURIAPI,
   setImagePreviewSourceViaDataURIAPI,
 }: Props) => {
   const [logoLoading, setLogoLoading] = useState(false);
@@ -47,6 +48,7 @@ const LogoPicker = ({
             setLogoLoading(true);
             saveDataURI(exportedImg);
           }}
+          imageSource={imagePreviewSourceViaDataURIAPI}
           onCancel={() => setLogoOpen(false)}
           isLoading={logoLoading}
           avatars={[]}

@@ -2,13 +2,14 @@ import styled from '@emotion/styled';
 import { keyframes, css } from '@emotion/react';
 
 import { AVATAR_DIALOG_WIDTH } from '../AvatarPickerDialog/layout-const';
+import { checkeredBgLight } from './images';
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 `;
 
-const checkeredBg = 'var(--avatar-checkeredBg)';
+const checkeredBg = checkeredBgLight;
 
 export const ImageBg = styled.div`
   position: absolute;
@@ -42,7 +43,7 @@ export const SliderContainer = styled.div`
     box-sizing: content-box;
     padding: 0;
   }
-  background-color: var(--color-bg-primary);
+  background-color: #ffffff;
 `;
 
 export const FileInput = styled.input`
@@ -58,7 +59,7 @@ export const ImageUploader = styled.div`
 `;
 
 const droppingAnimation = css`
-  border-color: var(--color-bg-primary);
+  border-color: #002358;
   animation: ${spin} 8s linear infinite;
 `;
 
@@ -83,7 +84,7 @@ export const DragZone = styled.div<any>`
     ${(props: any) =>
       props.showBorder &&
       css`
-        border: 2px dashed var(--color-bg-primary);
+        border: 2px dashed #002358;
       `}
     ${(props: any) =>
       !props.showBorder &&
@@ -102,7 +103,7 @@ export const DragZone = styled.div<any>`
   ${(props: DragZoneProps) =>
     (props.isDroppingFile &&
       css`
-        background-color: var(--color-bg-primary);
+        background-color: #d4e1f3;
         &:after {
           ${droppingAnimation}
         }
@@ -122,7 +123,7 @@ export interface DragZoneTextProps {
 
 export const DragZoneText = styled.div<any>`
   text-align: center;
-  color: var(--color-text-primary);
+  color: #002358;
   ${(props: DragZoneTextProps) =>
     props.isFullSize
       ? `width: ${AVATAR_DIALOG_WIDTH - 8 * 8}px`

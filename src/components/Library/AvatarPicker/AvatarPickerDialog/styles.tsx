@@ -25,7 +25,7 @@ export const CroppingWrapper = styled.div`
 export const ModalFooterButtons = styled.div`
   text-align: right;
   width: 100%;
-  button:first-child {
+  button:first-of-type {
     margin-right: 3px;
   }
 `;

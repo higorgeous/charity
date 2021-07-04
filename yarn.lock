@@ -161,7 +161,7 @@
     "@atlaskit/icon" "^21.5.0"
     "@babel/runtime" "^7.0.0"
 
-"@atlaskit/icon@^21.0.0", "@atlaskit/icon@^21.3.0", "@atlaskit/icon@^21.4.0", "@atlaskit/icon@^21.5.0", "@atlaskit/icon@^21.6.0":
+"@atlaskit/icon@^21.0.0", "@atlaskit/icon@^21.1.0", "@atlaskit/icon@^21.3.0", "@atlaskit/icon@^21.4.0", "@atlaskit/icon@^21.5.0", "@atlaskit/icon@^21.6.0":
   version "21.6.1"
   resolved "https://registry.yarnpkg.com/@atlaskit/icon/-/icon-21.6.1.tgz#06192a5534d004cd1c006a7137845e0ff83ca26f"
   integrity sha512-LM3uvxGyrgNGaPNwgh+zxgiGobYzj7BX/mzSxxdif1lhM/UicPdkgj9xHKsl7LQLDDoGMiGMkpnddGFykHpUGA==
@@ -219,6 +219,21 @@
     "@babel/runtime" "^7.0.0"
     "@compiled/react" "^0.6.0"
 
+"@atlaskit/media-avatar-picker@^22.1.7":
+  version "22.1.7"
+  resolved "https://registry.yarnpkg.com/@atlaskit/media-avatar-picker/-/media-avatar-picker-22.1.7.tgz#91a2eb0b07e01f5b0a6cc6b8f1e74df21f60fbe9"
+  integrity sha512-ek8VXuI7bL4S508M0l7pb/5LqOIGf+62B7lWh0kXxfS9CyyHG3F5uPCFTRWB47dEcMiYmE33pEk6p4k/pXEDXA==
+  dependencies:
+    "@atlaskit/button" "^15.1.0"
+    "@atlaskit/icon" "^21.1.0"
+    "@atlaskit/media-ui" "^16.1.0"
+    "@atlaskit/modal-dialog" "^11.5.0"
+    "@atlaskit/range" "^5.0.0"
+    "@atlaskit/spinner" "^15.0.0"
+    "@atlaskit/theme" "^11.2.0"
+    "@babel/runtime" "^7.0.0"
+    exenv "^1.2.2"
+
 "@atlaskit/media-common@^2.8.0":
   version "2.8.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/media-common/-/media-common-2.8.0.tgz#f497cb3afd292fbcfd86a604e1ce66b150aaee90"
@@ -230,7 +245,7 @@
     "@atlaskit/section-message" "^6.0.0"
     "@babel/runtime" "^7.0.0"
 
-"@atlaskit/media-ui@^16.3.0":
+"@atlaskit/media-ui@^16.1.0", "@atlaskit/media-ui@^16.3.0":
   version "16.3.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/media-ui/-/media-ui-16.3.0.tgz#cbdc84cabd3a7455b15ade45cbc5fb329ef927db"
   integrity sha512-XSJozqJ4lPbmoTiGq+N0hjW6oDC7hLEPAKiRK/DwyHbMtuU/j6kAR8XXVHPxKrAi/HKkkhivxPNqKfzUfxMpww==
@@ -275,7 +290,7 @@
     "@babel/runtime" "^7.0.0"
     "@emotion/core" "^10.0.9"
 
-"@atlaskit/modal-dialog@^11.7.0":
+"@atlaskit/modal-dialog@^11.5.0", "@atlaskit/modal-dialog@^11.7.0":
   version "11.7.0"
   resolved "https://registry.yarnpkg.com/@atlaskit/modal-dialog/-/modal-dialog-11.7.0.tgz#0cd265a64c33a380baece227876819ae57108c05"
   integrity sha512-Pvm4a8x5qYSqPV4u57KQ5UO/sOXEIGqQ6fPrIewlDUSaSqyxK+xkL/v+oiHFbR/1I6+CxiQk+0hTDUtao3FVbQ==
@@ -341,7 +356,7 @@
     "@atlaskit/theme" "^11.2.0"
     "@babel/runtime" "^7.0.0"
 
-"@atlaskit/range@^5.0.8":
+"@atlaskit/range@^5.0.0", "@atlaskit/range@^5.0.8":
   version "5.0.8"
   resolved "https://registry.yarnpkg.com/@atlaskit/range/-/range-5.0.8.tgz#84cd44179f4fda4ca0cc0a58075a4324f74eb31b"
   integrity sha512-rAsHVrExKts9eIAwekNLDq2zDh9FmVf4xTZ8KH9rrLu6pYemX3XS2cBvGO5IHIjXw0BGuey22XlOGE2wFykF3w==
@@ -1249,6 +1264,64 @@
   resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.4.5.tgz#c75dcc453f7a9381de3f9b932366c2457887184c"
   integrity sha512-pu675yvBGFhAHD8D7uj7C0NaHqDxD7mlgmLM8ziyYL4kYH79fil7rJ6U5X2oaKxoyRk3rxxb9k1fG0CCc7CquA==
 
+"@formatjs/ecma402-abstract@1.9.4":
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.9.4.tgz#797ae6c407fb5a0d09023a60c86f19aca1958c5e"
+  integrity sha512-ePJXI7tWC9PBxQxS7jtbkCLGVmpC8MH8n9Yjmg8dsh9wXK9svu7nAbq76Oiu5Zb+5GVkLkeTVerlSvHCbNImlA==
+  dependencies:
+    tslib "^2.1.0"
+
+"@formatjs/fast-memoize@1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@formatjs/fast-memoize/-/fast-memoize-1.1.1.tgz#3006b58aca1e39a98aca213356b42da5d173f26b"
+  integrity sha512-mIqBr5uigIlx13eZTOPSEh2buDiy3BCdMYUtewICREQjbb4xarDiVWoXSnrERM7NanZ+0TAHNXSqDe6HpEFQUg==
+
+"@formatjs/icu-messageformat-parser@2.0.7":
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/@formatjs/icu-messageformat-parser/-/icu-messageformat-parser-2.0.7.tgz#326efc14d9409cdbf1b7d3f42e0eed273c95c663"
+  integrity sha512-gduYfh/YdBTmb1XzLueNaofiGZVMrkaDg0RSa0GNztKWs4QXIRS+28cjcuWNpV0q5S8aiLMkP7SHQpZKnPCHLw==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.9.4"
+    "@formatjs/icu-skeleton-parser" "1.2.8"
+    tslib "^2.1.0"
+
+"@formatjs/icu-skeleton-parser@1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@formatjs/icu-skeleton-parser/-/icu-skeleton-parser-1.2.8.tgz#ddf6c1f7274244b71237fad49a67dd97e81f5c0a"
+  integrity sha512-KLSSAA7Q2Uv7msij8saaOE5rpsHK/2WkfS3737JnDyVTFOYe8l2OarIBUoTC5gi1BnCgiN/1icZlqXwyUX6obA==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.9.4"
+    tslib "^2.1.0"
+
+"@formatjs/intl-displaynames@5.1.6":
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-displaynames/-/intl-displaynames-5.1.6.tgz#b2905cff3802c4a703cf0ce1da10083e37652716"
+  integrity sha512-s0eDyQFM2gQIPgn+MyaH+UcCvp6ui2ft9UW1gsIkjBkaprRlzKMd3fjxcUFO/I7oyXXA6FYR4qHR8u1I0+PvXA==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.9.4"
+    tslib "^2.1.0"
+
+"@formatjs/intl-listformat@6.2.6":
+  version "6.2.6"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-listformat/-/intl-listformat-6.2.6.tgz#4e3d6580df3b6ef737e5d7ce85bae7e065518ff9"
+  integrity sha512-6FMdQY1+QKqJW5IhsVPFuEaR/uRiBKP+Y1oDvamZKzDfJ2vQmk9jqSF51VztlZH8XSfdO0IgvBzeRPHahKChQA==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.9.4"
+    tslib "^2.1.0"
+
+"@formatjs/intl@1.13.2":
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.13.2.tgz#4bfa02f9447152a19a2cbc4184295c740ebb85ab"
+  integrity sha512-aonTXXaI/Guqr4t87m/XWfmgE9aPefDTLRnCwadxBDkUHw1/HQeUV+lp/3BgiPZfemIdBq9UgdigDCwrpEwrTA==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.9.4"
+    "@formatjs/fast-memoize" "1.1.1"
+    "@formatjs/icu-messageformat-parser" "2.0.7"
+    "@formatjs/intl-displaynames" "5.1.6"
+    "@formatjs/intl-listformat" "6.2.6"
+    intl-messageformat "9.7.1"
+    tslib "^2.1.0"
+
 "@google-cloud/common@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/common/-/common-3.6.0.tgz#c2f6da5f79279a4a9ac7c71fc02d582beab98e8b"
@@ -1500,6 +1573,11 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
+"@types/blueimp-load-image@^5.14.2":
+  version "5.14.2"
+  resolved "https://registry.yarnpkg.com/@types/blueimp-load-image/-/blueimp-load-image-5.14.2.tgz#4c95a4a87e9e9dbb3fab3411d32bf927ecb166e9"
+  integrity sha512-H3jcOj1AY9kIAWdwTIT1mqnJQDBqNXSc9vSI2HOaqHLrclxwraLB/3dWDrVytm7Lsj+YBm1LW1K4/meTWM1BFA==
+
 "@types/bn.js@^4.11.5":
   version "4.11.6"
   resolved "https://registry.yarnpkg.com/@types/bn.js/-/bn.js-4.11.6.tgz#c306c70d9358aaea33cd4eda092a742b9505967c"
@@ -1582,6 +1660,14 @@
   dependencies:
     "@types/unist" "*"
 
+"@types/hoist-non-react-statics@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#1124aafe5118cb591977aeb1ceaaed1070eb039f"
+  integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+  dependencies:
+    "@types/react" "*"
+    hoist-non-react-statics "^3.3.0"
+
 "@types/js-cookie@^2.2.6":
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-2.2.6.tgz#f1a1cb35aff47bc5cfb05cb0c441ca91e914c26f"
@@ -1638,6 +1724,11 @@
   version "6.9.6"
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.6.tgz#df9c3c8b31a247ec315e6996566be3171df4b3b1"
   integrity sha512-0/HnwIfW4ki2D8L8c9GVcG5I72s9jP5GSLVF0VIXDW00kmIpA6O33G7a8n59Tmh7Nz0WUC3rSb7PTY/sdW2JzA==
+
+"@types/raf-schd@^4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/raf-schd/-/raf-schd-4.0.1.tgz#1f9e03736f277fe9c7b82102bf18570a6ee19f82"
+  integrity sha512-Ha+EnKHFIh9EKW0/XZJPUd3EGDFisEvauaBd4VVCRPKeOqUxNEc9TodiY2Zhk33XCgzJucoFEcaoNcBAPHTQ2A==
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -2138,6 +2229,11 @@ blueimp-load-image@2.19.0:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/blueimp-load-image/-/blueimp-load-image-2.19.0.tgz#b61eeac0063f371c710fdb78aebbc4d7d34f8e2e"
   integrity sha512-lc5fORHdmkGTGFW8vsr1D7pNWJA+BT0eqlhx8RpEw35VULUvEZB6tJACJXEreqbWIFJc3/jlTsGvOpf9N62WLQ==
+
+blueimp-load-image@^5.14.0:
+  version "5.14.0"
+  resolved "https://registry.yarnpkg.com/blueimp-load-image/-/blueimp-load-image-5.14.0.tgz#e8086415e580df802c33ff0da6b37a8d20205cc6"
+  integrity sha512-g5l+4dCOESBG8HkPLdGnBx8dhEwpQHaOZ0en623sl54o3bGhGMLYGc54L5cWfGmPvfKUjbsY7LOAmcW/xlkBSA==
 
 bn.js@4.11.6:
   version "4.11.6"
@@ -4167,7 +4263,7 @@ hmac-drbg@^1.0.1:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.1:
+hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.1, hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"
   integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
@@ -4339,6 +4435,15 @@ internal-slot@^1.0.3:
     get-intrinsic "^1.1.0"
     has "^1.0.3"
     side-channel "^1.0.4"
+
+intl-messageformat@9.7.1:
+  version "9.7.1"
+  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-9.7.1.tgz#98e3f6d063413196ff7b63f63bcc3975ad67e83c"
+  integrity sha512-DNiuD+/59G9qaYu3U0KgwCV0zpN9XRoUvc8izSNCNAA5MknhiIUONFE0WtScP+E/7JfoENu+CX57P/SURRbI0A==
+  dependencies:
+    "@formatjs/fast-memoize" "1.1.1"
+    "@formatjs/icu-messageformat-parser" "2.0.7"
+    tslib "^2.1.0"
 
 ipaddr.js@1.9.1:
   version "1.9.1"
@@ -5991,6 +6096,11 @@ raf-schd@^2.1.0:
   resolved "https://registry.yarnpkg.com/raf-schd/-/raf-schd-2.1.2.tgz#ec622b5167f2912089f054dc03ebd5bcf33c8f62"
   integrity sha512-Orl0IEvMtUCgPddgSxtxreK77UiQz4nPYJy9RggVzu4mKsZkQWiAaG1y9HlYWdvm9xtN348xRaT37qkvL/+A+g==
 
+raf-schd@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/raf-schd/-/raf-schd-4.0.3.tgz#5d6c34ef46f8b2a0e880a8fcdb743efc5bfdbc1a"
+  integrity sha512-tQkJl2GRWh83ui2DiPTJz9wEiMN20syf+5oKfB03yYP7ioZcJwsIK8FjrtLwH1m7C7e+Tt2yYBlrOpdT+dyeIQ==
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -6083,6 +6193,21 @@ react-input-autosize@^3.0.0:
   integrity sha512-nL9uS7jEs/zu8sqwFE5MAPx6pPkNAriACQ2rGLlqmKr2sPGtN7TXTyDdQt4lbNXVx7Uzadb40x8qotIuru6Rhg==
   dependencies:
     prop-types "^15.5.8"
+
+react-intl@^5.20.4:
+  version "5.20.4"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.20.4.tgz#e458384a94af86a8c542880d7fa4c154bea683ca"
+  integrity sha512-lYUL8hWkRHbpVtedGSjpQ1kK/x2AAGZHGgOHsU0SFDufHo2aS7xdvRcaxXD3PMVDuh53KcU+vTaun+bcrwKpbA==
+  dependencies:
+    "@formatjs/ecma402-abstract" "1.9.4"
+    "@formatjs/icu-messageformat-parser" "2.0.7"
+    "@formatjs/intl" "1.13.2"
+    "@formatjs/intl-displaynames" "5.1.6"
+    "@formatjs/intl-listformat" "6.2.6"
+    "@types/hoist-non-react-statics" "^3.3.1"
+    hoist-non-react-statics "^3.3.2"
+    intl-messageformat "9.7.1"
+    tslib "^2.1.0"
 
 react-is@17.0.2:
   version "17.0.2"

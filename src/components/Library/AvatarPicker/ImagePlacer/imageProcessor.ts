@@ -4,7 +4,7 @@ import {
   loadImage,
   getOrientation,
   FileInfo,
-} from '@atlaskit/media-ui';
+} from '../../MediaUi';
 
 import { getCanvas } from '../util';
 

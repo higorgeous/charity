@@ -4,7 +4,7 @@
  */
 import React from 'react';
 
-import { Vector2 } from '@atlaskit/media-ui';
+import { Vector2 } from '../../MediaUi';
 
 import { ContainerWrapper } from './styles';
 

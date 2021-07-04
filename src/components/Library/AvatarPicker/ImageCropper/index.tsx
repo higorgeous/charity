@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import CrossIcon from '@atlaskit/icon/glyph/cross';
-import { MediaImage } from '@atlaskit/media-ui';
+import { MediaImage } from '../../MediaUi';
 
 import { isImageRemote } from './isImageRemote';
 import {

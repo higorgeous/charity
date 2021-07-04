@@ -1,4 +1,4 @@
-import { isRotated } from '@atlaskit/media-ui';
+import { isRotated } from '../../MediaUi';
 
 import { CONTAINER_PADDING } from './styles';
 import { getCanvas } from '../util';

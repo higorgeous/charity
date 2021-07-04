@@ -39,7 +39,7 @@ const Mask = styled.div`
   bottom: ${CONTAINER_PADDING}px;
   left: ${CONTAINER_PADDING}px;
   right: ${CONTAINER_PADDING}px;
-  box-shadow: 0 0 0 100px var(--color-bg-primary);
+  box-shadow: 0 0 0 100px #ffffff;
 `;
 
 export const RectMask = styled(Mask)`
@@ -71,7 +71,7 @@ export const RemoveImageButton = styled.button`
   border: none;
   cursor: pointer;
   padding: 0;
-  color: var(--color-text-primary);
+  color: #002358;
   svg {
     position: absolute;
     top: 4px;
@@ -79,6 +79,6 @@ export const RemoveImageButton = styled.button`
   }
 
   &:hover {
-    background-color: var(--color-bg-primary);
+    background-color: #d4e1f3;
   }
 `;

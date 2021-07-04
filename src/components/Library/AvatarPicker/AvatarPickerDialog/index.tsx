@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react';
 
 import ModalDialog, { ModalFooter } from '@atlaskit/modal-dialog';
 import { CustomThemeButton as Button } from '@atlaskit/button';
-import { fileToDataURI, dataURItoFile } from '@atlaskit/media-ui';
+
+import { fileToDataURI, dataURItoFile } from '../../MediaUi';
 
 import { Avatar } from '../AvatarList';
 import ImageNavigator, { CropProperties } from '../ImageNavigator';
@@ -165,7 +166,7 @@ export class AvatarPickerDialog extends PureComponent<
   };
 
   footerContent = () => {
-    const { primaryButtonText, onCancel } = this.props;
+    const { onCancel } = this.props;
     const { onSaveClick, isDisabled } = this;
     return (
       <ModalFooter>
@@ -175,7 +176,7 @@ export class AvatarPickerDialog extends PureComponent<
             onClick={onSaveClick}
             isDisabled={isDisabled}
           >
-            {primaryButtonText}
+            Save
           </Button>
           <Button appearance="default" onClick={onCancel}>
             Cancel

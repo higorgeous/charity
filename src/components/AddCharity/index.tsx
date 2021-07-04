@@ -1,193 +1,65 @@
 import { FC, useState } from 'react';
-import { ModalTransition } from '@atlaskit/modal-dialog';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
-import ChevronRight from '@components/CTA/ChevronRight';
-import TextArea from '@components/Library/Textarea';
+import Form from '../Library/Form';
 
-import Textfield from '../Library/Textfield';
-import Form, { Field, FormFooter } from '../Library/Form';
-import Select, { CountrySelect, ValueType } from '../Library/Select';
+import StepOne from './StepOne';
+import StepTwo from './StepTwo';
+import StepThree from './StepThree';
 
-import LogoPicker from './LogoPicker';
-import { Wrapper, Container, Button } from './styles';
-
-interface OptionType {
-  label: string;
-  value: string;
-}
-
-const charityTypes: Array<OptionType> = [
-  { label: 'blue', value: 'blue' },
-  { label: 'red', value: 'red' },
-];
+import { Wrapper } from './styles';
 
 const AddCharity: FC = () => {
-  const [logoOpen, setLogoOpen] = useState(false);
+  const [selectedTab, setSelectedTab] = useState(0);
+
+  const onSubmit = () => {
+    if (selectedTab === 0) {
+      setSelectedTab(1);
+    } else if (selectedTab === 1) {
+      setSelectedTab(2);
+    }
+  };
+
   return (
-    <ModalTransition>
-      <Wrapper>
-        <Container>
-          <Form onSubmit={console.log}>
-            {({ formProps }) => (
-              <form {...formProps} name="add-charity">
-                <Field
-                  name="charity-name"
-                  label="Charity name"
-                  isRequired
-                  defaultValue=""
-                >
-                  {({ fieldProps }) => (
-                    <Textfield placeholder="Name of charity" {...fieldProps} />
-                  )}
-                </Field>
-
-                <Field
-                  name="charity-tag"
-                  label="Tag line"
-                  isRequired
-                  defaultValue=""
-                >
-                  {({ fieldProps }) => (
-                    <Textfield
-                      maxLength={40}
-                      placeholder="Up to 40 characters introducing the charity"
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <Field<ValueType<OptionType>>
-                  name="charity-type"
-                  label="Charity type"
-                  isRequired
-                  defaultValue={null}
-                >
-                  {({ fieldProps }) => (
-                    <Select
-                      options={charityTypes}
-                      placeholder="Type of charity"
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <Field<ValueType<OptionType>>
-                  name="charity-location"
-                  label="Location"
-                  isRequired
-                  defaultValue={null}
-                >
-                  {({ fieldProps }) => (
-                    <CountrySelect
-                      placeholder="Location of Charity"
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <Field<string, HTMLTextAreaElement>
-                  name="charity-description"
-                  label="Description"
-                  isRequired
-                  defaultValue=""
-                >
-                  {({ fieldProps }) => (
-                    <TextArea
-                      minimumRows={5}
-                      placeholder="Desciption about charity. Add mission, values and goals."
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <Field
-                  name="charity-logo"
-                  label="Logo"
-                  isRequired
-                  defaultValue=""
-                >
-                  {({ fieldProps }) => (
-                    <Textfield
-                      readOnly
-                      onClick={() => setLogoOpen(true)}
-                      placeholder="Click to upload a logo"
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <Field
-                  name="charity-website"
-                  label="Website"
-                  isRequired
-                  defaultValue=""
-                >
-                  {({ fieldProps }) => (
-                    <Textfield placeholder="Website address" {...fieldProps} />
-                  )}
-                </Field>
-
-                <Field name="charity-facebook" label="Facebook" defaultValue="">
-                  {({ fieldProps }) => (
-                    <Textfield
-                      placeholder="Facebook profile link"
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <Field name="charity-twitter" label="Twitter" defaultValue="">
-                  {({ fieldProps }) => (
-                    <Textfield
-                      placeholder="Twitter profile link"
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <Field
-                  name="charity-instagram"
-                  label="Instagram"
-                  defaultValue=""
-                >
-                  {({ fieldProps }) => (
-                    <Textfield
-                      placeholder="Instagram profile link"
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <Field name="charity-youtube" label="YouTube" defaultValue="">
-                  {({ fieldProps }) => (
-                    <Textfield
-                      placeholder="YouTube channel link"
-                      {...fieldProps}
-                    />
-                  )}
-                </Field>
-
-                <FormFooter>
-                  <Button id="submit-charity" type="submit">
-                    <span>
-                      Add charity
-                      <ChevronRight />
-                    </span>
-                  </Button>
-                </FormFooter>
-              </form>
-            )}
-          </Form>
-        </Container>
-      </Wrapper>
-      <LogoPicker
-        logoOpen={logoOpen}
-        setLogoOpen={setLogoOpen}
-        setImagePreviewSourceViaFileAPI={setImagePreviewSourceViaFileAPI}
-        setImagePreviewSourceViaDataURIAPI={setImagePreviewSourceViaDataURIAPI}
-        imagePreviewSourceViaDataURIAPI={imagePreviewSourceViaDataURIAPI}
-      />
-    </ModalTransition>
+    <Wrapper>
+      <Form onSubmit={onSubmit}>
+        {({ formProps }) => (
+          <form {...formProps} name="add-charity">
+            <Tabs
+              selectedIndex={selectedTab}
+              onSelect={(index) => setSelectedTab(index)}
+            >
+              <TabList>
+                <Tab>
+                  <span>
+                    <span>1. Overview</span>
+                  </span>
+                </Tab>
+                <Tab disabled={selectedTab < 1}>
+                  <span>
+                    <span>2. Images</span>
+                  </span>
+                </Tab>
+                <Tab disabled={selectedTab < 2}>
+                  <span>
+                    <span>3. Links</span>
+                  </span>
+                </Tab>
+              </TabList>
+              <TabPanel>
+                <StepOne />
+              </TabPanel>
+              <TabPanel>
+                <StepTwo setSelectedTab={setSelectedTab}/>
+              </TabPanel>
+              <TabPanel>
+                <StepThree setSelectedTab={setSelectedTab}/>
+              </TabPanel>
+            </Tabs>
+          </form>
+        )}
+      </Form>
+    </Wrapper>
   );
 };
 

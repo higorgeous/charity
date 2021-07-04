@@ -10,7 +10,7 @@ import {
   isRotated,
   Ellipsify,
   Vector2,
-} from '@atlaskit/media-ui';
+} from '../../MediaUi';
 
 import ImageCropper from '../ImageCropper';
 
@@ -300,7 +300,7 @@ export class ImageNavigator extends Component<Props, State> {
     const { errorMessage, isLoading } = this.props;
     const showBorder = !isLoading && !errorMessage;
     const dropZoneImageSrc = errorMessage ? errorIcon : uploadPlaceholder;
-    const dragZoneText = errorMessage || 'Drag and drop your images here';
+    const dragZoneText = errorMessage || 'Drag and drop your logo here';
     const dragZoneAlt = errorMessage || 'Upload image';
 
     return (

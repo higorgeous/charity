@@ -8,7 +8,7 @@ import {
   FileInfo,
   getFileInfo,
   getFileInfoFromSrc,
-} from '@atlaskit/media-ui';
+} from '../../MediaUi';
 
 import { ImagePlacerContainer } from './container';
 import { ImagePlacerImage } from './image';

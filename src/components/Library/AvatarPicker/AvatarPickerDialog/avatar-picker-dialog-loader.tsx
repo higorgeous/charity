@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 
-import { ModalSpinner } from '@atlaskit/media-ui';
+import { ModalSpinner } from '../../MediaUi';
 
 import { AvatarPickerDialog } from '.';
 import { AvatarPickerDialogProps } from './types';
@@ -29,7 +29,7 @@ export default class AsyncAvatarPickerDialog extends React.PureComponent<
     if (!this.state.AvatarPickerDialog) {
       try {
         const module = await import(
-          /* webpackChunkName:"@discovr-internal_media-avatar-picker" */
+          /* webpackChunkName:"@gorgeous-internal_media-avatar-picker" */
           '.'
         );
         AsyncAvatarPickerDialog.AvatarPickerDialog = module.AvatarPickerDialog;
@@ -50,8 +50,8 @@ export default class AsyncAvatarPickerDialog extends React.PureComponent<
 
       return (
         <ModalSpinner
-          blankedColor="rgba(255, 255, 255, 0.53)"
-          invertSpinnerColor={false}
+          blankedColor="#002358c7"
+          invertSpinnerColor
         />
       );
     }

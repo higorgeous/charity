@@ -1,4 +1,4 @@
-import { Rectangle, Bounds, Vector2 } from '@atlaskit/media-ui';
+import { Rectangle, Bounds, Vector2 } from '../../MediaUi';
 
 export function zoomToFit(
   imageWidth: number,
