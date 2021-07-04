@@ -15,8 +15,8 @@ interface OptionType {
 }
 
 const charityTypes: Array<OptionType> = [
-  { label: 'charity', value: 'Charity' },
-  { label: 'crowdfund', value: 'Crownfund' },
+  { label: 'Charity', value: 'Charity' },
+  { label: 'Crowdfund', value: 'Crownfund' },
 ];
 
 type Props = {
@@ -31,7 +31,7 @@ const StepOne: FC<Props> = ({ formFields }) => {
           name="charity-name"
           label="Charity name"
           isRequired
-          defaultValue={formFields ? formFields['charity-name'] : undefined}
+          defaultValue={formFields ? formFields['charity-name'] : ''}
         >
           {({ fieldProps }) => (
             <Textfield placeholder="Name of charity" {...fieldProps} />
@@ -42,12 +42,12 @@ const StepOne: FC<Props> = ({ formFields }) => {
           name="charity-tag"
           label="Tag line"
           isRequired
-          defaultValue={formFields ? formFields['charity-tag'] : undefined}
+          defaultValue={formFields ? formFields['charity-tag'] : ''}
         >
           {({ fieldProps }) => (
             <Textfield
               maxLength={40}
-              placeholder="Up to 40 characters introducing the charity"
+              placeholder="Introduce the charity"
               {...fieldProps}
             />
           )}
@@ -57,7 +57,7 @@ const StepOne: FC<Props> = ({ formFields }) => {
           name="charity-type"
           label="Charity type"
           isRequired
-          defaultValue={formFields ? formFields['charity-type'] : undefined}
+          defaultValue={formFields ? formFields['charity-type'] : ''}
         >
           {({ fieldProps }) => (
             <Select
@@ -72,7 +72,7 @@ const StepOne: FC<Props> = ({ formFields }) => {
           name="charity-location"
           label="Location"
           isRequired
-          defaultValue={formFields ? formFields['charity-location'] : undefined}
+          defaultValue={formFields ? formFields['charity-location'] : ''}
         >
           {({ fieldProps }) => (
             <CountrySelect placeholder="Location of Charity" {...fieldProps} />
@@ -83,9 +83,7 @@ const StepOne: FC<Props> = ({ formFields }) => {
           name="charity-description"
           label="Description"
           isRequired
-          defaultValue={
-            formFields ? formFields['charity-description'] : undefined
-          }
+          defaultValue={formFields ? formFields['charity-description'] : ''}
         >
           {({ fieldProps }) => (
             <TextArea

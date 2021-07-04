@@ -18,12 +18,13 @@ type Props = {
 const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
   const [logoOpen, setLogoOpen] = useState(false);
   const [
+    imagePreviewSourceViaFileAPI,
     setImagePreviewSourceViaFileAPI,
   ] = useState('');
   const [
     imagePreviewSourceViaDataURIAPI,
     setImagePreviewSourceViaDataURIAPI,
-  ] = useState(formFields ? formFields['charity-logo'] : undefined);
+  ] = useState(formFields ? formFields['charity-logo'] : '');
 
   return (
     <ModalTransition>
