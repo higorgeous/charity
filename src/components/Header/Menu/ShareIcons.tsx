@@ -48,12 +48,12 @@ const ShareIcons = ({ shareTitle, shareUrl }: Props) => {
       <TwitterShareButton
         url={referralUrl}
         title={shareTitle}
-        via="shareUrl"
+        via="GorgeousToken"
         hashtags={[hashtagTW]}
       >
         <TwitterIcon size={32} round />
       </TwitterShareButton>
-      <TelegramShareButton url={shareUrl} title={referralUrl}>
+      <TelegramShareButton url={referralUrl} title={shareTitle}>
         <TelegramIcon size={32} round />
       </TelegramShareButton>
       <WhatsappShareButton url={referralUrl} title={shareTitle} separator=":: ">
