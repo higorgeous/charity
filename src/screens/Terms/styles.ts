@@ -14,6 +14,14 @@ export const Wrapper = styled.div`
     margin: 10px auto 5px;
     line-height: 1.5;
     transition: color 0.25s ease-in-out;
+    @media (max-width: 1024px) {
+      font-size: 15px;
+      margin: 10px 52px 30px;
+    }
+    @media (max-width: 568px) {
+      font-size: 14px;
+      margin: 10px 20px 30px;
+    }
   }
   p {
     color: var(--color-text-secondary);
