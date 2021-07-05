@@ -26,6 +26,7 @@ const Essentials: FC<Props> = ({ title, description, children, isCharity }) => {
         <title>{title} | Gorgeous BSC Token</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
       <Header />
       <Main>{children}</Main>
