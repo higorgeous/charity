@@ -1,11 +1,11 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
-import * as snippet from '@segment/snippet'
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import * as snippet from '@segment/snippet';
 
 const {
   // This write key is associated with https://segment.com/nextjs-example/sources/nextjs.
   ANALYTICS_WRITE_KEY = process.env.NEXT_PUBLIC_SEGMENT_WRITE_KEY,
   NODE_ENV = 'development',
-} = process.env
+} = process.env;
 
 export default class MyDocument extends Document {
   renderSnippet() {
@@ -14,13 +14,13 @@ export default class MyDocument extends Document {
       // note: the page option only covers SSR tracking.
       // Page.js is used to track other events using `window.analytics.page()`
       page: true,
-    }
+    };
 
     if (NODE_ENV === 'development') {
-      return snippet.max(opts)
+      return snippet.max(opts);
     }
 
-    return snippet.min(opts)
+    return snippet.min(opts);
   }
 
   render() {
@@ -35,6 +35,6 @@ export default class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
