@@ -81,6 +81,7 @@ const EditCharity: FC = () => {
           linkedin: data.linkedin,
           youtube: data.youtube,
           verified: false,
+          owner: user!.uid,
           votes: 0,
           createdAt: currentTime,
         })
