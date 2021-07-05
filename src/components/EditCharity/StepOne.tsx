@@ -4,7 +4,7 @@ import ChevronRight from '@components/CTA/ChevronRight';
 import TextArea from '@components/Library/Textarea';
 
 import Textfield from '../Library/Textfield';
-import { Field, FormFooter } from '../Library/Form';
+import { Field, HelperMessage, FormFooter } from '../Library/Form';
 import Select, { CountrySelect, ValueType } from '../Library/Select';
 
 import { Container, Button } from './styles';
@@ -34,7 +34,10 @@ const StepOne: FC<Props> = ({ formFields }) => {
           defaultValue={formFields.name}
         >
           {({ fieldProps }) => (
-            <Textfield placeholder="Name of charity" {...fieldProps} />
+            <>
+              <Textfield placeholder="Name of charity" {...fieldProps} />
+              <HelperMessage>The name of the charity.</HelperMessage>
+            </>
           )}
         </Field>
 
@@ -45,11 +48,16 @@ const StepOne: FC<Props> = ({ formFields }) => {
           defaultValue={formFields.tag}
         >
           {({ fieldProps }) => (
-            <Textfield
-              maxLength={40}
-              placeholder="Introduce the charity (max. 40 characters)"
-              {...fieldProps}
-            />
+            <>
+              <Textfield
+                maxLength={40}
+                placeholder="Introduce the charity"
+                {...fieldProps}
+              />
+              <HelperMessage>
+                Tagline describing the charity mission (max. 40 characters).
+              </HelperMessage>
+            </>
           )}
         </Field>
 
@@ -60,11 +68,14 @@ const StepOne: FC<Props> = ({ formFields }) => {
           defaultValue={formFields.type}
         >
           {({ fieldProps }) => (
-            <Select
-              options={charityTypes}
-              placeholder="Type of charity"
-              {...fieldProps}
-            />
+            <>
+              <Select
+                options={charityTypes}
+                placeholder="Type of charity"
+                {...fieldProps}
+              />
+              <HelperMessage>Select the type of charity.</HelperMessage>
+            </>
           )}
         </Field>
 
@@ -75,7 +86,13 @@ const StepOne: FC<Props> = ({ formFields }) => {
           defaultValue={formFields.location}
         >
           {({ fieldProps }) => (
-            <CountrySelect placeholder="Location of Charity" {...fieldProps} />
+            <>
+              <CountrySelect
+                placeholder="Location of Charity"
+                {...fieldProps}
+              />
+              <HelperMessage>Where is the charity based.</HelperMessage>
+            </>
           )}
         </Field>
 
@@ -86,12 +103,17 @@ const StepOne: FC<Props> = ({ formFields }) => {
           defaultValue={formFields.description}
         >
           {({ fieldProps }) => (
-            <TextArea
-              minimumRows={5}
-              maxLength={800}
-              placeholder="Desciption about charity. Add mission, values and goals."
-              {...fieldProps}
-            />
+            <>
+              <TextArea
+                minimumRows={5}
+                maxLength={800}
+                placeholder="Desciption about charity."
+                {...fieldProps}
+              />
+              <HelperMessage>
+                The charity mission, goals and values (max. 800 characters).
+              </HelperMessage>
+            </>
           )}
         </Field>
 

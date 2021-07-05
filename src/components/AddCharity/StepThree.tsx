@@ -3,7 +3,7 @@ import { FC } from 'react';
 import ChevronRight from '@components/CTA/ChevronRight';
 
 import Textfield from '../Library/Textfield';
-import { Field, FormFooter } from '../Library/Form';
+import { Field, HelperMessage, FormFooter } from '../Library/Form';
 
 import { Container, Button } from './styles';
 
@@ -23,13 +23,21 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
           defaultValue={formFields.website}
         >
           {({ fieldProps }) => (
-            <Textfield placeholder="Website address" {...fieldProps} />
+            <>
+              <Textfield placeholder="Website address" {...fieldProps} />
+              <HelperMessage>Link to the charity website.</HelperMessage>
+            </>
           )}
         </Field>
 
         <Field name="twitter" label="Twitter" defaultValue={formFields.twitter}>
           {({ fieldProps }) => (
-            <Textfield placeholder="Twitter profile link" {...fieldProps} />
+            <>
+              <Textfield placeholder="Twitter profile link" {...fieldProps} />
+              <HelperMessage>
+                Link to the charity Twitter profile.
+              </HelperMessage>
+            </>
           )}
         </Field>
 
@@ -39,7 +47,10 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
           defaultValue={formFields.facebook}
         >
           {({ fieldProps }) => (
-            <Textfield placeholder="Facebook profile link" {...fieldProps} />
+            <>
+              <Textfield placeholder="Facebook page link" {...fieldProps} />
+              <HelperMessage>Link to the charity Facebook page.</HelperMessage>
+            </>
           )}
         </Field>
 
@@ -49,7 +60,12 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
           defaultValue={formFields.instagram}
         >
           {({ fieldProps }) => (
-            <Textfield placeholder="Instagram profile link" {...fieldProps} />
+            <>
+              <Textfield placeholder="Instagram profile link" {...fieldProps} />
+              <HelperMessage>
+                Link to the charity Instagram profile.
+              </HelperMessage>
+            </>
           )}
         </Field>
 
@@ -59,13 +75,23 @@ const StepThree: FC<Props> = ({ formFields, setSelectedTab }) => {
           defaultValue={formFields.linkedin}
         >
           {({ fieldProps }) => (
-            <Textfield placeholder="LinkedIn profile link" {...fieldProps} />
+            <>
+              <Textfield placeholder="LinkedIn profile link" {...fieldProps} />
+              <HelperMessage>
+                Link to the charity LinkedIn profile.
+              </HelperMessage>
+            </>
           )}
         </Field>
 
         <Field name="youtube" label="YouTube" defaultValue={formFields.youtube}>
           {({ fieldProps }) => (
-            <Textfield placeholder="YouTube channel link" {...fieldProps} />
+            <>
+              <Textfield placeholder="YouTube channel link" {...fieldProps} />
+              <HelperMessage>
+                Link to the charity YouTube channel.
+              </HelperMessage>
+            </>
           )}
         </Field>
 

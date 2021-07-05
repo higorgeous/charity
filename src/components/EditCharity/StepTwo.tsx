@@ -43,7 +43,7 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
                 : formFields.logo
             }
           >
-            {({ fieldProps, error }) => (
+            {({ fieldProps }) => (
               <>
                 <Textfield
                   onKeyDown={() => event!.preventDefault()}
@@ -77,11 +77,9 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
                     </div>
                   }
                 />
-                {!error && (
-                  <HelperMessage>
-                    Logo should be square and 512px by 512px.
-                  </HelperMessage>
-                )}
+                <HelperMessage>
+                  Logo should be square and 512px by 512px.
+                </HelperMessage>
               </>
             )}
           </Field>
