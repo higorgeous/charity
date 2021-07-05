@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   .sentence {
     max-width: 700px;
     font-size: 15px;
+    line-height: 1.7;
     font-weight: 700;
     text-align: center;
     margin: 20px auto 30px;

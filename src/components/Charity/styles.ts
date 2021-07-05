@@ -27,6 +27,7 @@ export const Wrapper = styled.div`
     font-weight: 700;
     text-align: center;
     margin: 50px auto 100px;
+    line-height: 1.7;
     @media (max-width: 767px) {
       margin: 30px 22px;
       font-size: 14px;
