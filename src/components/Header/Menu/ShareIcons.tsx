@@ -18,6 +18,8 @@ import {
   EmailIcon,
 } from 'react-share';
 
+import useAuth from '@hooks/useAuth';
+
 import { ShareWrapper } from './styles';
 
 type Props = {
@@ -26,36 +28,48 @@ type Props = {
 };
 
 const ShareIcons = ({ shareTitle, shareUrl }: Props) => {
-  const hashtag = '#Gorgeous';
+  const { user } = useAuth();
+  const hashtagFB = '#Gorgeous';
+  const hashtagTW = 'Gorgeous';
+
+  const referralUrl = `${shareUrl}?refferer=${user!.uid}`;
   return (
     <ShareWrapper>
-      <FacebookShareButton url={shareUrl} hashtag={hashtag} quote={shareTitle}>
+      <FacebookShareButton
+        url={referralUrl}
+        hashtag={hashtagFB}
+        quote={shareTitle}
+      >
         <FacebookIcon size={32} round />
       </FacebookShareButton>
-      <FacebookMessengerShareButton url={shareUrl} appId="1388941491486821">
+      <FacebookMessengerShareButton url={referralUrl} appId="1388941491486821">
         <FacebookMessengerIcon size={32} round />
       </FacebookMessengerShareButton>
       <TwitterShareButton
-        url={shareUrl}
+        url={referralUrl}
         title={shareTitle}
         via="shareUrl"
-        hashtags={[hashtag]}
+        hashtags={[hashtagTW]}
       >
         <TwitterIcon size={32} round />
       </TwitterShareButton>
-      <TelegramShareButton url={shareUrl} title={shareTitle}>
+      <TelegramShareButton url={shareUrl} title={referralUrl}>
         <TelegramIcon size={32} round />
       </TelegramShareButton>
-      <WhatsappShareButton url={shareUrl} title={shareTitle} separator=":: ">
+      <WhatsappShareButton url={referralUrl} title={shareTitle} separator=":: ">
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
-      <LinkedinShareButton source={shareUrl} url={shareUrl} title={shareTitle}>
+      <LinkedinShareButton
+        source={referralUrl}
+        url={referralUrl}
+        title={shareTitle}
+      >
         <LinkedinIcon size={32} round />
       </LinkedinShareButton>
-      <RedditShareButton url={shareUrl} title={shareTitle}>
+      <RedditShareButton url={referralUrl} title={shareTitle}>
         <RedditIcon size={32} round />
       </RedditShareButton>
-      <EmailShareButton url={shareUrl} subject={shareTitle}>
+      <EmailShareButton url={referralUrl} subject={shareTitle}>
         <EmailIcon size={32} round />
       </EmailShareButton>
     </ShareWrapper>
