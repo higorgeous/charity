@@ -103,7 +103,7 @@ const Votes = (
     });
   };
 
-  const shareTitle = `I just voted for ${charity.name} to recieve the next Gorgeous donation. Please vote too.`;
+  const shareTitle = `I just voted for ${charity.name} to receive the next Gorgeous donation. Please vote too.`;
   const shareUrl = `https://charity.higorgeous.io/charity/${charity.id}`;
 
   return (
