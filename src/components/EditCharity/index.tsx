@@ -25,20 +25,20 @@ type Props = {
   charity: any;
 };
 
-const AddCharity: FC<Props> = ({ charity }) => {
+const EditCharity: FC<Props> = ({ charity }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [formFields, setFormFields] = useState({
     name: charity.name,
     tag: charity.tag,
     type: {
-      label: '',
-      value: '',
+      label: charity.label,
+      value: charity.value,
     },
     location: {
-      abbr: '',
-      code: '',
-      icon: '',
-      name: '',
+      abbr: charity.abbr,
+      code: charity.code,
+      icon: charity.icon,
+      name: charity.name,
     },
     description: charity.description,
     logo: charity.logo,
@@ -189,4 +189,4 @@ const AddCharity: FC<Props> = ({ charity }) => {
   );
 };
 
-export default AddCharity;
+export default EditCharity;
