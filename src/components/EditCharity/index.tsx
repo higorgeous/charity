@@ -53,10 +53,10 @@ const EditCharity: FC<Props> = ({ charity }) => {
   });
 
   const { showFlag } = useFlags();
-  const { user } = useAuth();
+  const { user, userSubmissions } = useAuth();
   const router = useRouter();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     if (selectedTab === 0) {
       setFormFields({ ...formFields, ...data });
       setSelectedTab(1);
@@ -65,7 +65,8 @@ const EditCharity: FC<Props> = ({ charity }) => {
       setSelectedTab(2);
     } else if (selectedTab === 2) {
       setFormFields({ ...formFields, ...data });
-      firebaseClient
+      const currentTime = new Date().toISOString();
+      await firebaseClient
         .firestore()
         .collection('charities')
         .doc(charity.id)
@@ -86,54 +87,47 @@ const EditCharity: FC<Props> = ({ charity }) => {
             linkedin: data.linkedin,
             youtube: data.youtube,
             verified: false,
+            lastEdited: currentTime,
           },
           { merge: true },
         )
         .then(() => {
-          showFlag({
-            icon: <EditorSuccessIcon label="success" />,
-            appearance: 'success',
-            title: `Congratulations`,
-            description: `You've edited ${formFields.name} Gorgeous. Find the progress of your update in your account.`,
-            isAutoDismiss: true,
-          });
-          router.push('/account');
-          // firebaseClient
-          //   .firestore()
-          //   .collection('users')
-          //   .doc(user!.uid)
-          //   .collection('charities')
-          //   .doc()
-          //   .set(
-          //     {
-          //       name: formFields.name,
-          //       tag: formFields.tag,
-          //       logo: formFields.logo,
-          //       lastEdited: new Date().toISOString(),
-          //       verified: false,
-          //     },
-          //     { merge: true },
-          //   )
+          firebaseClient
+            .firestore()
+            .collection('users')
+            .doc(user!.uid)
+            .collection('charities')
+            .doc(charity.createdAt)
+            .set(
+              {
+                name: formFields.name,
+                tag: formFields.tag,
+                logo: formFields.logo,
+                lastEdited: currentTime,
+                verified: false,
+              },
+              { merge: true },
+            )
 
-          //   .then(() => {
-          //     showFlag({
-          //       icon: <EditorSuccessIcon label="success" />,
-          //       appearance: 'success',
-          //       title: `Congratulations`,
-          //       description: `You've edited ${formFields.name} Gorgeous. Find the progress of your update in your account.`,
-          //       isAutoDismiss: true,
-          //     });
-          //     router.push('/account');
-          //   })
-          //   .catch((error) => {
-          //     showFlag({
-          //       icon: <EditorErrorIcon label="error" />,
-          //       appearance: 'error',
-          //       title: error.code,
-          //       description: error.message,
-          //       isAutoDismiss: true,
-          //     });
-          //   });
+            .then(() => {
+              showFlag({
+                icon: <EditorSuccessIcon label="success" />,
+                appearance: 'success',
+                title: `Congratulations`,
+                description: `You've edited ${formFields.name} Gorgeous. Find the progress of your update in your account.`,
+                isAutoDismiss: true,
+              });
+              router.push('/account');
+            })
+            .catch((error) => {
+              showFlag({
+                icon: <EditorErrorIcon label="error" />,
+                appearance: 'error',
+                title: error.code,
+                description: error.message,
+                isAutoDismiss: true,
+              });
+            });
         })
         .catch((error) => {
           showFlag({

@@ -21,4 +21,5 @@ const App: FC<AppProps> = ({ Component, pageProps }) => (
   </FlagsProvider>
 );
 
-export default withDarkMode(App, { defaultMode: MODE.DARK });
+// export default withDarkMode(App, { defaultMode: MODE.DARK });
+export default App;

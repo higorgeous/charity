@@ -61,6 +61,7 @@ const EditCharity: FC = () => {
       setSelectedTab(2);
     } else if (selectedTab === 2) {
       setFormFields({ ...formFields, ...data });
+      const currentTime = new Date().toISOString();
       await firebaseClient
         .firestore()
         .collection('charities')
@@ -81,6 +82,7 @@ const EditCharity: FC = () => {
           youtube: data.youtube,
           verified: false,
           votes: 0,
+          createdAt: currentTime,
         })
         .then((docRef) => {
           firebaseClient
@@ -88,13 +90,13 @@ const EditCharity: FC = () => {
             .collection('users')
             .doc(user!.uid)
             .collection('charities')
-            .doc(new Date().toISOString())
+            .doc(currentTime)
             .set({
               id: docRef.id,
               name: formFields.name,
               tag: formFields.tag,
               logo: formFields.logo,
-              createdAt: new Date().toISOString(),
+              createdAt: currentTime,
               verified: false,
             })
             .then(() => {
