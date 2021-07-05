@@ -15,9 +15,9 @@ const Charity: FC<Props> = ({ item }) => (
     <ActionBar charity={item} isCharity />
     <Hero>{item.name}</Hero>
     <p className="text">{item.tag}</p>
-    {/* {item.image && (
+    {item.image && (
       <Image src={item.image} alt={item.name} width="900px" height="500px" />
-    )} */}
+    )}
     <div className="description">
       <p>{item.description}</p>
     </div>

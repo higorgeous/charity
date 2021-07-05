@@ -21,11 +21,15 @@ import firebaseClient from '@services/Firebase/Client';
 import { useFlags } from '@atlaskit/flag';
 import useAuth from '@hooks/useAuth';
 
-const EditCharity: FC = () => {
+type Props = {
+  charity: any;
+};
+
+const AddCharity: FC<Props> = ({ charity }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [formFields, setFormFields] = useState({
-    name: '',
-    tag: '',
+    name: charity.name,
+    tag: charity.tag,
     type: {
       label: '',
       value: '',
@@ -36,20 +40,20 @@ const EditCharity: FC = () => {
       icon: '',
       name: '',
     },
-    description: '',
-    logo: '',
-    image: '',
-    video: '',
-    website: '',
-    twitter: '',
-    facebook: '',
-    instagram: '',
-    linkedin: '',
-    youtube: '',
+    description: charity.description,
+    logo: charity.logo,
+    image: charity.image,
+    video: charity.video,
+    website: charity.website,
+    twitter: charity.twitter,
+    facebook: charity.facebook,
+    instagram: charity.instagram,
+    linkedin: charity.linkedin,
+    youtube: charity.youtube,
   });
 
   const { showFlag } = useFlags();
-  const { user } = useAuth();
+  const { user, userSubmissions } = useAuth();
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
@@ -64,69 +68,55 @@ const EditCharity: FC = () => {
       await firebaseClient
         .firestore()
         .collection('charities')
-        .add({
-          name: formFields.name,
-          tag: formFields.tag,
-          type: formFields.type,
-          location: formFields.location,
-          description: formFields.description,
-          logo: formFields.logo,
-          image: formFields.image,
-          video: formFields.video,
-          website: data.website,
-          twitter: data.twitter,
-          facebook: data.facebook,
-          instagram: data.instagram,
-          linkedin: data.linkedin,
-          youtube: data.youtube,
-          verified: false,
-          votes: 0,
-        })
-        .then((docRef) => {
+        .doc(charity.id)
+        .set(
+          {
+            name: formFields.name,
+            tag: formFields.tag,
+            type: formFields.type,
+            location: formFields.location,
+            description: formFields.description,
+            logo: formFields.logo,
+            image: formFields.image,
+            video: formFields.video,
+            website: data.website,
+            twitter: data.twitter,
+            facebook: data.facebook,
+            instagram: data.instagram,
+            linkedin: data.linkedin,
+            youtube: data.youtube,
+            verified: false,
+            votes: 0,
+          },
+          { merge: true },
+        )
+        .then(() => {
           firebaseClient
             .firestore()
             .collection('users')
             .doc(user!.uid)
             .collection('charities')
             .doc(new Date().toISOString())
-            .set({
-              id: docRef.id,
-              name: formFields.name,
-              tag: formFields.tag,
-              logo: formFields.logo,
-              createdAt: new Date().toISOString(),
-              verified: false,
-            })
+            .set(
+              {
+                name: formFields.name,
+                tag: formFields.tag,
+                logo: formFields.logo,
+                lastEdited: new Date().toISOString(),
+                verified: false,
+              },
+              { merge: true },
+            )
+
             .then(() => {
-              firebaseClient
-                .firestore()
-                .collection('charities')
-                .doc(docRef.id)
-                .set(
-                  {
-                    id: docRef.id,
-                  },
-                  { merge: true },
-                )
-                .then(() => {
-                  showFlag({
-                    icon: <EditorSuccessIcon label="success" />,
-                    appearance: 'success',
-                    title: `Congratulations`,
-                    description: `You've submitted ${formFields.name} to Gorgeous. Find the progress of your submission in your account.`,
-                    isAutoDismiss: true,
-                  });
-                  router.push('/account');
-                })
-                .catch((error) => {
-                  showFlag({
-                    icon: <EditorErrorIcon label="error" />,
-                    appearance: 'error',
-                    title: error.code,
-                    description: error.message,
-                    isAutoDismiss: true,
-                  });
-                });
+              showFlag({
+                icon: <EditorSuccessIcon label="success" />,
+                appearance: 'success',
+                title: `Congratulations`,
+                description: `You've edited ${formFields.name} Gorgeous. Find the progress of your update in your account.`,
+                isAutoDismiss: true,
+              });
+              router.push('/account');
             })
             .catch((error) => {
               showFlag({
@@ -199,4 +189,4 @@ const EditCharity: FC = () => {
   );
 };
 
-export default EditCharity;
+export default AddCharity;

@@ -2,7 +2,7 @@ import { TypeColumn } from './styles';
 
 const Type = (charity: any) => (
   <TypeColumn>
-    <span>{charity.type}</span>
+    <span>{charity.type.value}</span>
   </TypeColumn>
 );
 

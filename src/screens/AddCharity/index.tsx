@@ -1,5 +1,4 @@
 import AddCharity from '@components/AddCharity';
-import Hero from '@components/Hero';
 
 const AddCharityScreen = () => (
   <>
