@@ -50,6 +50,7 @@ const addVote = (
       id: charity.id,
       name: charity.name,
       tag: charity.tag,
+      logo: charity.logo,
       votedAt: new Date().toISOString(),
     },
     { merge: true },

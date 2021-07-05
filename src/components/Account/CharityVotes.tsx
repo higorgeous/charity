@@ -16,6 +16,7 @@ const CharityVotes: FC = () => {
   let userVoteHistory: {
     id: string;
     name: string;
+    logo: string;
     tag: string;
     votedAt: any;
   }[] = [];
@@ -25,6 +26,7 @@ const CharityVotes: FC = () => {
       const voteHistory = {
         id: votes.data().id,
         name: votes.data().name,
+        logo: votes.data().logo,
         tag: votes.data().tag,
         votedAt: votes.data().votedAt,
       };
