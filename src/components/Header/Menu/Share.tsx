@@ -31,7 +31,8 @@ const Share = () => {
     setIsOpen(false);
   };
 
-  const shareTitle = 'Vote and let Gorgeous know who they should vote for.';
+  const shareTitle =
+    'Vote and let Gorgeous know where they should send their donation this Friday.';
   const shareUrl = 'https://charity.higorgeous.io';
 
   const {
