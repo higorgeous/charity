@@ -16,7 +16,7 @@ interface OptionType {
 
 const charityTypes: Array<OptionType> = [
   { label: 'Charity', value: 'Charity' },
-  { label: 'Crowdfund', value: 'Crownfund' },
+  { label: 'Crowdfund', value: 'Crowdfund' },
 ];
 
 type Props = {
