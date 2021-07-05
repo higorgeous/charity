@@ -7,7 +7,7 @@ const CharityPage = ({ content, id }: any) => {
   const ref = firebaseClient.firestore().collection('charities').doc(id);
   const [item] = useDocumentDataSSR(ref, { startWith: content });
   return (
-    <Essentials title={item.name} description={item.tag} isCharity>
+    <Essentials title={item.name} description={item.tag} isCharity pageImage={item.image}>
       <CharityScreen item={item} />
     </Essentials>
   );
