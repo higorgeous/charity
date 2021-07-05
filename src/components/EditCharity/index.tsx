@@ -31,14 +31,14 @@ const EditCharity: FC<Props> = ({ charity }) => {
     name: charity.name,
     tag: charity.tag,
     type: {
-      label: charity.label,
-      value: charity.value,
+      label: charity.type.label,
+      value: charity.type.value,
     },
     location: {
-      abbr: charity.abbr,
-      code: charity.code,
-      icon: charity.icon,
-      name: charity.name,
+      abbr: charity.location.abbr,
+      code: charity.location.code,
+      icon: charity.location.icon,
+      name: charity.location.name,
     },
     description: charity.description,
     logo: charity.logo,
@@ -53,10 +53,10 @@ const EditCharity: FC<Props> = ({ charity }) => {
   });
 
   const { showFlag } = useFlags();
-  const { user, userSubmissions } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = (data: any) => {
     if (selectedTab === 0) {
       setFormFields({ ...formFields, ...data });
       setSelectedTab(1);
@@ -65,7 +65,7 @@ const EditCharity: FC<Props> = ({ charity }) => {
       setSelectedTab(2);
     } else if (selectedTab === 2) {
       setFormFields({ ...formFields, ...data });
-      await firebaseClient
+      firebaseClient
         .firestore()
         .collection('charities')
         .doc(charity.id)
@@ -86,47 +86,54 @@ const EditCharity: FC<Props> = ({ charity }) => {
             linkedin: data.linkedin,
             youtube: data.youtube,
             verified: false,
-            votes: 0,
           },
           { merge: true },
         )
         .then(() => {
-          firebaseClient
-            .firestore()
-            .collection('users')
-            .doc(user!.uid)
-            .collection('charities')
-            .doc(new Date().toISOString())
-            .set(
-              {
-                name: formFields.name,
-                tag: formFields.tag,
-                logo: formFields.logo,
-                lastEdited: new Date().toISOString(),
-                verified: false,
-              },
-              { merge: true },
-            )
+          showFlag({
+            icon: <EditorSuccessIcon label="success" />,
+            appearance: 'success',
+            title: `Congratulations`,
+            description: `You've edited ${formFields.name} Gorgeous. Find the progress of your update in your account.`,
+            isAutoDismiss: true,
+          });
+          router.push('/account');
+          // firebaseClient
+          //   .firestore()
+          //   .collection('users')
+          //   .doc(user!.uid)
+          //   .collection('charities')
+          //   .doc()
+          //   .set(
+          //     {
+          //       name: formFields.name,
+          //       tag: formFields.tag,
+          //       logo: formFields.logo,
+          //       lastEdited: new Date().toISOString(),
+          //       verified: false,
+          //     },
+          //     { merge: true },
+          //   )
 
-            .then(() => {
-              showFlag({
-                icon: <EditorSuccessIcon label="success" />,
-                appearance: 'success',
-                title: `Congratulations`,
-                description: `You've edited ${formFields.name} Gorgeous. Find the progress of your update in your account.`,
-                isAutoDismiss: true,
-              });
-              router.push('/account');
-            })
-            .catch((error) => {
-              showFlag({
-                icon: <EditorErrorIcon label="error" />,
-                appearance: 'error',
-                title: error.code,
-                description: error.message,
-                isAutoDismiss: true,
-              });
-            });
+          //   .then(() => {
+          //     showFlag({
+          //       icon: <EditorSuccessIcon label="success" />,
+          //       appearance: 'success',
+          //       title: `Congratulations`,
+          //       description: `You've edited ${formFields.name} Gorgeous. Find the progress of your update in your account.`,
+          //       isAutoDismiss: true,
+          //     });
+          //     router.push('/account');
+          //   })
+          //   .catch((error) => {
+          //     showFlag({
+          //       icon: <EditorErrorIcon label="error" />,
+          //       appearance: 'error',
+          //       title: error.code,
+          //       description: error.message,
+          //       isAutoDismiss: true,
+          //     });
+          //   });
         })
         .catch((error) => {
           showFlag({
@@ -155,12 +162,12 @@ const EditCharity: FC<Props> = ({ charity }) => {
                     <span>1. Overview</span>
                   </span>
                 </Tab>
-                <Tab disabled={selectedTab < 1}>
+                <Tab>
                   <span>
                     <span>2. Images</span>
                   </span>
                 </Tab>
-                <Tab disabled={selectedTab < 2}>
+                <Tab>
                   <span>
                     <span>3. Links</span>
                   </span>

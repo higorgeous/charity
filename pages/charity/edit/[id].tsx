@@ -1,14 +1,15 @@
 import Essentials from '@components/Essentials';
-import useDocumentDataSSR from '@hooks/useDocumentDataSSR';
 import EditCharityScreen from '@screens/EditCharity';
 import firebaseClient from '@services/Firebase/Client';
 
-const EditCharityPage = ({ content, id }: any) => {
-  const ref = firebaseClient.firestore().collection('charities').doc(id);
-  const [item] = useDocumentDataSSR(ref, { startWith: content });
+const EditCharityPage = ({ content }: any) => {
   return (
-    <Essentials title={`Edit ${item.name}`} description={item.tag} isCharity>
-      <EditCharityScreen item={item} />
+    <Essentials
+      title={`Edit ${content.name}`}
+      description={content.tag}
+      isCharity
+    >
+      <EditCharityScreen item={content} />
     </Essentials>
   );
 };
