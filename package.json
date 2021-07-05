@@ -21,6 +21,7 @@
     "@emotion/styled": "^11.3.0",
     "@fontsource/poppins": "^4.4.5",
     "@popperjs/core": "^2.9.2",
+    "@segment/snippet": "^4.14.0",
     "blueimp-load-image": "^5.14.0",
     "dayjs": "^1.10.5",
     "exenv": "^1.2.2",

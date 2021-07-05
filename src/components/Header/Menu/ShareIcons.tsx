@@ -32,7 +32,7 @@ const ShareIcons = ({ shareTitle, shareUrl }: Props) => {
   const hashtagFB = '#Gorgeous';
   const hashtagTW = 'Gorgeous';
 
-  const referralUrl = `${shareUrl}?refferer=${user!.uid}`;
+  const referralUrl = `${shareUrl}?referrer=${user!.uid}`;
   return (
     <ShareWrapper>
       <FacebookShareButton
