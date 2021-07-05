@@ -53,7 +53,8 @@ export const Wrapper = styled.div<{ twoColumn?: boolean }>`
       &:first-of-type {
         width: 70%;
       }
-      &:nth-of-type(2) {
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
         display: ${({ twoColumn }) => (twoColumn ? 'flex' : 'none')};
       }
     }
@@ -144,24 +145,24 @@ export const CharityColumn = styled.div`
 `;
 
 export const LocationColumn = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 45px;
-  padding: 8px 10px;
-  border-radius: 4px;
-  background-color: var(--color-bg-element);
-  transition: all 0.25s ease-in-out;
   span {
     color: var(--color-text-primary);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.05em;
     line-height: 1.2;
     transition: color 0.25s ease-in-out;
-    @media (max-width: 567px) {
-      font-size: 14px;
-    }
+  }
+`;
+
+export const TypeColumn = styled.div`
+  span {
+    color: var(--color-text-primary);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    transition: color 0.25s ease-in-out;
   }
 `;
 

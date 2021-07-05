@@ -5,6 +5,7 @@ import useAuth from '@hooks/useAuth';
 import useWeb3 from '@hooks/useWeb3';
 
 import Profile from '../TableElements/Profile';
+import Type from '../TableElements/Type';
 import Location from '../TableElements/Location';
 import Votes from '../TableElements/Votes';
 import TableData from '../TableElements/TableData';
@@ -36,6 +37,7 @@ const VoteTable: FC<any> = ({ charitiesData, charitiesLoading }) => {
     return {
       id: charity.id,
       charity: Profile(charity, index),
+      type: Type(charity),
       location: Location(charity),
       votes: Votes(
         charity,
@@ -54,6 +56,10 @@ const VoteTable: FC<any> = ({ charitiesData, charitiesLoading }) => {
       {
         Headers: 'Charity',
         accessor: 'charity',
+      },
+      {
+        Headers: 'Type',
+        accessor: 'type',
       },
       {
         Headers: 'Location',

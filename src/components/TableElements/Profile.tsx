@@ -9,12 +9,7 @@ const ProfileVotes = (charity: any, index: number) => (
       <a>
         <span className="rank">{index + 1}</span>
         <span className="logo">
-          <Image
-            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/567707/dog.png"
-            alt={charity.name}
-            width="50"
-            height="50"
-          />
+          <Image src={charity.logo} alt={charity.name} width="50" height="50" />
         </span>
         <span className="profile">
           <span className="name">{charity.name} ⓘ</span>
