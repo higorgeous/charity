@@ -60,8 +60,8 @@ export const AuthProvider = ({ children }: any) => {
       .firestore()
       .collection('users')
       .doc(user?.uid)
-      .collection('submissions')
-      .orderBy('submittedAt', 'desc'),
+      .collection('charities')
+      .orderBy('createdAt', 'desc'),
   );
 
   useEffect(() => {

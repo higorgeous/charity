@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import { FC } from 'react';
 
+import Spinner from '@components/Spinner';
+import HistoryVotes from '@components/HistoryVotes';
 import ChevronRight from '@components/CTA/ChevronRight';
 import useAuth from '@hooks/useAuth';
 
 import EmptyStateVotes from './EmptyStateVotes';
 
 import { TabWrapper, Button } from './styles';
-import Spinner from '@components/Spinner';
-import HistoryTable from '@components/HistoryTable';
 
 const CharityVotes: FC = () => {
   const { userVotes } = useAuth();
@@ -53,7 +53,7 @@ const CharityVotes: FC = () => {
         </>
       )}
       {userVotes && userVoteHistory.length !== 0 && (
-        <HistoryTable voteData={userVoteHistory} />
+        <HistoryVotes voteData={userVoteHistory} />
       )}
     </TabWrapper>
   );

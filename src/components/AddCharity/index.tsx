@@ -93,7 +93,8 @@ const AddCharity: FC = () => {
               id: docRef.id,
               name: formFields.name,
               tag: formFields.tag,
-              created: new Date().toISOString(),
+              logo: formFields.logo,
+              createdAt: new Date().toISOString(),
               verified: false,
             })
             .then(() => {

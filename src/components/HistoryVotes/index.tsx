@@ -6,7 +6,7 @@ import TableData from '../TableElements/TableData';
 
 import { Wrapper } from '../TableElements/styles';
 
-const HistoryTable: FC<any> = ({ voteData }) => {
+const HistoryVotes: FC<any> = ({ voteData }) => {
   const data = voteData.map((charity: any, index: number) => {
     return {
       charity: Profile(charity, index),
@@ -35,4 +35,4 @@ const HistoryTable: FC<any> = ({ voteData }) => {
   );
 };
 
-export default HistoryTable;
+export default HistoryVotes;
