@@ -2,6 +2,7 @@ import firebaseClient from 'firebase/app';
 
 import 'firebase/analytics';
 import 'firebase/auth';
+import 'firebase/storage';
 import 'firebase/firestore';
 import 'firebase/performance';
 
@@ -28,6 +29,7 @@ const firebaseConfig = {
 if (!firebaseClient.apps.length) {
   firebaseClient.initializeApp(firebaseConfig);
   firebaseClient.firestore();
+  firebaseClient.storage();
   firebaseClient.auth();
   if (isClientSide) {
     firebaseClient.analytics();

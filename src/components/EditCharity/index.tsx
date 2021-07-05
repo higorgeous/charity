@@ -143,54 +143,54 @@ const EditCharity: FC<Props> = ({ charity }) => {
 
   return (
     <Wrapper>
-      {user!.uid !== charity.owner && (
+      {/* {user!.uid !== charity.owner && (
         <h1>You need to be the owner to edit this charity</h1>
       )}
-      {user!.uid === charity.owner && (
-        <Form onSubmit={(data) => onSubmit(data)}>
-          {({ formProps }) => (
-            <form {...formProps} name="add-charity">
-              <Tabs
-                selectedIndex={selectedTab}
-                onSelect={(index) => setSelectedTab(index)}
-              >
-                <TabList>
-                  <Tab>
-                    <span>
-                      <span>1. Overview</span>
-                    </span>
-                  </Tab>
-                  <Tab>
-                    <span>
-                      <span>2. Images</span>
-                    </span>
-                  </Tab>
-                  <Tab>
-                    <span>
-                      <span>3. Links</span>
-                    </span>
-                  </Tab>
-                </TabList>
-                <TabPanel>
-                  <StepOne formFields={formFields} />
-                </TabPanel>
-                <TabPanel>
-                  <StepTwo
-                    formFields={formFields}
-                    setSelectedTab={setSelectedTab}
-                  />
-                </TabPanel>
-                <TabPanel>
-                  <StepThree
-                    formFields={formFields}
-                    setSelectedTab={setSelectedTab}
-                  />
-                </TabPanel>
-              </Tabs>
-            </form>
-          )}
-        </Form>
-      )}
+      {user!.uid === charity.owner && ( */}
+      <Form onSubmit={(data) => onSubmit(data)}>
+        {({ formProps }) => (
+          <form {...formProps} name="add-charity">
+            <Tabs
+              selectedIndex={selectedTab}
+              onSelect={(index) => setSelectedTab(index)}
+            >
+              <TabList>
+                <Tab>
+                  <span>
+                    <span>1. Overview</span>
+                  </span>
+                </Tab>
+                <Tab>
+                  <span>
+                    <span>2. Images</span>
+                  </span>
+                </Tab>
+                <Tab>
+                  <span>
+                    <span>3. Links</span>
+                  </span>
+                </Tab>
+              </TabList>
+              <TabPanel>
+                <StepOne formFields={formFields} />
+              </TabPanel>
+              <TabPanel>
+                <StepTwo
+                  formFields={formFields}
+                  setSelectedTab={setSelectedTab}
+                />
+              </TabPanel>
+              <TabPanel>
+                <StepThree
+                  formFields={formFields}
+                  setSelectedTab={setSelectedTab}
+                />
+              </TabPanel>
+            </Tabs>
+          </form>
+        )}
+      </Form>
+      {/* )} */}
     </Wrapper>
   );
 };

@@ -1,8 +1,10 @@
 import { FC, useState } from 'react';
 import ExportIcon from '@atlaskit/icon/glyph/export';
 import AtlasButton from '@atlaskit/button';
+import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
 
 import ChevronRight from '@components/CTA/ChevronRight';
+import firebaseClient from '@services/Firebase/Client';
 
 import Textfield from '../Library/Textfield';
 import { Field, HelperMessage, FormFooter } from '../Library/Form';
@@ -18,7 +20,10 @@ type Props = {
 
 const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
   const [logoOpen, setLogoOpen] = useState(false);
-  const [imageOpen, setImageOpen] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [filename, setFilename] = useState('');
+  const [downloadURL, setDownloadURL] = useState(formFields.image);
 
   const [
     logoPreviewSourceViaFileAPI,
@@ -27,8 +32,32 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
   const [
     logoPreviewSourceViaDataURIAPI,
     setLogoPreviewSourceViaDataURIAPI,
-  ] = useState('');
+  ] = useState(formFields.logo);
 
+  const handleUploadStart = () => {
+    setIsUploading(true);
+    setUploadProgress(0);
+  };
+
+  const handleProgress = (progress: any) => setUploadProgress(progress);
+
+  const handleUploadError = (error: any) => {
+    setIsUploading(false);
+    console.error(error);
+  };
+
+  const handleUploadSuccess = async (filename: any) => {
+    const uploadedURL = await firebaseClient
+      .storage()
+      .ref('images')
+      .child(filename)
+      .getDownloadURL();
+
+    setFilename(filename);
+    setDownloadURL(uploadedURL);
+    setUploadProgress(100);
+    setIsUploading(false);
+  };
   return (
     <>
       <Container>
@@ -90,15 +119,62 @@ const StepTwo: FC<Props> = ({ formFields, setSelectedTab }) => {
           <Field
             name="image"
             label="Image"
+            id="image"
             isRequired
-            defaultValue={formFields.image}
+            defaultValue={downloadURL !== '' ? downloadURL : formFields.logo}
           >
             {({ fieldProps }) => (
               <>
-                <Textfield placeholder="Link to image URL" {...fieldProps} />
+                <CustomUploadButton
+                  hidden
+                  accept="image/*"
+                  filename={() =>
+                    formFields.name.toLowerCase().replace(/ +/g, '-') +
+                    `-` +
+                    new Date().toISOString()
+                  }
+                  storageRef={firebaseClient.storage().ref('images')}
+                  onUploadStart={handleUploadStart}
+                  onUploadError={handleUploadError}
+                  onUploadSuccess={handleUploadSuccess}
+                  onProgress={handleProgress}
+                  id="image-uploader"
+                >
+                  <Textfield
+                    onKeyDown={() => event!.preventDefault()}
+                    onClick={() => {}}
+                    placeholder="Link to image URL"
+                    {...fieldProps}
+                    elemBeforeInput={
+                      <div
+                        onClick={() => {}}
+                        style={{
+                          paddingLeft: '6px',
+                          lineHeight: '100%',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <AtlasButton spacing="compact" appearance="warning">
+                          Upload
+                        </AtlasButton>
+                      </div>
+                    }
+                    elemAfterInput={
+                      <div
+                        onClick={() => {}}
+                        style={{
+                          paddingRight: '6px',
+                          lineHeight: '100%',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <ExportIcon size="medium" label="Upload logo" />
+                      </div>
+                    }
+                  />
+                </CustomUploadButton>
                 <HelperMessage>
-                  E.g.
-                  https://images.unsplash.com/photo-1494832944834-a08818c634b0.
+                  Upload a preview image that shows the mission of the charity.
                 </HelperMessage>
               </>
             )}

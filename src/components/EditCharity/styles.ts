@@ -90,6 +90,13 @@ export const Container = styled.div`
   #image {
     cursor: pointer;
   }
+  #image-uploader {
+    width: 100% !important;
+    max-width: 500px !important;
+    height: 45px !important;
+    margin-top: -45px !important;
+    z-index: 9 !important;
+  }
   & > div {
     max-width: 500px;
     width: 100%;
