@@ -69,7 +69,8 @@ export const AuthProvider = ({ children }: any) => {
       setUserVotes(votes);
       setUserSubmissions(submissions);
     }
-  }, [submissions, user, votes]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const handle = setInterval(async () => {

@@ -8,7 +8,7 @@ const CharityPage = ({ content, id }: any) => {
   const [item] = useDocumentDataSSR(ref, { startWith: content });
   return (
     <Essentials title={item.name} description={item.tag} isCharity>
-      <CharityScreen name={item.name} />
+      <CharityScreen item={item} />
     </Essentials>
   );
 };

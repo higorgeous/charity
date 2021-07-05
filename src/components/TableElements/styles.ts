@@ -172,7 +172,7 @@ export const VotesColumn = styled.div<{ clicked: boolean }>`
   align-items: center;
   width: 140px;
   padding: 8px 20px;
-  border-radius: 3px;
+  border-radius: 4px;
   pointer-events: ${({ clicked }) => (clicked ? `none` : `inherit`)};
   background-color: ${({ clicked }) =>
     clicked ? `#5bffa8` : `var(--color-bg-primary)`};

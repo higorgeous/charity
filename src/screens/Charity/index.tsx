@@ -1,13 +1,9 @@
-import Hero from '@components/Hero';
+import Charity from '@components/Charity';
 
 type Props = {
-  name: string;
+  item: any;
 };
 
-const CharityScreen = ({ name }: Props) => (
-  <>
-    <Hero>{name}</Hero>
-  </>
-);
+const CharityScreen = ({ item }: Props) => <Charity item={item} />;
 
 export default CharityScreen;

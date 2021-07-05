@@ -19,6 +19,8 @@ export interface Props {
   isInvalid?: boolean;
   /** The minimum number of rows of text to display */
   minimumRows?: number;
+  /** The max character of the textarea */
+  maxLength?: number;
   /** The maxheight of the textarea */
   maxHeight?: string;
   /** The value of the text-area. */

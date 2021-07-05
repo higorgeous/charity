@@ -88,6 +88,7 @@ const StepOne: FC<Props> = ({ formFields }) => {
           {({ fieldProps }) => (
             <TextArea
               minimumRows={5}
+              maxLength={800}
               placeholder="Desciption about charity. Add mission, values and goals."
               {...fieldProps}
             />
