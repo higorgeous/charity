@@ -19,7 +19,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
 
   useEffect(() => {
     const handleRouteChange = (url: any) => {
-      isClientSide && (window as any).analytics.page(url);
+      if (isClientSide) (window as any).analytics.page(url);
     };
     router.events.on('routeChangeStart', handleRouteChange);
     return () => {
@@ -27,6 +27,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <FlagsProvider>
       <Web3Provider>
