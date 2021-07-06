@@ -79,6 +79,12 @@ export const AuthProvider = ({ children }: any) => {
     return () => clearInterval(handle);
   }, []);
 
+  useEffect(() => {
+    if (isClientSide && user) (window as any).analytics.identify(user!.uid, {
+        uid: user.uid,
+    });
+}, [user]);
+
   return (
     <AuthContext.Provider value={{ user, userVotes, userSubmissions }}>
       {children}
