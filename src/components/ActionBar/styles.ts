@@ -112,12 +112,19 @@ export const ActionButtons = styled.div`
     a {
       background: var(--color-bg-element);
       border-radius: 4px;
-      &:hover,
-      &:visited {
+      &:hover {
         background: var(--color-bg-element);
         svg {
           path {
             fill: var(--color-text-primary);
+          }
+        }
+      }
+      &:visited {
+        background: var(--color-bg-element);
+        svg {
+          path {
+            fill: var(--color-text-secondary);
           }
         }
       }

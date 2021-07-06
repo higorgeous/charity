@@ -7,7 +7,14 @@ import useAuth from '@hooks/useAuth';
 import { useFlags } from '@atlaskit/flag';
 import useWeb3 from '@hooks/useWeb3';
 
-import { Facebook, Instagram, Twitter, Linkedin, YouTube } from './Icons';
+import {
+  Website,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  YouTube,
+} from './Icons';
 
 import Votes from './Votes';
 
@@ -96,6 +103,14 @@ const ActionBar: FC<Props> = ({ charity, isCharity = false }) => {
             )}
           </div>
           <ButtonGroup appearance="default">
+            {charity.website && (
+              <Button
+                iconBefore={<Website />}
+                href={charity.website}
+                target="_blank"
+                rel="noopener noreferrer"
+              />
+            )}
             {charity.twitter && (
               <Button
                 iconBefore={<Twitter />}
