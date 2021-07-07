@@ -114,7 +114,7 @@ const EditCharity: FC<Props> = ({ charity }) => {
                 icon: <EditorSuccessIcon label="success" />,
                 appearance: 'success',
                 title: `Congratulations`,
-                description: `You've edited ${formFields.name} Gorgeous. Find the progress of your update in your account.`,
+                description: `You've edited ${formFields.name} on Gorgeous. Find the progress of your update in your account.`,
                 isAutoDismiss: true,
               });
               router.push('/account');

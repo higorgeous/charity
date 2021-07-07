@@ -116,7 +116,7 @@ const EditCharity: FC = () => {
                     icon: <EditorSuccessIcon label="success" />,
                     appearance: 'success',
                     title: `Congratulations`,
-                    description: `You've submitted ${formFields.name} to Gorgeous. Find the progress of your submission in your account.`,
+                    description: `You've submitted ${formFields.name} on Gorgeous. Find the progress of your submission in your account.`,
                     isAutoDismiss: true,
                   });
                   router.push('/account');
