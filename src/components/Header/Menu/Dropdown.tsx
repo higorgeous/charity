@@ -1,3 +1,4 @@
+import useAuth from '@hooks/useAuth';
 import segmentEvent from '@utils/segmentEvent';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -53,6 +54,7 @@ const externalItems: Array<ItemProps> = [
 
 const Dropdown = ({ popperRef, styles, attributes, visible }: Props) => {
   const { asPath } = useRouter();
+  const { user } = useAuth();
 
   const externalClick = ({ title, href }: { title: string; href: string }) => {
     segmentEvent('externalLink', {
@@ -60,6 +62,7 @@ const Dropdown = ({ popperRef, styles, attributes, visible }: Props) => {
       href,
       path: asPath,
       postion: 'dropdown',
+      user: user?.uid,
     });
   };
 
