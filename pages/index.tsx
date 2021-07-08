@@ -13,6 +13,7 @@ const IndexPage: FC = ({ content }: any) => {
   const charitiesRef = firebaseClient
     .firestore()
     .collection('charities')
+    .where('verified', '==', true)
     .orderBy('votes', 'desc');
   const [charitiesData, charitiesLoading] = useCollectionDataSSR(charitiesRef, {
     startWith: content,
@@ -32,6 +33,7 @@ export const getServerSideProps = async () => {
   const charities = await firebaseClient
     .firestore()
     .collection('charities')
+    .where('verified', '==', true)
     .orderBy('votes', 'desc')
     .get();
   const content = charities.docs.map((doc) => doc.data());
