@@ -8,6 +8,7 @@ import ArrowUp from '@components/Icons/ArrowUp';
 import firebaseClient from '@services/Firebase/Client';
 
 import { VotesButton } from './styles';
+import segmentEvent from '@utils/segmentEvent';
 
 dayjs.extend(relativeTime);
 
@@ -31,6 +32,7 @@ const addVote = (
   isHolder: boolean,
   userId?: string,
 ) => {
+  const currentTime = new Date().toISOString();
   const voteWeight = isHolder ? 5 : 1;
   const batch = firebaseClient.firestore().batch();
   const increment = firebaseClient.firestore.FieldValue.increment(voteWeight);
@@ -43,7 +45,7 @@ const addVote = (
     .collection('users')
     .doc(userId)
     .collection('votes')
-    .doc(new Date().toISOString());
+    .doc(currentTime);
   batch.set(
     userRef,
     {
@@ -51,13 +53,19 @@ const addVote = (
       name: charity.name,
       tag: charity.tag,
       logo: charity.logo,
-      votedAt: new Date().toISOString(),
+      votedAt: currentTime,
     },
     { merge: true },
   );
   batch.update(voteRef, { votes: increment });
   batch.commit();
   setModalIsOpen(charity.id);
+  segmentEvent('vote', {
+    charity: charity.name,
+    gorgeousHolder: isHolder,
+    path: `/charity/${charity.id}`,
+    user: userId,
+  });
 };
 
 const Votes = (
@@ -126,7 +134,7 @@ const Votes = (
         closeTimeoutMS={300}
       >
         <ShareHeading>Share your vote with friends</ShareHeading>
-        <ShareIcons shareTitle={shareTitle} shareUrl={shareUrl} />
+        <ShareIcons shareTitle={shareTitle} shareUrl={shareUrl} isVote />
       </Modal>
       <CloseIcon
         modalIsOpen={modalIsOpen === charity.id}

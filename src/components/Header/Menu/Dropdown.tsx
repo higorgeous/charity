@@ -1,3 +1,4 @@
+import segmentEvent from '@utils/segmentEvent';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -53,6 +54,15 @@ const externalItems: Array<ItemProps> = [
 const Dropdown = ({ popperRef, styles, attributes, visible }: Props) => {
   const { asPath } = useRouter();
 
+  const externalClick = ({ title, href }: { title: string; href: string }) => {
+    segmentEvent('externalLink', {
+      title,
+      href,
+      path: asPath,
+      postion: 'dropdown',
+    });
+  };
+
   return (
     <div
       ref={popperRef}
@@ -81,7 +91,7 @@ const Dropdown = ({ popperRef, styles, attributes, visible }: Props) => {
             External links
           </DropdownHeading>
           {externalItems.map((item: ItemProps) => (
-            <DropdownItem key={item.title}>
+            <DropdownItem key={item.title} onClick={() => externalClick(item)}>
               <a
                 id="dropdown"
                 href={item.href}

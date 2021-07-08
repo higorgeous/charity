@@ -4,11 +4,18 @@ import { useRouter } from 'next/router';
 
 import EditorSuccessIcon from '@atlaskit/icon/glyph/editor/success';
 import EditorErrorIcon from '@atlaskit/icon/glyph/editor/error';
+import { useFlags } from '@atlaskit/flag';
+
 import { Tab, TabList, TabPanel, TabsProps } from 'react-tabs';
 const Tabs = dynamic<TabsProps>(
   import('react-tabs').then((mod) => mod.Tabs),
   { ssr: false },
 );
+
+import firebaseClient from '@services/Firebase/Client';
+import useAuth from '@hooks/useAuth';
+import segmentEvent from '@utils/segmentEvent';
+import useWeb3 from '@hooks/useWeb3';
 
 import Form from '../Library/Form';
 
@@ -17,9 +24,6 @@ import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 
 import { Wrapper } from './styles';
-import firebaseClient from '@services/Firebase/Client';
-import { useFlags } from '@atlaskit/flag';
-import useAuth from '@hooks/useAuth';
 
 type Props = {
   charity: any;
@@ -54,6 +58,7 @@ const EditCharity: FC<Props> = ({ charity }) => {
 
   const { showFlag } = useFlags();
   const { user } = useAuth();
+  const { isHolder } = useWeb3();
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
@@ -117,7 +122,13 @@ const EditCharity: FC<Props> = ({ charity }) => {
                 description: `You've edited ${formFields.name} on Gorgeous. Find the progress of your update in your account.`,
                 isAutoDismiss: true,
               });
-              router.push('/account');
+              segmentEvent('editCharity', {
+                id: charity.id,
+                charity: formFields.name,
+                gorgeousHolder: isHolder,
+                user: user?.uid,
+              });
+              router.push(`/charity/${charity.id}`);
             })
             .catch((error) => {
               showFlag({
@@ -143,13 +154,13 @@ const EditCharity: FC<Props> = ({ charity }) => {
 
   return (
     <Wrapper>
-      {user!.uid !== charity.owner && (
+      {user?.uid !== charity.owner && (
         <h1>You need to be the owner to edit this charity</h1>
       )}
-      {user!.uid === charity.owner && (
+      {user?.uid === charity.owner && (
         <Form onSubmit={(data) => onSubmit(data)}>
           {({ formProps }) => (
-            <form {...formProps} name="add-charity">
+            <form {...formProps} name="edit-charity">
               <Tabs
                 selectedIndex={selectedTab}
                 onSelect={(index) => setSelectedTab(index)}

@@ -80,10 +80,11 @@ export const AuthProvider = ({ children }: any) => {
   }, []);
 
   useEffect(() => {
-    if (isClientSide && user) (window as any).analytics.identify(user!.uid, {
+    if (isClientSide && user)
+      (window as any).analytics.identify(user?.uid, {
         uid: user.uid,
-    });
-}, [user]);
+      });
+  }, [user]);
 
   return (
     <AuthContext.Provider value={{ user, userVotes, userSubmissions }}>

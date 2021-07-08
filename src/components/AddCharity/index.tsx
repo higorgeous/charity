@@ -1,14 +1,21 @@
 import { FC, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
+import { Tab, TabList, TabPanel, TabsProps } from 'react-tabs';
 
 import EditorSuccessIcon from '@atlaskit/icon/glyph/editor/success';
 import EditorErrorIcon from '@atlaskit/icon/glyph/editor/error';
-import { Tab, TabList, TabPanel, TabsProps } from 'react-tabs';
+import { useFlags } from '@atlaskit/flag';
+
 const Tabs = dynamic<TabsProps>(
   import('react-tabs').then((mod) => mod.Tabs),
   { ssr: false },
 );
+
+import firebaseClient from '@services/Firebase/Client';
+import useAuth from '@hooks/useAuth';
+import segmentEvent from '@utils/segmentEvent';
+import useWeb3 from '@hooks/useWeb3';
 
 import Form from '../Library/Form';
 
@@ -17,9 +24,6 @@ import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 
 import { Wrapper } from './styles';
-import firebaseClient from '@services/Firebase/Client';
-import { useFlags } from '@atlaskit/flag';
-import useAuth from '@hooks/useAuth';
 
 const EditCharity: FC = () => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -50,6 +54,7 @@ const EditCharity: FC = () => {
 
   const { showFlag } = useFlags();
   const { user } = useAuth();
+  const { isHolder } = useWeb3();
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
@@ -118,6 +123,12 @@ const EditCharity: FC = () => {
                     title: `Congratulations`,
                     description: `You've submitted ${formFields.name} on Gorgeous. Find the progress of your submission in your account.`,
                     isAutoDismiss: true,
+                  });
+                  segmentEvent('addCharity', {
+                    id: docRef.id,
+                    charity: formFields.name,
+                    gorgeousHolder: isHolder,
+                    user: user?.uid,
                   });
                   router.push('/account');
                 })
