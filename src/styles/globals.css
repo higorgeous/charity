@@ -131,6 +131,7 @@ p.text {
 p.text a {
   color: var(--color-text-primary) !important;
   text-decoration: none;
+  transition: color 0.25s ease-in-out;
 }
 
 @media (max-width: 1024px) {
