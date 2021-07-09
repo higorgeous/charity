@@ -1,16 +1,16 @@
 import Essentials from '@components/Essentials';
-import DonationsScreen from '@screens/Donations';
+import ErrorScreen from '@screens/Error';
 
-const title = 'Donations';
-  const description =
-    'Charities that the Gorgeous community has helped support.';
+const title = '404: Page not found';
+const description =
+  'This page does not exist. Please check the URL and ensure it is correct.';
 
-const Donations = () => {
+const Error404 = () => {
   return (
     <Essentials title={title} description={description}>
-      <DonationsScreen />
+      <ErrorScreen title={title} description={description} error="404" />
     </Essentials>
   );
 };
 
-export default Donations;
+export default Error404;

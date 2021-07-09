@@ -26,9 +26,12 @@ const EditCharityScreen = ({ item }: Props) => {
         <>
           <Hero>You need to be the owner to edit this charity</Hero>
           <p className="text">
-            Our first donation will be made to the charity, organisation or
-            cause with the most votes on Friday 9th July 2021. Details and
-            receipts will be shown on this page.
+            If you are the owner of this charity, please email us to{' '}
+            <a href="mailto:info@higorgeous.io" title="info@higorgeous.io">
+              info@higorgeous.io
+            </a>
+            . Once our team has confirmed you as the legitimate representative
+            of the charity, you will have access to edit the page details.
           </p>
           <Locked />
         </>
