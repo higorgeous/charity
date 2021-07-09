@@ -62,7 +62,6 @@ const addVote = (
   setModalIsOpen(charity.id);
   segmentEvent('vote', {
     charity: charity.name,
-    gorgeousHolder: isHolder,
     path: `/charity/${charity.id}`,
     user: userId,
   });

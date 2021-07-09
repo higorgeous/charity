@@ -20,7 +20,6 @@ import {
 import { useRouter } from 'next/router';
 
 import useAuth from '@hooks/useAuth';
-import useWeb3 from '@hooks/useWeb3';
 import segmentEvent from '@utils/segmentEvent';
 
 import { ShareWrapper } from './styles';
@@ -34,7 +33,6 @@ type Props = {
 const ShareIcons = ({ shareTitle, shareUrl, isVote }: Props) => {
   const { user } = useAuth();
   const { asPath } = useRouter();
-  const { isHolder } = useWeb3();
 
   const hashtagFB = '#Gorgeous';
   const hashtagTW = 'Gorgeous';
@@ -45,7 +43,6 @@ const ShareIcons = ({ shareTitle, shareUrl, isVote }: Props) => {
   const socialClick = (title: string) => {
     segmentEvent(event, {
       href: referralUrl,
-      gorgeousHolder: isHolder,
       path: asPath,
       title,
       user: user?.uid,

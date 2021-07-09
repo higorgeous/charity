@@ -127,7 +127,6 @@ const EditCharity: FC = () => {
                   segmentEvent('addCharity', {
                     id: docRef.id,
                     charity: formFields.name,
-                    gorgeousHolder: isHolder,
                     user: user?.uid,
                   });
                   router.push('/account');

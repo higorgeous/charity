@@ -13,9 +13,7 @@ const Tabs = dynamic<TabsProps>(
 );
 
 import firebaseClient from '@services/Firebase/Client';
-import useAuth from '@hooks/useAuth';
 import segmentEvent from '@utils/segmentEvent';
-import useWeb3 from '@hooks/useWeb3';
 
 import Form from '../Library/Form';
 
@@ -27,9 +25,10 @@ import { Wrapper } from './styles';
 
 type Props = {
   charity: any;
+  user: any;
 };
 
-const EditCharity: FC<Props> = ({ charity }) => {
+const EditCharity: FC<Props> = ({ charity, user }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [formFields, setFormFields] = useState({
     name: charity.name,
@@ -57,8 +56,6 @@ const EditCharity: FC<Props> = ({ charity }) => {
   });
 
   const { showFlag } = useFlags();
-  const { user } = useAuth();
-  const { isHolder } = useWeb3();
   const router = useRouter();
 
   const onSubmit = async (data: any) => {
@@ -125,7 +122,6 @@ const EditCharity: FC<Props> = ({ charity }) => {
               segmentEvent('editCharity', {
                 id: charity.id,
                 charity: formFields.name,
-                gorgeousHolder: isHolder,
                 user: user?.uid,
               });
               router.push(`/charity/${charity.id}`);
@@ -154,10 +150,6 @@ const EditCharity: FC<Props> = ({ charity }) => {
 
   return (
     <Wrapper>
-      {user?.uid !== charity.owner && (
-        <h1>You need to be the owner to edit this charity</h1>
-      )}
-      {user?.uid === charity.owner && (
         <Form onSubmit={(data) => onSubmit(data)}>
           {({ formProps }) => (
             <form {...formProps} name="edit-charity">
@@ -201,7 +193,6 @@ const EditCharity: FC<Props> = ({ charity }) => {
             </form>
           )}
         </Form>
-      )}
     </Wrapper>
   );
 };

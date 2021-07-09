@@ -63,7 +63,6 @@ const addVote = (
   segmentEvent('vote', {
     charity: charity.name,
     path: '/',
-    gorgeousHolder: isHolder,
     user: userId,
   });
 };

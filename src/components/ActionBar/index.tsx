@@ -53,6 +53,7 @@ const ActionBar: FC<Props> = ({ charity, isCharity = false }) => {
       };
       userVoteHistory.push(voteHistory);
     });
+    
 
   return (
     <Wrapper>
