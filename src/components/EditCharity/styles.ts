@@ -153,14 +153,3 @@ export const Button = styled.button<{ back?: boolean }>`
     }
   }
 `;
-
-export const SVG = styled.svg`
-  width: 100%;
-  max-width: 600px;
-  path {
-    &#background {
-      fill: var(--color-bg-element);
-      transition: fill 0.25s ease-in-out;
-    }
-  }
-`;

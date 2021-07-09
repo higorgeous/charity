@@ -1,8 +1,12 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
-   width: 100%;
+  width: 100%;
   text-align: center;
+`;
+
+export const Loading = styled.div`
+  margin: 80px auto;
 `;
 
 export const SVG = styled.svg`

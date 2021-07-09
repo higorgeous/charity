@@ -2,9 +2,11 @@ import EditCharity from '@components/EditCharity';
 import Hero from '@components/Hero';
 import useAuth from '@hooks/useAuth';
 
-import EmptyState from './EmptyState';
+import Spinner from '@components/Spinner';
 
-import { Wrapper } from './styles';
+import Locked from './Locked';
+
+import { Wrapper, Loading } from './styles';
 
 type Props = {
   item: any;
@@ -15,7 +17,12 @@ const EditCharityScreen = ({ item }: Props) => {
 
   return (
     <Wrapper>
-      {user?.uid !== item.owner && (
+      {!user && item && (
+        <Loading>
+          <Spinner />
+        </Loading>
+      )}
+      {user && item && user?.uid !== item.owner && (
         <>
           <Hero>You need to be the owner to edit this charity</Hero>
           <p className="text">
@@ -23,10 +30,10 @@ const EditCharityScreen = ({ item }: Props) => {
             cause with the most votes on Friday 9th July 2021. Details and
             receipts will be shown on this page.
           </p>
-          <EmptyState />
+          <Locked />
         </>
       )}
-      {user?.uid === item.owner && (
+      {user && item && user?.uid === item.owner && (
         <>
           <Hero>Edit {item.name}</Hero>
           <p className="text">
