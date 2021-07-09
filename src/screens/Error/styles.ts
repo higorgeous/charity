@@ -48,5 +48,9 @@ export const SVG = styled.svg`
       fill: var(--color-bg-element);
       transition: fill 0.25s ease-in-out;
     }
+    &#elements {
+      fill: var(--color-bg-primary);
+      transition: fill 0.25s ease-in-out;
+    }
   }
 `;
