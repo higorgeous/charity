@@ -4,8 +4,6 @@ import { SVG } from './styles';
 
 const ErrorState: FC = () => (
   <SVG
-    width="3300"
-    height="2200"
     viewBox="0 0 3300 2200"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

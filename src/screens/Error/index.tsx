@@ -34,9 +34,9 @@ const ErrorScreen: FC<Props> = ({ title, description, error }) => {
         </Link>
       )}
       {error === '500' && (
-        <Button onClick={() => Router.reload()}>
+        <Button onClick={() => Router.push('/')}>
           <span>
-            Reload page
+            Go to homepage
             <ChevronRight />
           </span>
         </Button>
