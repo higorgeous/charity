@@ -131,13 +131,15 @@ p.text {
 @media (max-width: 1024px) {
   p.text {
     font-size: 16px;
-    margin: 10px 52px 30px;
+    margin: 10px auto 30px;
+    padding: 0 52px;
   }
 }
 @media (max-width: 568px) {
   p.text {
     font-size: 14px;
     margin: 10px 20px 30px;
+    padding: 0;
   }
 }
 
