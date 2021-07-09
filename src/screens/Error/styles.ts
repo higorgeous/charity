@@ -3,6 +3,9 @@ import styled from '@emotion/styled';
 export const Wrapper = styled.div`
   width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const Button = styled.div`
