@@ -1,4 +1,4 @@
-import styled from "@emotion/styled";
+import styled from '@emotion/styled';
 
 export const Wrapper = styled.div`
   grid-area: logo;
@@ -35,15 +35,13 @@ export const Wrapper = styled.div`
 `;
 
 export const ImageWrapper = styled.svg`
-  width: 120px;
-  @media (min-width: 568px) {
-    width: 300px;
-  }
-  @media (min-width: 1024px) {
-    width: 350px;
-  }
-  path {
+  width: 220px;
+  path,
+  polygon {
     fill: var(--color-text-primary);
     transition: fill 0.25s ease-in-out;
+    &.mark {
+      fill: var(--gorgeous-red);
+    }
   }
 `;

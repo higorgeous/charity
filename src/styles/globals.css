@@ -22,6 +22,7 @@ body[data-theme='light'] {
   --color-button-secondaryHover: #214a88;
   --color-button-alternative: #d4e1f3;
   --color-button-alternativeHover: #bdc8d8;
+  --gorgeous-red: rgba(252, 3, 3, 1);
 }
 
 body[data-theme='dark'] {
@@ -31,7 +32,7 @@ body[data-theme='dark'] {
   --color-text-error: #ff5630;
   --color-text-warning: #ffbd30;
   --color-text-valid: #40f193;
-  --color-bg-primary: #001b44;
+  --color-bg-primary: #000941;
   --color-bg-element: #032c6b;
   --color-select-background: #00132f;
   --color-input-background: #001b44;
@@ -46,6 +47,7 @@ body[data-theme='dark'] {
   --color-button-secondaryHover: #214a88;
   --color-button-alternative: #032c6b;
   --color-button-alternativeHover: #214a88;
+  --gorgeous-red: #ffffff;
 }
 
 .root,

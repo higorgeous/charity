@@ -14,10 +14,6 @@ const navItems: Array<ItemProps> = [
     href: `/`,
   },
   {
-    title: `Donations`,
-    href: `/donations`,
-  },
-  {
     title: `About`,
     href: `/about`,
   },
